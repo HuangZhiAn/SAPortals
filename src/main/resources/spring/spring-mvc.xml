@@ -23,7 +23,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
     </mvc:annotation-driven>
 
     <!-- 扫描controller包路径 -->
-    <context:component-scan base-package="hmdm.controller"
+    <context:component-scan base-package="hmdm.controllers"
                             use-default-filters="false">
         <context:include-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller" />

@@ -1,4 +1,4 @@
-package hmdm.controller;
+package hmdm.controllers;
 
 import org.springframework.stereotype.Controller;
 

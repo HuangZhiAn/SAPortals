@@ -1,4 +1,4 @@
-package hmdm.services;
+package hmdm.service;
 
 public interface DocumentService{
 

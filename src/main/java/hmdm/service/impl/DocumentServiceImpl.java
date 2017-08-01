@@ -1,7 +1,7 @@
-package hmdm.services.impl;
+package hmdm.service.impl;
 
 
-import hmdm.services.DocumentService;
+import hmdm.service.DocumentService;
 import org.springframework.stereotype.Service;
 
 @Service
