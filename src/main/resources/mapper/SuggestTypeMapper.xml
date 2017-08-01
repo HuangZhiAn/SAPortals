@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hmdm.mapper.SuggestTypeMapper" >
+  <resultMap id="BaseResultMap" type="hmdm.dto.SuggestType" >
+    <id column="type_id" property="typeId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="OBJECT_VERSION_NUMBER" property="objectVersionNumber" jdbcType="BIGINT" />
+    <result column="REQUEST_ID" property="requestId" jdbcType="BIGINT" />
+    <result column="PROGRAM_ID" property="programId" jdbcType="BIGINT" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="BIGINT" />
+    <result column="CREATION_DATE" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPDATED_BY" property="lastUpdatedBy" jdbcType="BIGINT" />
+    <result column="LAST_UPDATE_DATE" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPDATE_LOGIN" property="lastUpdateLogin" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    type_id, name, OBJECT_VERSION_NUMBER, REQUEST_ID, PROGRAM_ID, CREATED_BY, CREATION_DATE, 
+    LAST_UPDATED_BY, LAST_UPDATE_DATE, LAST_UPDATE_LOGIN
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="hmdm.dto.SuggestTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from hmdm_pt_suggesttype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hmdm_pt_suggesttype
+    where type_id = #{typeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from hmdm_pt_suggesttype
+    where type_id = #{typeId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="hmdm.dto.SuggestTypeExample" >
+    delete from hmdm_pt_suggesttype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hmdm.dto.SuggestType" >
+    insert into hmdm_pt_suggesttype (type_id, name, OBJECT_VERSION_NUMBER, 
+      REQUEST_ID, PROGRAM_ID, CREATED_BY, 
+      CREATION_DATE, LAST_UPDATED_BY, LAST_UPDATE_DATE, 
+      LAST_UPDATE_LOGIN)
+    values (#{typeId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{objectVersionNumber,jdbcType=BIGINT}, 
+      #{requestId,jdbcType=BIGINT}, #{programId,jdbcType=BIGINT}, #{createdBy,jdbcType=BIGINT}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdatedBy,jdbcType=BIGINT}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
+      #{lastUpdateLogin,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="hmdm.dto.SuggestType" >
+    insert into hmdm_pt_suggesttype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="objectVersionNumber != null" >
+        OBJECT_VERSION_NUMBER,
+      </if>
+      <if test="requestId != null" >
+        REQUEST_ID,
+      </if>
+      <if test="programId != null" >
+        PROGRAM_ID,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="creationDate != null" >
+        CREATION_DATE,
+      </if>
+      <if test="lastUpdatedBy != null" >
+        LAST_UPDATED_BY,
+      </if>
+      <if test="lastUpdateDate != null" >
+        LAST_UPDATE_DATE,
+      </if>
+      <if test="lastUpdateLogin != null" >
+        LAST_UPDATE_LOGIN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        #{typeId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="objectVersionNumber != null" >
+        #{objectVersionNumber,jdbcType=BIGINT},
+      </if>
+      <if test="requestId != null" >
+        #{requestId,jdbcType=BIGINT},
+      </if>
+      <if test="programId != null" >
+        #{programId,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedBy != null" >
+        #{lastUpdatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateDate != null" >
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateLogin != null" >
+        #{lastUpdateLogin,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hmdm.dto.SuggestTypeExample" resultType="java.lang.Integer" >
+    select count(*) from hmdm_pt_suggesttype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update hmdm_pt_suggesttype
+    <set >
+      <if test="record.typeId != null" >
+        type_id = #{record.typeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.objectVersionNumber != null" >
+        OBJECT_VERSION_NUMBER = #{record.objectVersionNumber,jdbcType=BIGINT},
+      </if>
+      <if test="record.requestId != null" >
+        REQUEST_ID = #{record.requestId,jdbcType=BIGINT},
+      </if>
+      <if test="record.programId != null" >
+        PROGRAM_ID = #{record.programId,jdbcType=BIGINT},
+      </if>
+      <if test="record.createdBy != null" >
+        CREATED_BY = #{record.createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.creationDate != null" >
+        CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdatedBy != null" >
+        LAST_UPDATED_BY = #{record.lastUpdatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.lastUpdateDate != null" >
+        LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdateLogin != null" >
+        LAST_UPDATE_LOGIN = #{record.lastUpdateLogin,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update hmdm_pt_suggesttype
+    set type_id = #{record.typeId,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      OBJECT_VERSION_NUMBER = #{record.objectVersionNumber,jdbcType=BIGINT},
+      REQUEST_ID = #{record.requestId,jdbcType=BIGINT},
+      PROGRAM_ID = #{record.programId,jdbcType=BIGINT},
+      CREATED_BY = #{record.createdBy,jdbcType=BIGINT},
+      CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      LAST_UPDATED_BY = #{record.lastUpdatedBy,jdbcType=BIGINT},
+      LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      LAST_UPDATE_LOGIN = #{record.lastUpdateLogin,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hmdm.dto.SuggestType" >
+    update hmdm_pt_suggesttype
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="objectVersionNumber != null" >
+        OBJECT_VERSION_NUMBER = #{objectVersionNumber,jdbcType=BIGINT},
+      </if>
+      <if test="requestId != null" >
+        REQUEST_ID = #{requestId,jdbcType=BIGINT},
+      </if>
+      <if test="programId != null" >
+        PROGRAM_ID = #{programId,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null" >
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedBy != null" >
+        LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="lastUpdateDate != null" >
+        LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateLogin != null" >
+        LAST_UPDATE_LOGIN = #{lastUpdateLogin,jdbcType=BIGINT},
+      </if>
+    </set>
+    where type_id = #{typeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hmdm.dto.SuggestType" >
+    update hmdm_pt_suggesttype
+    set name = #{name,jdbcType=VARCHAR},
+      OBJECT_VERSION_NUMBER = #{objectVersionNumber,jdbcType=BIGINT},
+      REQUEST_ID = #{requestId,jdbcType=BIGINT},
+      PROGRAM_ID = #{programId,jdbcType=BIGINT},
+      CREATED_BY = #{createdBy,jdbcType=BIGINT},
+      CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType=BIGINT},
+      LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      LAST_UPDATE_LOGIN = #{lastUpdateLogin,jdbcType=BIGINT}
+    where type_id = #{typeId,jdbcType=BIGINT}
+  </update>
+</mapper>
