@@ -16,6 +16,8 @@
     <mybatis.version>3.2.6</mybatis.version>
       <!--spring security-->
       <spring.security.version>4.2.2.RELEASE</spring.security.version>
+      <!-- activiti版本号 -->
+      <activiti.version>5.14</activiti.version>
   </properties>
 
   <dependencies>
@@ -147,6 +149,22 @@
           <groupId>org.springframework.security</groupId>
           <artifactId>spring-security-config</artifactId>
           <version>${spring.security.version}</version>
+      </dependency>
+      <!--activiti-->
+      <dependency>
+          <groupId>org.activiti</groupId>
+          <artifactId>activiti-engine</artifactId>
+          <version>${activiti.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.activiti</groupId>
+          <artifactId>activiti-spring</artifactId>
+          <version>${activiti.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.12</version>
       </dependency>
 
   </dependencies>

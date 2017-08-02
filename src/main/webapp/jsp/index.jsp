@@ -24,6 +24,12 @@ String path = request.getContextPath();
   </head>
   <body>
   	<h2>Hello HMDM portals</h2>
+	<form action="${pageContext.request.contextPath}/logout" method="POST">
+		<input type="submit" value="Logout" />
+		<input type="hidden"
+			   name="${_csrf.parameterName}"
+			   value="${_csrf.token}"/>
+	</form>
   </body>
 </html>
 
