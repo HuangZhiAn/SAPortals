@@ -43,5 +43,7 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
 
-
+    <bean name="loginFilter" class="hmdm.filter.LoginFilter"></bean>
+    <bean name="unauthorizedEntryPoint" class="hmdm.filter.UnauthorizedEntryPoint"></bean>
+    <bean id="springContextUtil" class="hmdm.util.SpringContextUtil" />
 </beans>

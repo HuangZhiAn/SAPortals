@@ -1,4 +1,4 @@
-package hmdm.dto;
+package hmdm.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

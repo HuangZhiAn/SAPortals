@@ -18,6 +18,7 @@
         <session-management>
             <concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/>
         </session-management>
+        <custom-filter after="FORM_LOGIN_FILTER" ref="loginFilter"/>
     </http>
 
     <!--配置用户信息来源 自定义用户数据来源，从数据库中取数据-->
