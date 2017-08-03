@@ -1,4 +1,4 @@
-﻿package hmdm.util;
+package hmdm.util;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;

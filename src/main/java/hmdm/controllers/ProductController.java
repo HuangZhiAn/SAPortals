@@ -52,9 +52,9 @@ public class ProductController {
                                HttpServletRequest request, HttpServletResponse response) {
         String downloadToken1 =(String) request.getServletContext().getAttribute(downloadToken);
         if (fileName != null&&downloadToken1!=null&&!downloadToken1.equals("")) {
-            request.getServletContext().setAttribute(downloadToken,null);
             String realPath = request.getServletContext().getRealPath("WEB-INF/products/");
             File file = new File(realPath, fileName);
+            long length = file.length();
             if (file.exists()) {
                 response.setContentType("application/force-download");
                 response.addHeader("Content-Disposition",
@@ -78,9 +78,11 @@ public class ProductController {
                     close(fis);
                 }
             }
+            request.getServletContext().setAttribute(downloadToken,null);
+        }else{
+            return "Link Failure";
         }
-
-        return "Link Failure";
+        return "Download success";
     }
 
     private void close(InputStream in){
