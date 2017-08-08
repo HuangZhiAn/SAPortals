@@ -33,17 +33,14 @@ public class LoginFilter extends GenericFilterBean {
             SecurityContext context = SecurityContextHolder.getContext();
             Authentication authentication = context.getAuthentication();
             if(authentication!=null) {
-                System.out.println("登录过滤器");
                 User details = (User) authentication.getPrincipal();
 
-                System.out.println("用户名：" + details.getUsername());
                 if (details.getUsername() != null && !details.getUsername().equals("")) {
 
                     CustomerExample example = new CustomerExample();
                     example.createCriteria().andNameEqualTo(details.getUsername());
                     List<Customer> customers = service.selectByExample(example);
                     if (customers != null && customers.size() != 0) {
-                        System.out.println("用户：" + customers.get(0));
                         httpServletRequest.getSession().setAttribute("customer", customers.get(0));
                     }
                 }

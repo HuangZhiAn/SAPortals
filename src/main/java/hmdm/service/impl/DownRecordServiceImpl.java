@@ -1,19 +1,72 @@
 package hmdm.service.impl;
 
-import hmdm.dto.DownRecord;
-import hmdm.dto.DownRecordExample;
+import hmdm.dto.*;
 import hmdm.mapper.DownRecordMapper;
+import hmdm.mapper.ProductMapper;
 import hmdm.service.DownRecordService;
+import hmdm.util.AppliactionContextHelper;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
-
+@Aspect
 @Service
 public class DownRecordServiceImpl implements DownRecordService{
 
     @Autowired
+
+
     DownRecordMapper mapper;
+    @Autowired
+    ProductMapper productMapper;
+
+    public DownRecordServiceImpl(){
+//        mapper =(DownRecordMapper) AppliactionContextHelper.getBean("downRecordMapper");
+//        productMapper = (ProductMapper) AppliactionContextHelper.getBean("productMapper");
+    }
+
+    @Pointcut("execution(* hmdm.controllers.ProductController.downloadFile(..))")
+    private void downloadFile(){}//定义一个切入点
+
+    @Around("downloadFile()")
+    public Object around(ProceedingJoinPoint pjp) throws Throwable{
+        Object object = pjp.proceed();//执行该方法
+        String result = (String) object;
+        if(result.equals("Download success")){
+            DownRecord downRecord = new DownRecord();
+            Object[] args = pjp.getArgs();
+            //获取productId
+            String productName =(String) args[0];
+            String version = (String) args[1];
+
+            System.out.println("产品和版本"+productName+version);
+            ProductExample example = new ProductExample();
+            example.createCriteria().andNameEqualTo(productName).andVersionEqualTo(version);
+            List<Product> products = productMapper.selectByExample(example);
+            if(products!=null&&products.size()>0){
+                downRecord.setProductId(products.get(0).getProductId());
+            }else{
+                throw new Exception("无该产品记录");
+            }
+            //获取CustomerId
+            HttpServletRequest request = (HttpServletRequest) args[3];
+            Customer customer =(Customer) request.getSession().getAttribute("customer");
+            downRecord.setCustomerId(customer.getCustomerId());
+
+            downRecord.setTime(new Date());
+            int i = mapper.insertSelective(downRecord);
+            if(i<=0){
+               throw new Exception("下载记录插入失败");
+            }
+        }
+        return object;
+    }
 
     @Override
     public int countByExample(DownRecordExample example) {
