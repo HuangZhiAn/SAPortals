@@ -6,10 +6,12 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <!-- 开启注解 -->
+    <context:annotation-config />
 
     <!-- 包扫描 -->
     <context:component-scan base-package="hmdm.service.*"/>
-    <context:component-scan base-package="hmdm.controllers.*"/>
+    <context:component-scan base-package="hmdm.util"/>
 
     <!-- 加载jdbc配置文件，配置c3p0数据源 -->
     <context:property-placeholder location="classpath:config.properties" />
@@ -29,7 +31,6 @@
             <array>
                 <bean class="com.github.pagehelper.PageInterceptor">
                     <property name="properties">
-                        <!--配置参数，一行配置一个 -->
                         <value>params=value1</value>
                     </property>
                 </bean>
@@ -44,6 +45,5 @@
     </bean>
 
     <bean name="loginFilter" class="hmdm.filter.LoginFilter"></bean>
-    <bean name="unauthorizedEntryPoint" class="hmdm.filter.UnauthorizedEntryPoint"></bean>
-    <bean id="springContextUtil" class="hmdm.util.SpringContextUtil" />
+    <bean id="applicationContext" class="hmdm.util.AppliactionContextHelper"/>
 </beans>
