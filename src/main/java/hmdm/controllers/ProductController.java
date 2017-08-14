@@ -41,6 +41,12 @@ public class ProductController{
     @Value("#{config[product.name]}")
     private String productName;
 
+    @Value("#{config[domain.name]}")
+    private String domainName;
+
+    @Value("#{config[port]}")
+    private String port;
+
     @RequestMapping("/sendDownloadEmail")
     public String sendDownloadEmail(@RequestParam(value = "productName",required = false) String productName,
                                     @RequestParam(value = "version",required = false)String version,
@@ -69,7 +75,7 @@ public class ProductController{
         List<byte[]> list = new ArrayList<byte[]>();
         List filename = new ArrayList<String>();
         try {
-            mailService.sendMultipleEmail("产品下载","http://10.211.98.5:8080/download?productName="+productName+"&downloadToken="+downloadToken+"&version="+version,list,"ccc",filename,user,password);
+            mailService.sendMultipleEmail("产品下载","http://"+domainName+":"+port+"/download?productName="+productName+"&downloadToken="+downloadToken+"&version="+version,list,"ccc",filename,user,password);
         } catch (Exception e) {
             e.printStackTrace();
             return "fail";
