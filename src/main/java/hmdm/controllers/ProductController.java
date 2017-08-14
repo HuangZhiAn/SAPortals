@@ -1,12 +1,12 @@
 package hmdm.controllers;
 
 import hmdm.dto.Customer;
+import hmdm.dto.Product;
 import hmdm.service.IMailService;
+import hmdm.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +24,10 @@ import java.util.List;
 public class ProductController{
 
     @Autowired
-    IMailService mailService;
+    private IMailService mailService;
+
+    @Autowired
+    private ProductService productService;
 
     @RequestMapping("/sendDownloadEmail")
     public String sendDownloadEmail(@RequestParam("productName") String productName,
@@ -102,6 +105,18 @@ public class ProductController{
                 in=null;
             }
         }
+    }
+
+
+    /**
+     * 查询产品信息
+     * @return
+     */
+    @RequestMapping(value = "/product/query",method = RequestMethod.GET)
+    public @ResponseBody
+    List<Product> qeury(){
+        List<Product> list = productService.selectByExample(null);
+        return list;
     }
 
     @RequestMapping("/test")

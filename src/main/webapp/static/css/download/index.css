@@ -1,0 +1,91 @@
+
+#downloadContain{
+	width: 100%;
+}
+
+#topContain{
+	height: 100%;
+	width: 100%;
+	
+}
+#topContain img{
+	width: 100%;
+	height: 100%;
+}
+#middleContain{
+	height: 100%;	
+	width: 1024px;
+	margin: auto;
+}
+#downloadIntroduction{
+	height: 600px;
+	width: 1024px;
+	margin-top: 70px;
+}
+
+#downloadVersion{
+	height: 600px;
+	width: 1024px;
+}
+.versionType{
+	height: 600px;
+	width: 341px;
+	float: left;
+}
+.versionIMG{
+	height: 180px;
+	width: 341px;
+}
+.versionIMG img{
+	height: 180px;
+	width: 341px;
+}
+.versionName{
+	height: 80px;
+	width: 341px;
+	text-align: center;
+}
+.versionName a{
+	font-size: 25px;
+	font-weight:600;
+	color: black;
+	line-height: 80px;
+}
+.versionName a:hover{
+	color: gray;
+}
+.versionIntroduction{
+	height: 160px;
+	widows: 341px;
+}
+.versionIntroduction li{
+	 color: graytext;
+	line-height: 28px;
+	font-size: 15px;
+	margin-left: 20px;
+}
+.versionDownloadBtn{
+	height: 80px;
+	width: 341px;
+}
+.versionbtn{
+	text-align: center;
+	margin: auto;
+	height: 80px;
+}
+.versionbtn a{
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+	border-radius: 30px;
+	background-color:#317EF3 ;
+	line-height: 30px;
+	color: white;
+}
+.versionbtn span{
+	color: graytext;
+	font-size: 15px;
+}
+.versionbtn a:hover {
+	background-color: #22C0FC;
+}

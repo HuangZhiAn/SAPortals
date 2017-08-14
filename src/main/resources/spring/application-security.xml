@@ -11,12 +11,13 @@
     <!--http元素用于配置访问控制和登录验证-->
     <http use-expressions="true">
         <intercept-url pattern="/sendDownloadEmail" access="hasRole('USER')" />
-        <form-login login-page="/loginPage" login-processing-url="/login"/>
-        <logout />
+        <form-login login-processing-url="/login" authentication-success-forward-url="/loginSuccess" authentication-failure-forward-url="/loginFailure"/>
+        <logout logout-success-url="/loginPage"/>
         <!--添加session管理 限制同一用户的session数量-->
         <session-management>
             <concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/>
         </session-management>
+        <custom-filter before="FORM_LOGIN_FILTER" ref="beforeLoginFilter"></custom-filter>
         <custom-filter after="FORM_LOGIN_FILTER" ref="loginFilter"/>
     </http>
 

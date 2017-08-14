@@ -1,0 +1,185 @@
+body{
+	background-color: rgba(236, 236, 236,1);
+}
+.login-header{
+	width: 100%;
+	min-height: 70px;
+	height: 15%;
+}
+.login-header .container{
+	width: 100%;
+	height: 60px;
+}
+.login-header .login-logo{
+	margin:5px 0px;
+	padding:0px 10px;
+	height: 50px;
+	width: 120px;
+	/* border-right: 1px solid red; */
+	float: left;
+}
+.login-header .application-name{
+	display:block;
+	height:30px;
+	margin-top:25px;
+	margin-bottom:5px;
+	padding:0px 10px;
+	font-size:30px;
+	font-weight:bold;
+	color: #777;
+	float:left;
+}
+.login-header .split-line{
+	width:100%;
+	height:10px;
+	background-color: rgba(119, 119, 119,1);
+}
+
+
+.login-body{
+	height: 70%;
+	min-height: 400px;
+	position: relative;
+}
+.login-body .login-form{
+	position: absolute;
+	left:50%;
+	top:50%;
+	width:600px;
+	margin-left:-300px;
+	height:300px;
+	margin-top:-150px;
+	background-color: rgba(255,255,255,0.9);
+	border-radius:4px; 
+	overflow: hidden;
+}
+.login-body .login-form .form-top{
+	padding:0px 10px;
+	height:40px;
+	line-height:40px;
+	background-color:rgba(235, 45, 47,1);
+	font-family: Microsoft YaHei,Arial,Verdana,sans-serif;
+	font-size:14px;
+	color: white;
+}
+.login-body .login-form .form-top .home-icon{
+	width: 20px;
+	height: 20px;
+	padding:10px 5px;
+	float: left;
+	opacity:0.8;
+	filter:alpha(opacity=80);
+}
+.login-body .login-form .form-container{
+	height:260px;
+	background-color:rgba(66, 66, 66,1);
+}
+.login-body .login-form .form-container .img-div{
+	width:350px;
+	height:260px;
+	float:left;
+}
+.login-body .login-form .form-container .img-div img{
+	width: 330px;
+	height: 240px;
+	margin: 10px;
+	border-radius:4px; 
+}
+.login-body .login-form .form-container .submit-div{
+	width:229px;
+	height:240px;
+	margin:10px;
+	margin-left:0px;
+	border-left:1px solid rgba(255,255,255,0.07);
+	padding-left:10px;
+	float:left;
+	font-family: Microsoft YaHei,Arial,Verdana,sans-serif;
+}
+.login-body .login-form .form-container .submit-div .note-span{
+	display:block;
+	color: white;
+	font-size: 12px;
+	line-height: 30px;
+	height: 30px;
+}
+.login-body .login-form .form-container .submit-div .input-div{
+	position: relative;
+}
+.login-body .login-form .form-container .submit-div .input-div .k-invalid-msg{
+	font-size: 12px;
+}
+.login-body .login-form .form-container .submit-div .input-div input{
+	height:30px;
+	width:217px;
+	padding:0px 5px;
+	margin:5px 0px;
+	color:white;
+	border:1px solid rgba(255,255,255,0.4);
+	background:rgba(255,255,255,0.1);
+	border-radius:4px; 
+}
+/* .login-body .login-form .form-container .submit-div .input-div input{
+	height:30px;
+	width:160px;
+	margin:5px 0px;
+	padding:0px;
+	padding-left: 5px;
+	padding-right: 45px;
+	color:white;
+	border:1px solid rgba(255,255,255,0.4);
+	background:rgba(34, 33, 51,1);
+	border-radius:4px; 
+}
+.login-body .login-form .form-container .submit-div .input-div i{
+	position:absolute;
+    top: 8px;
+    left: 184px;
+    width: 24px;
+    height: 26px;
+    display: block;
+}
+.login-body .login-form .form-container .submit-div .input-div .username-icon{
+	background: url(/webportals/static/img/icons.jpg) -213px -208px;
+}
+.login-body .login-form .form-container .submit-div .input-div .password-icon{
+    background: url(/webportals/static/img/icons.jpg) -561px -208px;
+} */
+
+.login-body .login-form .form-container .submit-div .submit-btn{
+	display:inline-block;
+	padding:5px 20px;
+	font-size:13px;
+	background-color: rgba(235, 45, 47,1);
+	color: white;
+	margin: 5px 0px;
+	border-radius: 4px;
+}
+.login-body .login-form .form-container .submit-div .result-span{
+	display:none;
+	height:60px;
+	padding:5px;
+	background-color: rgba(255, 255, 255,0.8);
+	border-radius: 4px;
+	color: rgba(235, 45, 47,1);
+}
+
+
+.login-bottom{
+	width:100%;
+	min-height:60px;
+	position: relative;
+	height: 15%;
+}
+
+.login-bottom .container{
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	height:60px;
+	text-align: center;
+	line-height:60px;
+	font-size:14px;
+	background-color: rgba(66, 66, 66,1);
+	color: rgba(255, 255, 255,0.8);
+	font-family: Microsoft YaHei,Arial,Verdana,sans-serif;
+}

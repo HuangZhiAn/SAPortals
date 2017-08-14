@@ -1,0 +1,174 @@
+.downloadContain{
+	min-height: 600px
+}
+.downloadContain .downloadTop{
+	min-height: 600px;
+	width: 100%;
+	height: 100%;
+}
+.downloadContain .downloadTop img{
+	width:100%;
+	height: 100%;
+}
+.downloadContain .downloadTopText{
+	width: 350px;
+	height: 200px;
+	position: absolute;
+	top: 250px;
+	left: 200px;
+	text-align: center;
+}
+.downloadContain .downloadTopText span{
+	color: white;
+	font-size: 35px;
+}
+.downloadContain .downloadTopText .dowLoadBtn a{
+	display: inline-block;
+	width: 210px;
+	height: 45px;
+	font-size:28px;
+	border-radius: 35px;
+	background-color:white;
+	margin-top:50px;
+	line-height: 45px;
+	color: #24498D;
+}
+.downloadContain .downloadTopText .dowLoadBtn a:hover{
+	color: white;
+	background-color: #24498D;
+}
+.downloadContain .downloadTopBG{
+	width: 600px;
+	height: 500px;
+	position: absolute;
+	top: 120px;
+	left: 600px;
+}
+.downloadContain .downloadMiddle{
+	width: 100%;
+	height: 700px;
+}
+.downloadContain .downloadMiddle .downloadMiddleTop{
+	width: 100%;
+	height: 100px;
+	background-color: #003B4D;
+	text-align: center;	
+}
+.downloadContain .downloadMiddle .downloadMiddleTop span{
+	line-height:100px;
+	color: white;
+	font-size: 30px;
+}
+.downloadContain .downloadMiddle .downloadMiddleIntroductions{
+	width: 1024px;
+	height: 700px;
+	margin: auto;
+}
+.downloadMiddleIntroductions .downloadMiddleIntroductionsTop{
+	width: 1024px;
+	height: 100px;
+	background-color: white;
+}
+.downloadMiddleIntroductions .downloadMiddleIntroductionsProducts{
+	width: 1024px;
+	height: 600px;
+}
+.downloadMiddleIntroductions .downloadMiddleIntroductionsProduct{
+	width: 341;
+	height: 400px;
+	float:left;
+}
+.downloadMiddleIntroductions .downloadMiddleIntroductionsProduct a{
+	display: inline-block;
+	position: relative;
+}
+.downloadMiddleIntroductions  .downloadMiddleIntroductionsProductDiv1{
+	width: 341;
+	height: 400px;
+	position:absolute;
+	top:0;
+	background: rgba(0,0,0,0.3);
+	text-align: center;
+	display: none;
+}
+.downloadMiddleIntroductions  .downloadMiddleIntroductionsProductDiv1 a{
+	color: white;
+	font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+}
+.downloadMiddleIntroductions  .downloadMiddleIntroductionsProductDiv1  span{
+	display:inline-block;
+	margin-top:25px;
+	font-size: 25px;
+	color: white;
+}
+
+
+
+.downloadMiddleIntroductions .downloadMiddleIntroductionsProduct img{
+	width: 341;
+	height: 400px;
+}
+.downloadMiddleIntroductions  .downloadMiddleIntroductionsProductDiv1 .downloadMiddleBtn span{
+	display: inline-block;
+	width: 180px;
+	height: 35px;
+	font-size:25px;
+	border-radius: 35px;
+	background-color:white;
+	margin-top:50px;
+	line-height: 35px;
+	color: #24498D;
+}
+.downloadMiddleIntroductions  .downloadMiddleIntroductionsProductDiv1 .downloadMiddleBtn span:hover {
+	color: white;
+	background-color: #24498D;
+}
+.downloadMiddleIntroductionsProduct .downloadMiddleProductIntroduction{
+	width: 341px;
+	height: 150px;
+	position:absolute;
+	bottom:0px; 
+	text-align: center;
+	background: rgba(0,0,0,0.3);
+}
+.downloadMiddleIntroductionsProduct .downloadMiddleProductIntroduction span{
+	display:inline-block;
+	margin-top:20px;
+	font-size: 20px;
+	color: white;
+}
+.downloadOthersProduct{
+	width: 1024px;
+	height: 680px;
+	margin: auto;
+}
+.downloadOthersProduct .downloadOthersProductTop{
+	width: 1024px;
+	height: 50px;
+	
+}
+.downloadOthersProduct .downloadOthersProductTop span{
+	color: black;
+	font-size: 26px;
+}
+.downloadOthersProduct .downloadOthersProductIntroductions{
+	width: 1024px;
+	height: 630px;
+}
+.downloadOthersProductIntroductions .downloadOthersProductIntroduction{
+	width: 341px;
+	height: 200px;
+	float: left;
+	text-align: center;
+}
+.downloadOthersProductIntroductions .downloadOthersProductIntroduction a{
+	font-size: 25px;
+	color: black;
+	display: inline-block;
+	width: 341px;
+	height: 200px;
+	line-height: 200px;
+}
+.downloadOthersProductIntroductions .downloadOthersProductIntroduction a:hover {
+	background-color: #F2F2F2;
+}

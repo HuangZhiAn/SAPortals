@@ -12,9 +12,34 @@ import java.util.List;
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
+
 	@RequestMapping(value = "/loginPage",method = RequestMethod.GET)
 	public String hello(){
 		return "login";
+	}
+
+	@RequestMapping(value = "/loginSuccess",method = RequestMethod.POST)
+	@ResponseBody
+	public String loginSuccess(){
+		return "success";
+	}
+
+	@RequestMapping(value = "/loginFailure",method = RequestMethod.POST)
+	@ResponseBody
+	public String loginFailure(){
+		return "failure";
+	}
+
+	@RequestMapping(value = "/veryCodeError",method = RequestMethod.POST)
+	@ResponseBody
+	public String veryCodeError(){
+		return "veryCodeError";
+	}
+
+	@RequestMapping(value = "/veryCodeNull",method = RequestMethod.POST)
+	@ResponseBody
+	public String veryCodeNull(){
+		return "veryCodeNull";
 	}
 
 	@RequestMapping("/customer/query")

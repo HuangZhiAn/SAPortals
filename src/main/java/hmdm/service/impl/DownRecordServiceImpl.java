@@ -69,7 +69,7 @@ public class DownRecordServiceImpl implements DownRecordService{
     }
 
     @Override
-    public int countByExample(DownRecordExample example) {
+    public long countByExample(DownRecordExample example) {
         return mapper.countByExample(example);
     }
 

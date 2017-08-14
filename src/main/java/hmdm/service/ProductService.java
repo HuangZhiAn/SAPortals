@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ProductService {
-    int countByExample(ProductExample example);
+    long countByExample(ProductExample example);
 
     int deleteByExample(ProductExample example);
 

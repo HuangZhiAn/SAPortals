@@ -13,8 +13,9 @@ ul,form{
 	margin: 0px;
 	padding: 0px;
 }
-
+li{
+	list-style: none;
+}
 a {
 	text-decoration: none;
-	font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', Arial, sans-serif;
 }

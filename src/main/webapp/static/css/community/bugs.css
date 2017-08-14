@@ -1,0 +1,298 @@
+.bugsContain{
+		min-height: 600px;
+}
+.bugsMiddleContain{
+	width: 100%;
+	height: 1000px;
+ 	background-color: #F2F2F3;
+ }
+.bugsMiddleContain .bugsMiddle{
+	width: 1024px;
+	height: 950px;
+	margin: auto;
+ 	background-color: white;
+}
+.bugsMiddle .bugsMiddleTop{
+	width: 944px;
+	height: 100px;
+	padding:0px 40px;
+	border-bottom: solid 2px black;
+}
+.bugsMiddle .bugsMiddleTop span{
+	font-size: 28px;
+	color: black;
+	line-height: 100px;
+	display: inline-block;
+}
+.bugsMiddleContext{
+	width: 944px;
+	height: 770px;
+	padding:0px 40px;
+}
+.bugsMiddleQuestion{
+	width: 944px;
+	height: 730px;
+}
+.bugsMiddleQuestionTitle{
+	width: 944px;
+	height: 80px;
+	border-bottom: solid 2px black;
+}
+.bugsMiddleQuestionTitle span{
+	font-size: 26px;
+	color: black;
+	line-height: 80px;
+	display: inline-block;
+}
+.bugsMiddleQuestionDecribe{
+	width: 944px;
+	height: 740px;
+}
+.bugsMiddleQuestionDecribeTop{
+	width: 944px;
+	height: 130px;
+}
+.bugsMiddleQuestionDecribeTop a{
+	line-height: 60px;
+	font-size: 20px;
+}
+.bugsMiddleQuestionDecribeTop select{
+	width: 200px;
+	height: 35px;
+	font-size: 16px;
+	border:1px solid rgba(0,0,0,0.2);
+	border-radius: 4px;
+	padding:0px 6px;
+}
+.bugsMiddleQuestionDecribeMiddle{
+	width: 944px;
+	height: 230px;
+}
+.bugsMiddleQuestionDecribeMiddle span{
+	font-size: 20px;
+}
+.bugsMiddleQuestionDecribeMiddle textarea {
+	width: 100%;
+	height: 150px;
+	font-size:19px; 
+	color: black;
+	border:1px solid rgba(0,0,0,0.2);
+	border-radius: 4px;
+	padding:0px 6px;
+}
+.bugsMiddleQuestionDecribeBottom{
+	width: 944px;
+	height: 120px;
+}
+.bugsMiddleQuestionDecribeBottom a{
+	line-height: 80px;
+	font-size: 20px;
+}
+.bugsMiddleQuestionDecribeBottom input{
+	width: 600px;
+	height: 35px; 	
+	border:1px solid rgba(0,0,0,0.2);
+	border-radius: 4px;
+	padding:0px 6px;
+}
+.bugsMiddleQuestionDescribeFile{
+	width: 944px;
+	height: 300px;
+}
+.bugsMiddleQuestionDescribeFile input[type="text"] {
+	height:20px;
+    border:none;
+    border-bottom:1px solid #ccc;
+    width:200px;
+    margin-right:10px; 
+    outline:none;
+    height:25px;
+	
+}
+.bugsMiddleQuestionDescribeFile .file {
+   outline: none;
+       border:none;
+    background: #67BEF4;
+    border-radius: 4px;
+    padding: 4px 12px;
+   cursor:pointer;
+    color: #fff;
+    font-size:18px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+.bugsMiddleQuestionDescribeSubmit{
+	width: 244px;
+	height: 80px;
+	margin: auto;
+}
+.bugsMiddleQuestionDescribeSubmit a{
+	display: inline-block;
+	width: 150px;
+	height: 35px;
+	background-color: #2ABCF1;
+	line-height: 35px;
+	border-radius: 30px;
+	text-align: center;
+	color: white;
+}
+.bugsMiddleQuestionDescribeSubmit a:hover {
+	background-color: #5ACAF8;
+}
+.k-widget .k-dropdown .k-header{
+	width: 150px;
+	height: 35px;
+}
+.k-dropdown-wrap .k-state-default .k-select .k-icon .k-i-arrow-s{
+    width: 16px;
+    height: 16px;
+    margin-top: 10px;
+
+}
+
+.bar {
+    height: 18px;
+    background: green;
+}
+
+ 
+ 
+ .bugsMiddleQuestionDecribeTop .k-dropdown{
+ 	width: 220px;
+ 	height: 35px;
+	background-color: white;
+	
+ }
+ .bugsMiddleQuestionDecribeTop   .k-input{
+ 	font-size: 16px;
+ }
+ .bugsMiddleQuestionDecribeTop .k-tooltip-validation{
+ 	width: 200px;
+ 	height: 30px;
+	line-height: 30px;
+	
+ }
+ .bugsMiddleQuestionDecribeTop  .k-i-arrow-s{
+ 	margin-top: 10px;
+ }
+ .bugsMiddleQuestionDecribe .k-warning{
+	margin-top: 5px;
+	
+}
+.bugsMiddleQuestionDecribe .k-tooltip-validation{
+	font-size: 18px;
+}
+
+#fileImage{
+		display: none;
+	}
+	
+#btn{
+		width:100px;
+		height:35px;
+		border-radius:30px;
+		background-color:#2AC4FE;
+		text-align:center;
+		line-height:35px;
+		color:white;
+		display: inline-block;
+	}
+#btn:hover{
+	background-color: #5ACAF8;
+}
+.imgDiv img{
+		width: 100px;
+		height: 100px;
+		border-radius: 4px; 
+	}
+.delete-btn{
+		width:30px;
+		height:20px;
+		border-radius:20px;
+		background-color:#2AC4FE;
+		text-align:center;
+		line-height:35px;
+		color:white;
+		display: inline-block;
+}
+.delete-btn1{
+		width:30px;
+		height:20px;
+		border-radius:20px;
+		background-color:#2AC4FE;
+		text-align:center;
+		line-height:35px;
+		color:white;
+		display: inline-block;
+}
+.imgDiv{
+		float: left;
+}
+	#fileImage{
+	
+	display: none;
+	}
+	.upload_main{
+		width: 1024px;
+		height: 300px;
+	}
+	.upload_choose{
+		width: 1024px;
+		height: 200px;
+	}
+	#clickFiles{
+		width:100px;
+		height:35px;
+		border-radius:30px;
+		background-color:#2AC4FE;
+		text-align:center;
+		line-height:35px;
+		color:white;
+		display: inline-block;
+	}
+     #preview{
+     	width: 1024px;
+     	
+     }
+     #preview img{
+     	width: 120px;
+     	height: 100px;
+     }
+    .upload_append_list{
+    float: left;
+    
+    }
+    .upload_append_list a{
+   	 	width:30px;
+		height:20px;
+		border-radius:20px;
+		background-color:#2AC4FE;
+		text-align:center;
+		line-height:20px;
+		color:white;
+		display: inline-block;
+    
+    }
+    .upload_append_list strong{
+    font-size: 12px;
+    }
+    .upload_submit_btn{
+    	width: 100px;
+    	height: 30px;
+    	font-size: 18px;
+    	color:white;
+    	background-color: #2AC4FE;
+    	border-radius: 4px;
+    	border: 0px;
+    }
+    .upload_drag_area{
+    	background-image:url("/static/img/Drag.png");
+    	background-repeat:no-repeat;
+    	display: inline-block;
+    	line-height:60px;
+    	width: 300px;
+    	height: 60px;
+    	text-align: center;
+    	color: gray;
+    	border: solid 1px #2AC4FE;
+    }

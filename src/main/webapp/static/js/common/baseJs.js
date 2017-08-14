@@ -1,33 +1,11 @@
 function getContextPath() {
     var pathName = document.location.pathname;
     var index = pathName.substr(1).indexOf("/");
+
     var result = pathName.substr(0,index+1);
     return result;
 }
 
-function editableSelect(select) {
-	if (select.value == "") {
-		var newvalue = prompt("请输入", "");
-		if (newvalue) {
-			addSelected(select, newvalue, newvalue);
-		}
-	}
-}
-
-function addSelected(select, value, text) {
-	if (document.all) {
-		var option = select.document.createElement("OPTION");
-		option.text = text;
-		option.value = value;
-		select.options.add(option);
-		option.selected = true;
-	} else {
-		var option = new Option(text, value, false,
-				false);
-		option.selected = true;
-		select.options[select.options.length] = option;
-	}
-}
 
 function buildPageDiv(page,pageSize,totalPage,$pageDiv,clickMethod){
 	$pageDiv.html("");

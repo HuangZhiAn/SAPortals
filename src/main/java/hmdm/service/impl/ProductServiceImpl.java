@@ -16,7 +16,7 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	private ProductMapper productMapper;
 
-	public int countByExample(ProductExample example) {
+	public long countByExample(ProductExample example) {
 		return productMapper.countByExample(example);
 	}
 

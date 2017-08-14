@@ -16,8 +16,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	private CustomerMapper mapper;
 
-
-	public int countByExample(CustomerExample example) {
+	public long countByExample(CustomerExample example) {
 		return mapper.countByExample(example);
 	}
 

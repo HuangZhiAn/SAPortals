@@ -42,6 +42,7 @@ public class LoginFilter extends GenericFilterBean {
                     List<Customer> customers = service.selectByExample(example);
                     if (customers != null && customers.size() != 0) {
                         httpServletRequest.getSession().setAttribute("customer", customers.get(0));
+                        httpServletRequest.getSession().setAttribute("validateCode",null);
                     }
                 }
             }

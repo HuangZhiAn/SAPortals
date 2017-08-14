@@ -1,0 +1,172 @@
+body{
+	font-family: Microsoft YaHei,Arial,Verdana,sans-serif;
+}
+.header-div{
+	width: 100%;
+	height: 40px;
+	min-width: 1024px;
+}
+.header-div .icon-div{
+	height: 40px;
+	float: left;
+}
+.header-div .icon-div .logo-img{
+	margin:5px 0px;
+	padding:0px 10px;
+	height: 30px;
+	width:70px;
+	float: left;
+}
+.header-div .icon-div .application-name{
+	display:block;
+	height:30px;
+	margin-top:5px;
+	margin-bottom:5px;
+	padding:0px 10px;
+	font-size:30px;
+	font-weight:bold;
+	color: #777;
+	float:left;
+	font-family: serif;
+}
+.header-div .function-div{
+	float: right;
+}
+.header-div .function-div a{
+	display: inline-block;
+	margin:0px 10px;
+	margin-top: 20px;
+	color: rgba(119, 119, 119,0.8);
+	height: 20px;
+	line-height: 20px;
+}
+.header-div .function-div a:hover{
+	color: rgba(50, 50, 50,1);
+}
+
+
+
+
+
+
+
+
+
+
+.tool-div{
+	height:30px;
+	background: rgba(119, 119, 119,1);
+	line-height: 30px;
+	padding:0px 10px;
+	color: white;
+}
+.tool-div a{
+	display:inline-block;
+	height:100%;
+	padding:0px 10px;
+	color: rgba(255, 255, 255,0.6);
+}
+.tool-div a:hover{
+	color: rgba(255, 255, 255,1);
+	background: rgba(255, 255, 255,0.2);
+}
+.tool-div .current-div{
+	float: left;
+}
+.tool-div .current-div a{
+	padding: 0px 5px;
+}
+
+
+.tool-div .menu-div{
+	float: right;
+	height: 30px
+}
+.tool-div .menu-div #menu{
+	height: 30px;
+	border: none;
+	background: rgba(255,255,255,0);
+}
+.tool-div .menu-div #menu > li{
+	height: 30px;
+	border: none;
+	background: rgba(255,255,255,0);
+	color: white;
+}
+.tool-div .menu-div #menu > li > span{
+	height: 30px;
+	border: none;
+	background: rgba(255,255,255,0);
+	color: rgba(255, 255, 255,0.6);
+	padding-top: 0px;
+	padding-bottom: 0px;
+	line-height: 30px;
+
+}
+.tool-div .menu-div #menu > li:hover > span{
+	color: rgba(255, 255, 255,1);
+	background: rgba(255, 255, 255,0.2);
+}
+/* .tool-div .menu-div #menu > li > .k-icon{
+	display: none;
+} */
+.tool-div .menu-div #menu > li > div{
+	margin-top: 0px;
+
+}
+.tool-div .menu-div #menu > li > div > ul{
+	margin-left: 0px;
+	background: rgba(119, 119, 119,1);
+	border-radius:0px 0px 4px 4px;
+}
+.tool-div .menu-div #menu > li > div > ul > li{
+	background: rgba(255,255,255,0);
+	color: rgba(255, 255, 255,0.6);
+	
+}
+.tool-div .menu-div #menu > li > div > ul > li:hover > span{
+	color: rgba(255, 255, 255,1);
+	background: rgba(255, 255, 255,0.2);
+	
+}
+
+.img-list-div{
+	width: 1000px;
+	min-height:400px;
+	margin: auto;
+}
+.img-list-div #listView{
+	width:100%;
+	border: none;
+}
+.img-list-div #listView .item{
+	float:left;
+	margin:20px 20px;
+	width: 210px;
+	height: 160px;
+}
+.img-list-div #listView a{
+	display: block;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	position: relative;
+	border-radius: 4px; 
+}
+.img-list-div #listView .item a img{
+	display:block;
+	position:absolute;
+	width: 50%;
+	height:50%;
+	left: 25%;
+	top: 25%;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,188 @@
+.communityContian{
+	min-height: 600px;
+}
+.communityTop{
+	width: 100%;
+	height: 180px;
+	background-color: #694F92;
+}
+.communityTopText{
+	width: 100%;
+	height: 120px;
+	position: absolute;
+	top:60px;
+}
+.communityTopTextList{
+	width: 1024px;
+	height: 120px;
+	margin: auto;
+}
+.communityTopTestListleft{
+	width: 300px;
+	height: 120px;
+	float: left;
+}
+.communityTopTextList span{
+	display:inline-block;
+	color: white;
+	font-size: 20px;
+	line-height: 120px;
+}
+.communityTopTestListRight li a{
+	color: white;
+	font-size: 20px;
+	display: inline-block;
+	padding: 15px;
+}
+.communityTopTestListRight li a:hover{
+	color:#694F92;
+	background-color: white;
+}
+.communityTopTestListRight li{
+	float: right;
+	padding: 28px;
+}
+.communityTopTestListRight{
+	width: 724px;
+	height: 120px;
+	float: left;
+}
+.communityMiddle{
+	width: 1024px;
+	height: 400px;
+	margin: auto;
+}
+.communityMiddle .communityMiddleTops{
+	width: 1024px;
+	height: 30px;
+}
+.communityMiddle  .communityMiddleIntroduction{
+	width: 1024px;
+	height: 370px;
+}
+
+.communityMiddleIntroduction .communityMiddleIntroductionText{
+	width: 1024px;
+	height: 300px;
+	position: absolute;
+	bottom: 100px;
+	text-align: center;
+}
+.communityMiddleIntroduction .communityMiddleIntroductionText h1{
+	color: white;
+	font-size: 35px;
+	line-height: 100px;
+}
+.communityMiddleIntroductionMessage{
+	width: 1024px;
+	height: 150px;
+	text-align: center;
+}
+.communityMiddleIntroductionMessageSpan{
+	width: 600px;
+	height: 150px;
+	margin: auto;
+}
+.communityMiddleIntroductionMessageDiv{
+	width: 200px;
+	height: 150px;
+	float: left;
+	
+}
+.communityMiddleIntroductionMessageDiv span{
+	color: white;
+	display:inline-block;
+	line-height: 20px;
+}
+.communityShowDiscussions{
+	width: 1024px;
+	height: 700px;
+	margin: auto;
+}
+.communityShowDiscussions .communityShowDiscussionsTop{
+	width: 1024px;
+	height: 80px;
+	border-bottom: solid 2px #525658;
+}
+.communityShowDiscussions .communityShowDiscussionsTop span{
+	color: #525658;
+	line-height: 80px;
+	font-size: 26px;	
+}
+.communityShowDiscussionsFeaturedDiscussions{
+	width: 1024px;
+	height: 550px;
+}
+.communityShowDiscussionsFeaturedDiscussion{
+	width: 341px;
+	height: 250px;
+	float: left;
+}
+.communityShowDiscussionsFeaturedDiscussionTop{
+	width: 341px;
+	height: 40px;
+}
+.communityShowDiscussionsFeaturedDiscussionTop a{
+	color: gray;
+	line-height: 40px;
+}
+.communityShowDiscussionsFeaturedDiscussionMiddle{
+	width: 341px;
+	height: 100px;
+}
+.communityShowDiscussionsFeaturedDiscussionMiddleImg{
+	width: 80px;
+	height: 60px;
+	float: left;
+	text-align: left;
+}
+.communityShowDiscussionsFeaturedDiscussionMiddleImg a{
+	display: inline-block;
+	width:50px;
+	height:50px;
+}
+.communityShowDiscussionsFeaturedDiscussionMiddleImg a >img{
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	border-radius: 30px;
+}
+.communityShowDiscussionsFeaturedDiscussionMiddleTitle{
+	width: 261px;
+	height: 80px;
+	float: left;
+	text-align: left;
+}
+.communityShowDiscussionsFeaturedDiscussionMiddleTitle span{
+	color: gray;
+	font-size: 14px;
+}
+.communityShowDiscussionsFeaturedDiscussionMiddleTitle a{
+	font-size: 20px;
+	color: black;
+}
+.communityShowDiscussionsFeaturedDiscussionMiddleTitle a:hover{
+	color: gray;
+}
+.communityShowDiscussionsFeaturedDiscussionBottom{
+	width: 341px;
+	height: 80px;
+}
+.communityShowDiscussionsFeaturedDiscussionBottomContext{
+	width: 341px;
+	height: 50px;
+	text-align: left;
+}
+.communityShowDiscussionsFeaturedDiscussionBottomContext span{
+	color: #957E62;
+	font-size: 13px;
+}
+.communityShowDiscussionsFeaturedDiscussionBottomContextMore{
+	width: 341px;
+	height: 30px;
+
+}
+.communityShowDiscussionsFeaturedDiscussionBottomContextMore{
+	color: #B9A0C4;
+	line-height: 30px;
+}

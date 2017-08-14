@@ -45,5 +45,13 @@
     </bean>
 
     <bean name="loginFilter" class="hmdm.filter.LoginFilter"></bean>
+    <bean name="beforeLoginFilter" class="hmdm.filter.BeforeLoginFilter"></bean>
     <bean id="applicationContext" class="hmdm.util.AppliactionContextHelper"/>
+    <!--配置activti-->
+    <bean id="suggestActivti" class="hmdm.activiti.SuggestActiviti"/>
+    <bean id="deployProcess" class="hmdm.activiti.DeployProcess"/>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+
 </beans>

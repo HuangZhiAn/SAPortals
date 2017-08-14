@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DownRecordService {
 
-    int countByExample(DownRecordExample example);
+    long countByExample(DownRecordExample example);
 
     int deleteByExample(DownRecordExample example);
 
