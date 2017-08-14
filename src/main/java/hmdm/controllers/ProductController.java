@@ -35,17 +35,17 @@ public class ProductController{
     @Autowired
     private CustomerService customerService;
 
-    @Value("#{config[latest.version]}")
-    private String latestVersion;
+    @Value("#{config['latest.version']}")
+    public String latestVersion;
 
-    @Value("#{config[product.name]}")
-    private String productName;
+    @Value("#{config['product.name']}")
+    public String productName;
 
-    @Value("#{config[domain.name]}")
-    private String domainName;
+    @Value("#{config['domain.name']}")
+    public String domainName;
 
     @Value("#{config[port]}")
-    private String port;
+    public String port;
 
     @RequestMapping("/sendDownloadEmail")
     public String sendDownloadEmail(@RequestParam(value = "productName",required = false) String productName,
