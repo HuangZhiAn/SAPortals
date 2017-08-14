@@ -29,7 +29,7 @@ public class BeforeLoginFilter  extends GenericFilterBean {
             if(veryCode==null||"".equals(veryCode)){
                 System.out.println("验证码为空");
                 request.getRequestDispatcher("/veryCodeNull").forward(request,response);
-            }else if(!validateC.equals(veryCode)){
+            }else if(!validateC.toLowerCase().equals(veryCode.toLowerCase())){
                 System.out.println("验证码错误");
                 request.getRequestDispatcher("/veryCodeError").forward(request,response);
             }else{

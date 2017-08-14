@@ -3,6 +3,10 @@
 String path = request.getContextPath();
 %>
 
+<script>
+	var path = "<%=path%>";
+</script>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -37,7 +41,7 @@ String path = request.getContextPath();
 							technologies, the system using WebService, ESB, MQ and other
 							technologies to achieve data exchange between systems</p>
 					</div>
-					<a href="javascript:void(0);">DownLoad</a>
+					<a href="javascript:void(0);" onclick="loginCheck()">DownLoad</a>
 				</div>
 				<img class="introduce-img"
 					src="<%=path%>/static/img/home_HMDM_introduce.jpg">

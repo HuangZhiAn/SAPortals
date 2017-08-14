@@ -4,15 +4,12 @@ import hmdm.dto.*;
 import hmdm.mapper.DownRecordMapper;
 import hmdm.mapper.ProductMapper;
 import hmdm.service.DownRecordService;
-import hmdm.util.AppliactionContextHelper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 @Aspect
@@ -44,6 +41,7 @@ public class DownRecordServiceImpl implements DownRecordService{
             //获取productId
             String productName =(String) args[0];
             String version = (String) args[1];
+            String customerId = (String) args[3];
 
             System.out.println("产品和版本"+productName+version);
             ProductExample example = new ProductExample();
@@ -52,12 +50,9 @@ public class DownRecordServiceImpl implements DownRecordService{
             if(products!=null&&products.size()>0){
                 downRecord.setProductId(products.get(0).getProductId());
             }else{
-                throw new Exception("无该产品记录");
+                throw new Exception("Product not exist");
             }
-            //获取CustomerId
-            HttpServletRequest request = (HttpServletRequest) args[3];
-            Customer customer =(Customer) request.getSession().getAttribute("customer");
-            downRecord.setCustomerId(customer.getCustomerId());
+            downRecord.setCustomerId(Long.parseLong(customerId));
 
             downRecord.setTime(new Date());
             int i = mapper.insertSelective(downRecord);

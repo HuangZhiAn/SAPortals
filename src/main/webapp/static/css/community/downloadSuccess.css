@@ -1,0 +1,78 @@
+.downloadSuccessContian{
+	
+	
+	min-height: 600px;
+	
+	
+}
+.downloadSuccessContian .downloadSuccessTop{
+	width: 100%;
+	height: 480px;
+	padding-top:120px;
+	background-color: #E3E0D5;
+}
+.downloadSuccessContian .downloadSuccessTop .downloadSuccessContext{
+	width:1024px;
+	height:400px;
+	margin:auto;
+	background-color: white;
+	border:  solid  1px  rgba(0,0,0,0.3);
+}
+.downloadSuccessContext .downloadSuccessUserMessageTop{
+	width: 944px;
+	height: 80px;
+	margin: auto;
+	text-align: center;
+	
+}
+.downloadSuccessContext .downloadSuccessUserMessageTop span{
+	display: inline-block;
+	font-size: 25px;
+	line-height: 80px;
+	color: red;
+}
+.downloadSuccessContext .downloadSuccessUserMessageMiddle{
+	width: 944px;
+	height: 320px;
+	margin: auto;
+}
+.downloadSuccessUserMessageMiddle .downloadSuccessUserMessageMiddleTop{
+	width: 944px;
+	height: 80px;
+}
+.downloadSuccessContext .downloadSuccessUserMessageMiddle .downloadSuccessUserMessageMiddleTop span{
+	display: inline-block;
+	font-size: 20px;
+}
+.downloadSuccessContext .downloadSuccessUserMessageMiddle .downloadSuccessUserMessageMiddleTop a{
+	display: inline-block;
+	font-size: 20px;
+	color: gray;
+}
+.downloadSuccessUserMessageMiddle  .downloadSuccessUserMessageMiddleContext{
+	width: 944px;
+	height: 150px;
+}
+.downloadSuccessUserMessageMiddle  .downloadSuccessUserMessageMiddleContext span{
+	display: inline-block;
+	font-size: 18px;
+	line-height: 40px;
+}
+.downloadSuccessUserMessageMiddle  .downloadSuccessUserMessageMiddleBottom{
+	width: 944px;
+	height: 90px;
+}
+.downloadSuccessUserMessageMiddle .downloadSuccessUserMessageMiddleBottom a{
+	display: inline-block;
+	font-size:16px;
+	width:150px;
+	height:30px;
+	background-color:#2AC4FE;
+	color: white;
+	text-align: center;
+	line-height: 30px;
+	float: right;
+}
+.downloadSuccessUserMessageMiddle .downloadSuccessUserMessageMiddleBottom a:hover {
+	background-color: #0078D7;
+}

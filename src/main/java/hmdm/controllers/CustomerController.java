@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -40,6 +41,16 @@ public class CustomerController {
 	@ResponseBody
 	public String veryCodeNull(){
 		return "veryCodeNull";
+	}
+
+	@RequestMapping(value = "/loginCheck",method = RequestMethod.GET)
+	@ResponseBody
+	public String loginState(HttpServletRequest request){
+        Customer customer =(Customer) request.getSession().getAttribute("customer");
+        if(customer==null||customer.getCustomerId()==null||customer.getCustomerId().equals("")){
+            return "notLogin";
+        }
+        return "login";
 	}
 
 	@RequestMapping("/customer/query")

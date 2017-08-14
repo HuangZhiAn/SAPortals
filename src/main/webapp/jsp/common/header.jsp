@@ -77,7 +77,7 @@ String path = request.getContextPath();
 	  				</div>
 	  			</div>
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="javascript:void(0);">Download</a>
+	  				<a class="top-link" href="../fdw/download.jsp">Download</a>
 	  				<div class="child-menu">
 	  					<a href="javascript:void(0);">Download1</a>
 	  					<a href="javascript:void(0);">Download2</a>

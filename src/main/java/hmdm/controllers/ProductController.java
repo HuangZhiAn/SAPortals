@@ -39,7 +39,7 @@ public class ProductController{
     public String latestVersion;
 
     @Value("#{config['product.name']}")
-    public String productName;
+    public String defaultProductName;
 
     @Value("#{config['domain.name']}")
     public String domainName;
@@ -52,10 +52,10 @@ public class ProductController{
                                     @RequestParam(value = "version",required = false)String version,
                                     HttpServletRequest request) throws Exception {
         if(productName==null||productName.equals("")){
-            productName="hmdm";
+            productName=defaultProductName;
         }
         if(version==null||version.equals("")){
-            version="latest";
+            version=latestVersion;
         }
         HttpSession session = request.getSession();
         Customer customer =(Customer) session.getAttribute("customer");
@@ -75,7 +75,7 @@ public class ProductController{
         List<byte[]> list = new ArrayList<byte[]>();
         List filename = new ArrayList<String>();
         try {
-            mailService.sendMultipleEmail("产品下载","http://"+domainName+":"+port+"/download?productName="+productName+"&downloadToken="+downloadToken+"&version="+version,list,"ccc",filename,user,password);
+            mailService.sendMultipleEmail("产品下载","http://"+domainName+":"+port+"/download?productName="+productName+"&version="+version+"&customerId="+customer.getCustomerId()+"&downloadToken="+downloadToken,list,"ccc",filename,user,password);
         } catch (Exception e) {
             e.printStackTrace();
             return "fail";
@@ -87,6 +87,7 @@ public class ProductController{
     public String downloadFile(@RequestParam("productName") String productName,
                                @RequestParam(value = "version")String version,
                                @RequestParam("downloadToken") String downloadToken,
+                               @RequestParam("customerId") String customerId,
                                HttpServletRequest request, HttpServletResponse response) {
         String downloadToken1 =(String) request.getServletContext().getAttribute(downloadToken);
         if (productName != null&&downloadToken1!=null&&!downloadToken1.equals("")) {

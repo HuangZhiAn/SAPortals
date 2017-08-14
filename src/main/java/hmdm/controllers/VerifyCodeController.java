@@ -23,9 +23,9 @@ import java.util.Random;
 @Controller
 public class VerifyCodeController {
     // 验证码图片的宽度。
-    private int width = 60;
+    private int width = 150;
     // 验证码图片的高度。
-    private int height = 20;
+    private int height = 50;
     // 验证码字符个数
     private int codeCount = 4;
     private int x = 0;
@@ -41,9 +41,9 @@ public class VerifyCodeController {
     public void initxuan() throws ServletException {
         // 从web.xml中获取初始信息
         // 宽度
-        String strWidth ="80";
+        String strWidth ="120";
         // 高度
-        String strHeight ="30";
+        String strHeight ="40";
         // 字符个数
         String strCodeCount = "4";
         // 将配置的信息转换成数值
