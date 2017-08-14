@@ -979,8 +979,6 @@ INSERT INTO `hmdm_pt_customer` VALUES ('1001', 'jie', 'jie.zhou03@hand-china.com
 INSERT INTO `hmdm_pt_customer` VALUES ('1002', 'test', 'test', '123456');
 INSERT INTO `hmdm_pt_customer` VALUES ('1003', 'Joe', '872007871@qq.com', '111111');
 INSERT INTO `hmdm_pt_customer` VALUES ('1004', 'admin1', 'zhian.huang@hand-china.com', 'adminadmin');
-INSERT INTO `hmdm_pt_customer` VALUES ('1005', 'emailSender', 's872007871@163.com', 'gfhbmddijxnrfxov');
-
 -- ----------------------------
 -- Table structure for `hmdm_pt_downrecord`
 -- ----------------------------
