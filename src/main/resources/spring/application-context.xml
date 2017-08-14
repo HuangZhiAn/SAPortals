@@ -22,6 +22,18 @@
         <property name="driverClass" value="${db.driver}" />
     </bean>
 
+    <!-- 使用注解注入properties中的值 -->
+    <bean id="config"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:config.properties</value>
+            </list>
+        </property>
+        <!-- 设置编码格式 -->
+        <property name="fileEncoding" value="UTF-8"></property>
+    </bean>
+
     <!-- 配置SqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />

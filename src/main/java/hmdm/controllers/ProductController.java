@@ -1,10 +1,13 @@
 package hmdm.controllers;
 
 import hmdm.dto.Customer;
+import hmdm.dto.CustomerExample;
 import hmdm.dto.Product;
+import hmdm.service.CustomerService;
 import hmdm.service.IMailService;
 import hmdm.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,21 +32,44 @@ public class ProductController{
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CustomerService customerService;
+
+    @Value("#{config[latest.version]}")
+    private String latestVersion;
+
+    @Value("#{config[product.name]}")
+    private String productName;
+
     @RequestMapping("/sendDownloadEmail")
-    public String sendDownloadEmail(@RequestParam("productName") String productName,
-                                    @RequestParam(value = "version")String version,
-                                    HttpServletRequest request){
+    public String sendDownloadEmail(@RequestParam(value = "productName",required = false) String productName,
+                                    @RequestParam(value = "version",required = false)String version,
+                                    HttpServletRequest request) throws Exception {
+        if(productName==null||productName.equals("")){
+            productName="hmdm";
+        }
+        if(version==null||version.equals("")){
+            version="latest";
+        }
         HttpSession session = request.getSession();
         Customer customer =(Customer) session.getAttribute("customer");
+        CustomerExample example = new CustomerExample();
+        example.createCriteria().andNameEqualTo("emailSender");
+        List<Customer> customers = customerService.selectByExample(example);
+        if(customers==null||customers.size()==0){
+            throw new Exception("Can't find emailSender customer");
+        }
+        String user = customers.get(0).getEmail();
+        String password = customers.get(0).getPassword();
         mailService.initProperties("smtp","smtp.163.com","25",
-                "s872007871@163.com",customer.getEmail());
+                user,customer.getEmail());
 
         String downloadToken = new Date().getTime()+"";
         request.getServletContext().setAttribute(downloadToken,downloadToken);
         List<byte[]> list = new ArrayList<byte[]>();
         List filename = new ArrayList<String>();
         try {
-            mailService.sendMultipleEmail("产品下载","http://10.211.98.5:8080/download?productName="+productName+"&downloadToken="+downloadToken+"&version="+version,list,"ccc",filename,"s872007871@163.com","gfhbmddijxnrfxov");
+            mailService.sendMultipleEmail("产品下载","http://10.211.98.5:8080/download?productName="+productName+"&downloadToken="+downloadToken+"&version="+version,list,"ccc",filename,user,password);
         } catch (Exception e) {
             e.printStackTrace();
             return "fail";

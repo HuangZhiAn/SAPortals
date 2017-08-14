@@ -26,3 +26,5 @@
 **/build/
 
 */.rebel*
+
+src/main/webapp/WEB-INF/products/

@@ -168,28 +168,4 @@ public class MailServiceImpl implements IMailService {
         transport.sendMessage(message, message.getAllRecipients());
         transport.close();
     }
-
-    public static void main(String[] args) {
-        MailServiceImpl mailService = new MailServiceImpl();
-        //初始化
-        mailService.init();
-        //File file = new File("D:/GraduationDesign/emailFile.txt");
-        List<byte[]> list = new ArrayList<byte[]>();
-        /*try {
-            list.add(File2byteArray.toByteArray("D:/GraduationDesign/emailFile.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        List filename = new ArrayList<String>();
-        //filename.add("emailFile.txt");
-        try {
-            mailService.sendMultipleEmail("产品下载","http://localhost:8080/download?fileName=product1.0.rar",list,"ccc",filename,"s872007871@163.com","gfhbmddijxnrfxov");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
