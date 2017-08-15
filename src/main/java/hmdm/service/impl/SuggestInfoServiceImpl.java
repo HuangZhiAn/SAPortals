@@ -7,7 +7,6 @@ import hmdm.service.SuggestInfoService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
@@ -16,16 +15,16 @@ import java.util.List;
 @Service
 public class SuggestInfoServiceImpl implements SuggestInfoService{
     @Autowired
-    private SuggestInfoMapper suggestInfoMapper;
+    private SuggestInfoMapper mapper;
 
     @Override
     public long countByExample(SuggestInfoExample example) {
-        return suggestInfoMapper.countByExample(example);
+        return mapper.countByExample(example);
     }
 
     @Override
     public int deleteByExample(SuggestInfoExample example) {
-        return suggestInfoMapper.deleteByExample(example);
+        return mapper.deleteByExample(example);
     }
 
     @Override
@@ -35,22 +34,22 @@ public class SuggestInfoServiceImpl implements SuggestInfoService{
 
     @Override
     public int insert(SuggestInfo record) {
-        return suggestInfoMapper.insert(record);
+        return mapper.insert(record);
     }
 
     @Override
     public int insertSelective(SuggestInfo record) {
-        return suggestInfoMapper.insertSelective(record);
+        return mapper.insertSelective(record);
     }
 
     @Override
     public List<SuggestInfo> selectByExample(SuggestInfoExample example) {
-        return suggestInfoMapper.selectByExample(example);
+        return mapper.selectByExample(example);
     }
 
     @Override
     public SuggestInfo selectByPrimaryKey(Long suggestId) {
-        return suggestInfoMapper.selectByPrimaryKey(suggestId);
+        return mapper.selectByPrimaryKey(suggestId);
     }
 
     @Override
@@ -80,6 +79,11 @@ public class SuggestInfoServiceImpl implements SuggestInfoService{
 
     @Override
     public Long lastInsertId() {
-        return suggestInfoMapper.lastInsertId();
+        return mapper.lastInsertId();
+    }
+
+    @Override
+    public List<SuggestInfo> selectSuggest(Long functionId) {
+        return mapper.selectSuggest(functionId);
     }
 }

@@ -20,12 +20,6 @@ public class FunctionController {
     private FunctionService functionService;
     @RequestMapping("/function/query")
     public @ResponseBody List<Function> queryByProductId(Long productId){
-        //模拟传入数据
-        //productId=1001L;
-        /*FunctionExample example = new FunctionExample();
-        example.createCriteria().andProductIdEqualTo(productId);
-        List<Function> functions = functionService.selectByExample(example);*/
-
         return functionService.selectByProductId(productId);
     }
 }

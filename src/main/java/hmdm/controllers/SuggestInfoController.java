@@ -1,6 +1,7 @@
 package hmdm.controllers;
 
 import hmdm.dto.Customer;
+import hmdm.dto.Employee;
 import hmdm.dto.SuggestImages;
 import hmdm.dto.SuggestInfo;
 import hmdm.service.EmployeeService;
@@ -124,7 +125,7 @@ public class SuggestInfoController {
             String fileName = files[n].getOriginalFilename();
 
             String appPath = request.getSession().getServletContext().getRealPath("");
-            String imagePath =appPath+"/WEB-INF/images/suggestInfo/"; //Thread.currentThread().getContextClassLoader().getResource("/").getPath();
+            String imagePath =appPath+"/images/suggestInfo/"; //Thread.currentThread().getContextClassLoader().getResource("/").getPath();
 
             System.out.println("imagePath:"+imagePath+ " appPath:"+appPath);
             //图片路径
@@ -144,6 +145,20 @@ public class SuggestInfoController {
             System.out.println("suggestImages插入失败");
         }
         return "success";
+    }
+
+    @RequestMapping("/suggest/querySuggest")
+    public @ResponseBody
+    List<SuggestInfo> querySuggest(HttpServletRequest request,HttpServletResponse response) throws IOException {
+
+        //获得functionId
+        Employee employee =  (Employee)request.getSession().getAttribute("employee");
+        if(employee==null||employee.getFunctionId()==null){
+            response.sendRedirect("/backstage/jsp/login.jsp");
+        }
+        //查询对应的suggestInfo
+        List<SuggestInfo> list = suggestInfoService.selectSuggest(employee.getFunctionId());
+        return list;
     }
 
 

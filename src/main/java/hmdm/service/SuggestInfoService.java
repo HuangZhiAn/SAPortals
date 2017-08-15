@@ -45,4 +45,6 @@ public interface SuggestInfoService {
     void suggest(long customerId, long functionId, SuggestInfo suggestInfo);
 
     Long lastInsertId();
+
+    List<SuggestInfo> selectSuggest(Long functionId);
 }

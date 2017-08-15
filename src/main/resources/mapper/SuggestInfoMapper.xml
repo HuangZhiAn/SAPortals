@@ -14,6 +14,22 @@
     <result column="process_instance_id" jdbcType="VARCHAR" property="processInstanceId" />
     <result column="customer_id" jdbcType="BIGINT" property="customerId" />
   </resultMap>
+
+  <resultMap id="SuggestResultMap" type="hmdm.dto.SuggestInfo" extends="BaseResultMap">
+    <collection property="images" ofType="hmdm.dto.SuggestImages">
+      <id column="images_id" property="imagesId"/>
+      <result column="image1" property="image1"/>
+      <result column="image2" property="image2"/>
+      <result column="image3" property="image3"/>
+      <result column="image4" property="image4"/>
+      <result column="image5" property="image5"/>
+      <result column="image6" property="image6"/>
+      <result column="image7" property="image7"/>
+      <result column="image8" property="image8"/>
+      <result column="image9" property="image9"/>
+      <result column="image10" property="image10"/>
+    </collection>
+  </resultMap>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
@@ -303,5 +319,20 @@
   
   <select id="lastInsertId" resultType="java.lang.Long">
     SELECT LAST_INSERT_ID()
+  </select>
+
+  <!--通过functionId查询suggestInfo-->
+  <select id="selectSuggest" parameterType="java.lang.Long" resultMap="SuggestResultMap">
+    SELECT  s1.suggest_id ,
+    function_id,
+    suggest_info,
+    suggest_file,
+    process_instance_id,
+    customer_id,
+    images_id,
+    image1,
+    image2,image3,image4,image5,image6,image7,image8,image9,image10
+    FROM hmdm_pt_suggest_info s1 LEFT JOIN hmdm_pt_suggest_images s2 ON s1.suggest_id = s2.suggest_id
+    WHERE s1.function_id =#{functionId}
   </select>
 </mapper>

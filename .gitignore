@@ -27,5 +27,5 @@
 
 */.rebel*
 
-src/main/webapp/WEB-INF/products/
-src/main/webapp/WEB-INF/images/suggestInfo/
+src/main/webapp/WEB-INF/products/*
+src/main/webapp/images/suggestInfo/*
