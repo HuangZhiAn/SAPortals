@@ -9,12 +9,13 @@ $(function(){
         dataType: "json",
         data: {},
         success: function (data) {
-        	console.log(data);
             $("#BugsType").kendoDropDownList({
-                optionLabel: "--Select  Type--",
                 dataTextField: "name",
                 dataValueField: "productId",
-                dataSource: data
+                valueTemplate:'<span >#:data.name##:data.version#</span>',
+                template:'<span >#:data.name##:data.version#</span>',
+                dataSource: data,
+                //optionLabel: "--Select  Type--"
                  // 当前默认选中项，索引从0开始。
             });
         },
@@ -22,7 +23,6 @@ $(function(){
             alert("error!");
         }
     });
-	  
 	  
 
     $("#BugsType").change(function () {

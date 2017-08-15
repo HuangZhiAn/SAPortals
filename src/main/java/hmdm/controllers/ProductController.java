@@ -3,6 +3,7 @@ package hmdm.controllers;
 import hmdm.dto.Customer;
 import hmdm.dto.CustomerExample;
 import hmdm.dto.Product;
+import hmdm.dto.ProductExample;
 import hmdm.service.CustomerService;
 import hmdm.service.IMailService;
 import hmdm.service.ProductService;
@@ -16,9 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by JoeHuang on 2017/8/1.
@@ -149,6 +148,9 @@ public class ProductController{
     public @ResponseBody
     List<Product> qeury(){
         List<Product> list = productService.selectByExample(null);
+        for (Product p : list) {
+            p.setState(null);
+        }
         return list;
     }
 

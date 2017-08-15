@@ -68,7 +68,7 @@ String path = request.getContextPath();
 	  		<a class="icon-link" href="javascript:void(0);"><img src="<%=path%>/static/img/logo.png"></a>
 	  		<div class="page-link">
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="javascript:void(0);">Home</a>
+	  				<a class="top-link" href="<%=path%>">Home</a>
 	  				<div class="child-menu">
 	  					<a href="javascript:void(0);">Home1</a>
 	  					<a href="javascript:void(0);">Home2</a>
@@ -77,7 +77,7 @@ String path = request.getContextPath();
 	  				</div>
 	  			</div>
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="../fdw/download.jsp">Download</a>
+	  				<a class="top-link" href="<%=path%>/jsp/fdw/download.jsp">Download</a>
 	  				<div class="child-menu">
 	  					<a href="javascript:void(0);">Download1</a>
 	  					<a href="javascript:void(0);">Download2</a>
@@ -88,7 +88,7 @@ String path = request.getContextPath();
 	  				<a class="top-link" href="javascript:void(0);">Documentation</a>
 	  			</div>
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="javascript:void(0);">Community</a>
+	  				<a class="top-link" href="<%=path%>/jsp/fdw/bugs.jsp">Community</a>
 	  			</div>
 	  		</div>
 	  		<div class="operate-link">

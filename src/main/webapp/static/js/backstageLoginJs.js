@@ -44,7 +44,7 @@ function loginClick() {
         dataType: "json",
         success: function(data){
             if(data=="success"){
-                location.href="/";
+                location.href="index.jsp";
             }else{
                 alert(data);
                 $("#result-span").append(data);

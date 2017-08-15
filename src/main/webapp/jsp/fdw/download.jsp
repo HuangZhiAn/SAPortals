@@ -37,7 +37,7 @@ String path = request.getContextPath();
 				<span>HMDM</span><br> <span>Enterprise Edition </span><br>
 				<span>Version 5.1</span>
 				<div class="dowLoadBtn">
-					<a href="#">Download</a>
+					<a href="javascript:void(0);" onclick="loginCheck(5.1)">Download</a>
 				</div>
 			</div>
 			<div class="downloadTopBG"></div>
@@ -58,7 +58,7 @@ String path = request.getContextPath();
 								<span> Version 4.0 </span><br> <span> introduction </span>
 
 								<div class="downloadMiddleBtn">
-									<span> Download </span>
+									<span onclick="loginCheck(4.0)"> Download </span>
 								</div>
 							</div>
 							<div class="downloadMiddleProductIntroduction">
@@ -75,7 +75,7 @@ String path = request.getContextPath();
 								<span> HMDM </span><br> <span>Enterprise Edition </span><br>
 								<span> Version 4.1 </span><br> <span> introduction </span>
 								<div class="downloadMiddleBtn">
-									<span> Download </span>
+									<span onclick="loginCheck(4.1)"> Download </span>
 								</div>
 							</div>
 							<div class="downloadMiddleProductIntroduction">
@@ -95,7 +95,7 @@ String path = request.getContextPath();
 								<span> HMDM </span><br> <span>Enterprise Edition </span><br>
 								<span> Version 5.1 </span><br> <span> introduction </span>
 								<div class="downloadMiddleBtn">
-									<span> Download </span>
+									<span onclick="loginCheck(5.1)"> Download </span>
 								</div>
 							</div>
 							<div class="downloadMiddleProductIntroduction">

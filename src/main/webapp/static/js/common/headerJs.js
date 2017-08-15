@@ -37,8 +37,14 @@ $(function (){
             dataType: "text",
             data: data,
             success: function (data) {
-                //$(".login-div").css("display","none");
-                location.href  = "/";
+                if(data=="success"){
+                    location.href  = "/";
+				}else{
+                    alert(data);
+                    $("#result-span").append(data);
+                    $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
+				}
+
             },
             error:function(){
             	alert("error!");
@@ -77,3 +83,42 @@ $(function (){
 	
 	
 });
+
+function sendDownloadEmail(version) {
+    $.ajax({
+        url:path+"/sendDownloadEmail",
+        type: "get",
+        dataType: "text",
+        data: {"version":version},
+        success: function (data) {
+            if(data=="success"){
+                location.href=path +"/jsp/fdw/downloadSuccess.jsp";
+            }
+        },
+        error:function(){
+            alert("error!");
+        }
+    })
+}
+
+function loginCheck(version) {
+    $.ajax({
+        url:path+"/loginCheck",
+        type: "get",
+        dataType: "text",
+        data: {},
+        success: function (data) {
+            if(data=="notLogin"){
+                $(".login-div").css("display","block");
+                $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
+            }else if(data=="login"){
+                sendDownloadEmail(version);
+            }else{
+                alert("Login state error!");
+            }
+        },
+        error:function(data){
+            alert("error: "+data);
+        }
+    });
+}

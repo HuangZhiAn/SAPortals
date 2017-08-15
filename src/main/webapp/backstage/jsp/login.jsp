@@ -44,7 +44,7 @@ String path = request.getContextPath();
 	<div class="login-body">
 		<div class="container">
 			<div id="login-form" class="login-form">
-				<form id="loginForm" name='loginForm' action="${pageContext.request.contextPath }/login"
+				<form id="loginForm" name='loginForm' action="${pageContext.request.contextPath }/employeeLogin"
 					  method='POST'>
 				<div class="form-top"><img class="home-icon" src="<%=path%>/static/img/home-icon.png">HMDM PORTAL</div>
 				<div class="form-container">
@@ -54,7 +54,7 @@ String path = request.getContextPath();
 					<div class="submit-div">
 						<span class="note-span">Please input username and password.</span>
 						<div class="input-div">
-							<input class="username-input" id="username" name="username" data-bind="value:username"
+							<input class="username-input" id="username" name="name" data-bind="value:username"
 							type="text" placeholder="Please input username" required 
 							pattern="[a-zA-Z]{1}([a-zA-Z0-9]|[_]){5,11}" validationMessage="Invalid username">
 							<i class="username-icon"></i>
@@ -66,7 +66,7 @@ String path = request.getContextPath();
 							<i class="password-icon"></i>
 						</div>
 						<div class="input-div">
-							<a style="display: inline-block;margin-top: 6px;float: left;margin-right: 4px" href="javascript:void(0);"><img id="checkword-img" class="checkword-img" src="<%=path%>/verifyCode"></a>
+							<a style="display: inline-block;margin-top: 6px;float: left;margin-right: 4px" href="javascript:void(0);"><img style="height: 26px;width: 78px" id="checkword-img" class="checkword-img" src="<%=path%>/verifyCode"></a>
 							<input style="width: 56%" id="checkword" name="validateCode" class="checkword" data-bind="value:checkword"
 								   type="text" placeholder="Please input very code">
 							<input type="hidden" id="_csrf" name="${_csrf.parameterName}" data-bind="value:_csrf" value="${_csrf.token}"/>
