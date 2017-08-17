@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import hmdm.dto.Employee;
 import hmdm.util.Word2Html2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -168,6 +169,7 @@ public class AjaxDocumentController {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
 		//判断form表单是否设置multipart/form-data
+		Document document = new Document();
 		if (multipartResolver.isMultipart(request)) {
 			System.out.println("获取文件");
 			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
@@ -202,8 +204,9 @@ public class AjaxDocumentController {
 						+ ".html";
 				String appPath = request.getSession().getServletContext().getRealPath("");
 				String outputFile =appPath+ "/backstage/html/"+htmlFile;
+				document.setDocumentUrl("/backstage/html/"+htmlFile);
 				OutputStream out = new FileOutputStream(htmlFile);
-				byte[] b = new byte[1024];
+				byte[] b = new byte[2048];
 				int i = 0;
 				while ((i = inputStream.read(b))!=-1){
 					out.write(b,0,i);
@@ -212,8 +215,28 @@ public class AjaxDocumentController {
 				out.close();
 			}
 		}
+
+		document.setDocumentId(documentId);
+		document.setDocumentName(documentName);
+		document.setDocumentParent(documentParent);
+		document.setEnable_flag(enable);
+		Employee employee =(Employee) request.getSession().getAttribute("employee");
+		document.setLast_updated_by(employee.getEmployeeId());
+		document.setLast_updated_date(new Date());
 		ResponseData<Document> result = new ResponseData<Document>();
-		result.setMsg(ResponseData.RESULT_SUCCESS);
+		try{
+			System.out.println("更新的数据："+document);
+			int re = documentService.modifyById(document);
+			if(re > 0){
+				result.setData(document);
+				result.setMsg(ResponseData.RESULT_SUCCESS);
+			}else{
+				result.setMsg("The document is not exist !");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			result.setMsg(e.getMessage());
+		}
 		return result;
 	}
 	

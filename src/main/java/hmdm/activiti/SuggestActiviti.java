@@ -1,11 +1,11 @@
 package hmdm.activiti;
 
 import hmdm.dto.SuggestTask;
-import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.ProcessEngineConfiguration;
-import org.activiti.engine.ProcessEngines;
+import org.activiti.engine.*;
+import org.activiti.engine.impl.identity.Authentication;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Comment;
 import org.activiti.engine.task.IdentityLink;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
@@ -107,11 +107,29 @@ public class SuggestActiviti {
         return  list;
     }
 
-    public String completeTask(String taskId){
-        processEngine.getTaskService()//
-                .complete(taskId);//
-        System.out.println("完成任务"+taskId);
-        return  taskId;
+    /**
+     * 任务审批
+     * @param taskId  正在执行的任务id
+     * @param userName 审批人
+     * @param message 审批的意见
+     * @return 审批完成的任务id
+     */
+    public String completeTask(String taskId,String userName,String message){
+        TaskService taskService = processEngine.getTaskService();
+        //3. 使用任务服务完成任务(提交任务)
+        //使用任务id,获取任务对象，获取流程实例id
+        Task task=taskService.createTaskQuery().taskId(taskId).singleResult();
+        //利用任务对象，获取流程实例id
+        String processInstancesId=task.getProcessInstanceId();
+
+        //System.out.println(processInstancesId);
+        Authentication.setAuthenticatedUserId(userName); //添加批注时候的审核人
+
+        taskService.addComment(taskId,processInstancesId,message);
+
+        taskService.complete(taskId);
+
+        return taskId;
     }
 
     /**
@@ -134,5 +152,84 @@ public class SuggestActiviti {
     public  void test1(){
         String id = "1719";
         System.out.println(getDefinitionName(id));
+    }
+
+    /**
+     * 实现审批任务转交
+     * 传入当前任务id，当前审批人，转交的人
+     * @param taskId 当前任务id
+     * @param userName 当前审批人
+     * @param newName  转交的人
+     * @return 返回转交后的审批name
+     */
+    public String test2(String taskId,String userName,String newName){
+       /*String taskId="1405";
+       String userName="123";
+       String newName="zhoujie";*/
+        processEngine.getTaskService().deleteCandidateUser(taskId, userName);
+        processEngine.getTaskService().addCandidateUser(taskId, newName);
+        return newName;
+    }
+    /**
+     * 传入proIntancId集合查询Comments
+     * 返回 Coments集合的list
+     * @param proIntancIds
+     * @return
+     */
+    public List findCommentsList(List<String> proIntancIds) {
+        HistoryService historyService = processEngine.getHistoryService();
+        TaskService taskService = processEngine.getTaskService();
+        List list = new ArrayList();
+        for (String processInstanceId : proIntancIds) {
+            //若不是正在执行的流程
+            if (notRun(processInstanceId)) {
+                List<Comment> coms = taskService.getProcessInstanceComments(processInstanceId);
+                list.add(coms);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * 传入流程id查询对应的审批记录集合
+     * @param processInstanceId
+     * @return
+     */
+    public List<Comment> findComments(String processInstanceId) {
+        HistoryService historyService = processEngine.getHistoryService();
+        TaskService taskService = processEngine.getTaskService();
+        List list = new ArrayList();
+        //若不是正在执行的流程
+        if (notRun(processInstanceId)) {
+            List<Comment>  coms = taskService.getProcessInstanceComments(processInstanceId);
+            return coms;
+        }else{
+            return null;
+        }
+    }
+
+    /**
+     * 传入流程实例id判断是否结束执行
+     * @param processInstanceId
+     * @return
+     */
+    private  boolean notRun(String processInstanceId){
+        /**判断流程是否结束，查询正在执行的执行对象表*/
+        ProcessInstance processRun = processEngine.getRuntimeService()//
+                .createProcessInstanceQuery()//创建流程实例查询对象
+                .processInstanceId(processInstanceId)
+                .singleResult();
+        if(processRun == null){
+            return  true;
+        }else{
+            return false;
+        }
+    }
+
+    @Test
+    public void test3(){
+        String pid = "1001";
+        findComments(pid);
+
     }
 }

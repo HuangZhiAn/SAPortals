@@ -4,6 +4,7 @@ import hmdm.dto.*;
 import hmdm.service.*;
 import hmdm.activiti.SuggestActiviti;
 import hmdm.util.Word2Html2;
+import org.activiti.engine.task.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -199,7 +200,8 @@ public class SuggestInfoController {
         if(!EmployeeController.isLogin(request)){
             response.sendRedirect("/backstage/jsp/login.jsp");
         }
-        suggestActiviti.completeTask(taskId);
+        Employee employee=(Employee) request.getSession().getAttribute("employee");
+        suggestActiviti.completeTask(taskId,employee.getName(),result);
         List<byte[]> list = new ArrayList<byte[]>();
         List filename = new ArrayList<String>();
         CustomerExample example = new CustomerExample();
@@ -223,6 +225,39 @@ public class SuggestInfoController {
     @ResponseBody
     public String noSuggestInfo(){
         return "NoSuggestInfo";
+    }
+
+    /**
+     * 查询employee历史的任务信息
+     */
+    @RequestMapping("/suggest/getHisTasksList")
+    public @ResponseBody List getHistoryTasksList(HttpServletRequest request){
+        //获得functionId
+        Long functionId = (Long)request.getSession().getAttribute("functionId");
+        //模拟数据
+        //Long functionId=1L;
+        //通过functionId拿到所有的ProcessInstanceId集合
+        SuggestInfoExample example = new SuggestInfoExample();
+        SuggestInfoExample.Criteria c = example.createCriteria();
+        c.andFunctionIdEqualTo(functionId);
+        List<SuggestInfo> suggestInfos = suggestInfoService.selectByExample(example);
+        List<String> proInstances = new ArrayList<>();
+        for(SuggestInfo s:suggestInfos){
+            proInstances.add(s.getProcessInstanceId());
+        }
+        //调用查询审批记录的方法
+        return suggestActiviti.findCommentsList(proInstances);
+    }
+
+    /**
+     * 通过流程实例id查询历史的任务审批信息
+     */
+    @RequestMapping("/suggest/getHisTasks")
+    public @ResponseBody List<Comment> getHistoryTasks(String processInstanceId){
+        //模拟数据
+        //String processInstanceId="1001";
+        //调用查询审批记录的方法
+        return suggestActiviti.findComments(processInstanceId);
     }
 
 }

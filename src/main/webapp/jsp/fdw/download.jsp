@@ -44,7 +44,7 @@ String path = request.getContextPath();
 			<div class="productDetialsContextShowWall">
 				<div class="productDetialsContextShowWallLeft">
 					<span> HMDM Enterprise Edition  Version  5.0   </span>
-					<a href="#">Download</a>
+					<a href="javasript:void(0);">Download</a>
 				</div>
 				<div class="productDetialsContextShowWallRight">
 					<span><img  src="<%=path%>/static/img/product_bg10.png"></span>
@@ -59,14 +59,14 @@ String path = request.getContextPath();
 				<div class="downloadMiddleIntroductionsTop"></div>
 				<div class="downloadMiddleIntroductionsProducts">
 					<div class="downloadMiddleIntroductionsProduct">
-						<a href="#"> 
-							<img src="<%=path%>/static/img/img1.jpg">
+						<a href="javasript:void(0);"> 
+							<img src="<%=path%>/static/img/download_m_bg1.png">
 							<div class="downloadMiddleIntroductionsProductDiv1">
 								<span> HMDM </span><br> <span>Enterprise Edition </span><br>
 								<span> Version 4.0 </span><br> <span> introduction </span>
 
 								<div class="downloadMiddleBtn">
-									<span> Download </span>
+									<span> Entry </span>
 								</div>
 							</div>
 							<div class="downloadMiddleProductIntroduction">
@@ -77,13 +77,13 @@ String path = request.getContextPath();
 					</div>
 
 					<div class="downloadMiddleIntroductionsProduct">
-						<a href="#">
-							<img src="<%=path%>/static/img/img2.jpg">
+						<a href="javasript:void(0);">
+							<img src="<%=path%>/static/img/download_m_bg2.png">
 							<div class="downloadMiddleIntroductionsProductDiv1">
 								<span> HMDM </span><br> <span>Enterprise Edition </span><br>
 								<span> Version 4.1 </span><br> <span> introduction </span>
 								<div class="downloadMiddleBtn">
-									<span> Download </span>
+									<span> Entry </span>
 								</div>
 							</div>
 							<div class="downloadMiddleProductIntroduction">
@@ -95,15 +95,15 @@ String path = request.getContextPath();
 
 					</div>
 					<div class="downloadMiddleIntroductionsProduct">
-						<a href="#">
-							<img src="<%=path%>/static/img/img3.jpg">
+						<a href="<%=path%>/jsp/fdw/productDetials.jsp">
+							<img src="<%=path%>/static/img/download_m_bg3.png">
 
 
 							<div class="downloadMiddleIntroductionsProductDiv1">
 								<span> HMDM </span><br> <span>Enterprise Edition </span><br>
-								<span> Version 5.1 </span><br> <span> introduction </span>
+								<span> Version 5.0 </span><br> <span> introduction </span>
 								<div class="downloadMiddleBtn">
-									<span> Download </span>
+									<span> Entry </span>
 								</div>
 							</div>
 							<div class="downloadMiddleProductIntroduction">
@@ -134,22 +134,14 @@ String path = request.getContextPath();
 			<div class="downloadOthersProductIntroductions">
 				<div class="downloadOthersProductIntroduction">
 					<a href="#">
-					Other1
+					Other
 					
 					
 					</a>	
 				</div>
 				<div class="downloadOthersProductIntroduction">
 				<a href="#">
-					Other1
-					
-					
-					</a>	
-				
-				</div>
-				<div class="downloadOthersProductIntroduction">
-				<a href="#">
-					Other1
+					Other
 					
 					
 					</a>	
@@ -157,7 +149,7 @@ String path = request.getContextPath();
 				</div>
 				<div class="downloadOthersProductIntroduction">
 				<a href="#">
-					Other1
+					Other
 					
 					
 					</a>	
@@ -165,7 +157,7 @@ String path = request.getContextPath();
 				</div>
 				<div class="downloadOthersProductIntroduction">
 				<a href="#">
-					Other1
+					Other
 					
 					
 					</a>	
@@ -173,7 +165,15 @@ String path = request.getContextPath();
 				</div>
 				<div class="downloadOthersProductIntroduction">
 				<a href="#">
-					Other1
+					Other
+				
+					
+					</a>	
+				
+				</div>
+				<div class="downloadOthersProductIntroduction">
+				<a href="#">
+					Other
 					
 					
 					</a>	
@@ -181,7 +181,7 @@ String path = request.getContextPath();
 				</div>
 				<div class="downloadOthersProductIntroduction">
 				<a href="#">
-					Other1
+					Other
 					
 					
 					</a>	
@@ -189,7 +189,7 @@ String path = request.getContextPath();
 				</div>
 				<div class="downloadOthersProductIntroduction">
 				<a href="#">
-					Other1
+					Other
 					
 					
 					</a>	
@@ -197,9 +197,7 @@ String path = request.getContextPath();
 				</div>
 				<div class="downloadOthersProductIntroduction">
 				<a href="#">
-					Other1
-					
-					
+					Other
 					</a>	
 				
 				</div>

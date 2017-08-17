@@ -42,5 +42,20 @@ $(function (){
 				obj1.fadeIn(500);
 			});
 		});
+		$(".downloadOthersProductIntroduction").find("a").mouseenter(function (){
+			
+			$(this).stop(true)
+			$(this).animate({height:'190',width:'330'},500);
+			
+			
+			
+		});
+		$(".downloadOthersProductIntroduction").find("a").mouseleave(function (){
+			$(this).stop(true)
+			$(this).animate({height:'170',width:'300'},500);
+			
+			
+			
+		});
 })
 	
