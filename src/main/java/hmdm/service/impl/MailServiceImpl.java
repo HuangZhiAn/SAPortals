@@ -151,10 +151,7 @@ public class MailServiceImpl implements IMailService {
         MimeMultipart htmlMultipart = new MimeMultipart("alternative");
         htmlPart.setContent(htmlMultipart);
         MimeBodyPart htmlContent = new MimeBodyPart();
-        htmlContent.setContent(
-                "<span style='font-size: 15px'>点击<a href='"+text +
-                                                "'>这里</a>或复制下面连接到浏览器打开<br/>"+text+"</span>"
-                , "text/html;charset=utf-8");
+        htmlContent.setContent(text, "text/html;charset=utf-8");
         htmlMultipart.addBodyPart(htmlContent);
 
         // 保存邮件内容修改

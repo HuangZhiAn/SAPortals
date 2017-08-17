@@ -16,6 +16,8 @@
   </resultMap>
 
   <resultMap id="SuggestResultMap" type="hmdm.dto.SuggestInfo" extends="BaseResultMap">
+    <association property="customer" resultMap="hmdm.mapper.CustomerMapper.BaseResultMap">
+    </association>
     <collection property="images" ofType="hmdm.dto.SuggestImages">
       <id column="images_id" property="imagesId"/>
       <result column="image1" property="image1"/>
@@ -322,17 +324,18 @@
   </select>
 
   <!--通过functionId查询suggestInfo-->
-  <select id="selectSuggest" parameterType="java.lang.Long" resultMap="SuggestResultMap">
+  <select id="selectSuggest" parameterType="hmdm.dto.SuggestInfo" resultMap="SuggestResultMap">
     SELECT  s1.suggest_id ,
     function_id,
     suggest_info,
     suggest_file,
     process_instance_id,
-    customer_id,
+	c.name,
     images_id,
     image1,
     image2,image3,image4,image5,image6,image7,image8,image9,image10
-    FROM hmdm_pt_suggest_info s1 LEFT JOIN hmdm_pt_suggest_images s2 ON s1.suggest_id = s2.suggest_id
-    WHERE s1.function_id =#{functionId}
+    FROM hmdm_pt_suggest_info s1 LEFT JOIN hmdm_pt_suggest_images s2 on s1.suggest_id = s2.suggest_id,hmdm_pt_customer c
+    where c.customer_id = s1.customer_id and s1.function_id = #{functionId}
+    AND s1.process_instance_id =#{processInstanceId}
   </select>
 </mapper>

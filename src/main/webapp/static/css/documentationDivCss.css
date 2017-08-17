@@ -1,0 +1,105 @@
+
+
+#bottom-pane{
+	overflow: hidden;
+	height: 100%;
+	padding-top: 60px;
+}
+#bottom-pane > div{
+	height:100%;
+	background: rgba(236, 236, 236,1);
+}
+#bottom-pane .pane-content{
+
+}
+
+
+#left-pane{
+
+}
+
+
+#left-pane .item-div{
+	font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+}
+#left-pane .item-div .title-div{
+	display: block;
+	height:36px;
+	text-align: left;
+	line-height:36px;
+	padding: 0px 10px;
+	color: rgba(0,0,0,0.7);
+}
+#left-pane .item-div a:hover{
+	background-color: rgba(0,0,0,0.1);
+}
+#left-pane .item-div .title-div .text-span{
+	
+}
+#left-pane .item-div .title-div .icon-span{
+	float: right;
+	display:block;
+	height: 36px;
+	width:24px;
+	text-align:center;
+	font-size: 22px;
+}
+#left-pane .item-div ul{
+	display: none;
+}
+#left-pane .item-div li{
+	list-style: none;
+}
+
+#left-pane .item-div .file-doc,#left-pane .item-div .folder-doc{
+	display: block;
+	font-size: 13px;
+	height:24px;
+	text-align: left;
+	line-height:24px;
+	color: rgba(0,0,0,0.7);
+}
+#left-pane .item-div .children-div > li  a:hover{
+	background-color: rgba(0,0,0,0.1);
+}
+#left-pane .item-div .folder-doc .icon-span img{
+	width: 24px;
+	height: 24px;
+	float: left;
+}
+#left-pane .item-div .file-doc .icon-span img{
+	width: 18px;
+	height: 18px;
+	padding:3px;
+	float: left;
+}
+
+#left-pane .item-div > a{
+	padding-left: 10px;
+}
+#left-pane .item-div > ul > li > a{
+	padding-left: 30px;
+}
+#left-pane .item-div > ul > li > ul > li > a{
+	padding-left: 50px;
+}
+
+/* 
+#left-pane .item-div .children-div > li  a{
+	display: list-item;
+	font-size: 13px;
+	height:24px;
+	text-align: left;
+	line-height:24px;
+	padding: 0px 20px;
+	padding-right:10px;
+	color: rgba(0,0,0,0.7);
+}
+
+#left-pane .item-div .children-div > li ul{
+	display: none;
+}
+#left-pane .item-div .children-div > li ul .file-doc{
+	padding-left: 40px;
+} */
+

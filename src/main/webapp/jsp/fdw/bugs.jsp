@@ -162,11 +162,24 @@ String path = request.getContextPath();
 </body>
 <script>
     function submitClick() {
-        alert("gggg");
         $("#ticketsForm").ajaxSubmit({
             dataType: "json",
             success: function(data){
                 alert(data);
+            },
+            error: function (xhr, status, error) {
+                $.ajax({
+					url: path+"/loginCheck",
+					dataType: json,
+                    success: function(data){
+                        if(data=="notLogin"){
+                            $(".login-div").css("display","block");
+                            $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
+						}else{
+                            alert(xhr);
+						}
+                    }
+				});
             }
         });
     }

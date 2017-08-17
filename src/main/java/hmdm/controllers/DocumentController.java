@@ -1,8 +1,12 @@
 package hmdm.controllers;
 
+import hmdm.dto.Document;
+import hmdm.service.IDocumentService;
 import hmdm.util.Word2Html2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -14,9 +18,13 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.Iterator;
+import java.util.List;
 
 @Controller
 public class DocumentController {
+
+    @Autowired
+    IDocumentService documentService;
 
     @RequestMapping("/word2html")
     @ResponseBody
@@ -84,6 +92,9 @@ public class DocumentController {
         return "success";
     }
 
+
+
+
     private void close(InputStream in){
         if (in != null) {
             try {
@@ -93,6 +104,30 @@ public class DocumentController {
                 in=null;
             }
         }
+    }
+
+
+    @RequestMapping(value="all",method= RequestMethod.GET)
+    public String readDocuments(HttpServletRequest  request,HttpServletResponse response){
+        Document document = new Document();
+        document.setDocumentParent(0);
+        document.setEnable_flag('Y');
+
+        List<Document> list = documentService.searchDocuments(document);
+        request.setAttribute("documents", list);
+        return "/jsp/documentationDiv";
+    }
+
+
+    @RequestMapping(value="manage",method=RequestMethod.GET)
+    public String manageDocuments(HttpServletRequest  request,HttpServletResponse response){
+        Document document = new Document();
+        document.setDocumentParent(0);
+
+
+        List<Document> list = documentService.searchDocuments(document);
+        request.setAttribute("documents", list);
+        return "/backstage/jsp/documentManage";
     }
 
 }

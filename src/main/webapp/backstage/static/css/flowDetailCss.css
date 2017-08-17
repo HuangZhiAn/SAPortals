@@ -1,0 +1,122 @@
+.flow-detail{
+	font-family: Microsoft YaHei,Arial,Verdana,sans-serif;
+}
+
+.flow-detail .title-div{
+	padding:0px 10px;
+	font-size: 1.2em;
+	line-height:30px;
+	color:#2e2e2e;
+	background-color:rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.flow-detail > div{
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 4px;
+	margin: 10px 0px;
+}
+.flow-detail > div > table{
+	margin: 10px;
+	color: rgba(62, 79, 123,0.8);
+	/* color: rgba(159, 176, 202,1); */
+}
+.flow-detail > div > table td > input {
+	margin:0px 10px;
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 3px;
+	padding: 3px 5px;
+	width: 150px;
+	font-family: Microsoft YaHei,Arial,Verdana,sans-serif;
+}
+.flow-detail > div > table td > .disable-input{
+	background:rgba(159, 176, 202,0.2);
+	color: rgba(62, 79, 123,0.8);
+}
+.flow-detail > div > table td > textarea{
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 3px;
+	padding: 3px 5px;
+	width: 629px;
+    height: 76px;
+    max-width:629px;
+    max-height:76px;
+	font-family: Microsoft YaHei,Arial,Verdana,sans-serif;
+}
+.flow-detail > div .records-table{
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 4px;
+}
+.flow-detail > div .records-table th{
+	padding:3px 10px;
+	background: rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.flow-detail > div .records-table td{
+	padding:2px 10px;
+	text-align: center;
+}
+
+.flow-detail > div .detail-table td{
+	
+}
+.flow-detail > div .detail-table td .notice-div{
+	padding:10px;
+	color: rgba(255,0,0,1);
+}
+.flow-detail > div .detail-table td .attachment-item{
+	width: 300px;
+ 	height: 100px;
+ 	display: inline-block;
+}
+.flow-detail > div .detail-table td .attachment-item img{
+	width: 80px;
+ 	height: 80px;
+ 	border-radius: 3px; 
+ 	padding:10px;
+ 	float: left;
+}
+.flow-detail > div .detail-table td .attachment-item > div{
+	float: left;
+	width: 180px;
+	height: 80px;
+	padding: 10px;
+}
+.flow-detail > div .detail-table td .attachment-item > div > a{
+	display: block;
+	text-decoration: none;
+	color: rgba(59, 161, 255,0.7);
+}
+.flow-detail > div .detail-table td .attachment-item > div > a:hover{
+	color: rgba(59, 161, 255,1);
+}
+.flow-detail > div .detail-table td .attachment-item > div > span{
+	display: block;
+}
+
+
+.flow-detail > div .audit-text{
+	border-radius: 4px;
+	margin: 10px;
+	    padding: 3px 5px;
+    width: 629px;
+    height: 100px;
+    max-width: 629px;
+    max-height: 76px;
+    font-family: Microsoft YaHei,Arial,Verdana,sans-serif; 
+}
+.flow-detail > div .audit-btns{
+	height: 30px;
+}
+.flow-detail > div .audit-btns a{
+	text-decoration:none;
+	padding: 3px 10px;
+	margin: 10px;
+	border: 1px solid rgba(99, 198, 254,1);
+	border-radius: 3px;
+	color: white;
+	background-color: rgba(99, 198, 254,0.7)
+}
+.flow-detail > div .audit-btns a:hover{
+	background-color: rgba(99, 198, 254,0.9)
+}

@@ -68,7 +68,7 @@ String path = request.getContextPath();
 	  		<a class="icon-link" href="javascript:void(0);"><img src="<%=path%>/static/img/logo.png"></a>
 	  		<div class="page-link">
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="<%=path%>">Home</a>
+	  				<a class="top-link" href="<%=path%>/">Home</a>
 	  				<div class="child-menu">
 	  					<a href="javascript:void(0);">Home1</a>
 	  					<a href="javascript:void(0);">Home2</a>

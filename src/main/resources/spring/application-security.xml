@@ -11,6 +11,7 @@
     <!--http元素用于配置访问控制和登录验证-->
     <http use-expressions="true">
         <intercept-url pattern="/sendDownloadEmail" access="hasRole('USER')" />
+        <intercept-url pattern="/suggestInfo/Submit" access="hasRole('USER')" />
         <form-login login-page="/loginPage" login-processing-url="/login" authentication-success-forward-url="/loginSuccess" authentication-failure-forward-url="/loginFailure"/>
         <logout logout-success-url="/loginPage"/>
         <!--添加session管理 限制同一用户的session数量-->

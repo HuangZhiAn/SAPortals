@@ -16,6 +16,8 @@ public class SuggestInfo {
 
     private Long customerId;
 
+    private Customer customer;
+
     private List<SuggestImages> images;//一对多集合类型
 
     public List<SuggestImages> getImages(){
@@ -72,6 +74,14 @@ public class SuggestInfo {
 
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override

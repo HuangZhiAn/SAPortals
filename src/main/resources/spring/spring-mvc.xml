@@ -37,7 +37,6 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 视图映射设定 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/jsp/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
 

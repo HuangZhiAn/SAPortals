@@ -16,7 +16,7 @@ public class CustomerController {
 
 	@RequestMapping(value = "/loginPage",method = RequestMethod.GET)
 	public String hello(){
-		return "login";
+		return "/jsp/login";
 	}
 
 	@RequestMapping(value = "/loginSuccess",method = RequestMethod.POST)
@@ -90,5 +90,16 @@ public class CustomerController {
 		int id = customerService.deleteByPrimaryKey(customerid);
 		System.out.println("删除的customerid:"+id);
 	}
+
+    /**
+     * 查询用户总人数
+     * @return
+     */
+    @RequestMapping("/customer/counts")
+    public @ResponseBody long getCustomerTotals(){
+        long totals = customerService.countByExample(null);
+        System.out.println(totals);
+        return totals;
+    }
 
 }

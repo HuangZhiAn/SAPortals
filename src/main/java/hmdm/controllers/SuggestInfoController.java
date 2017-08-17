@@ -1,13 +1,7 @@
 package hmdm.controllers;
 
-import hmdm.dto.Customer;
-import hmdm.dto.Employee;
-import hmdm.dto.SuggestImages;
-import hmdm.dto.SuggestInfo;
-import hmdm.service.EmployeeService;
-import hmdm.service.ProductService;
-import hmdm.service.SuggestImagesService;
-import hmdm.service.SuggestInfoService;
+import hmdm.dto.*;
+import hmdm.service.*;
 import hmdm.activiti.SuggestActiviti;
 import hmdm.util.Word2Html2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +37,12 @@ public class SuggestInfoController {
 
     @Autowired
     private SuggestImagesService suggestImagesService;
+
+    @Autowired
+    IMailService mailService;
+
+    @Autowired
+    CustomerService customerService;
     /**
      * 用户反馈方法
      * 传入SuggestInfo suggestInfo
@@ -149,17 +149,80 @@ public class SuggestInfoController {
 
     @RequestMapping("/suggest/querySuggest")
     public @ResponseBody
-    List<SuggestInfo> querySuggest(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    SuggestInfo querySuggest(HttpServletRequest request,HttpServletResponse response,@RequestParam(value = "processInstanceId",required = true) String processInstanceId) throws Exception {
 
         //获得functionId
         Employee employee =  (Employee)request.getSession().getAttribute("employee");
+        List<SuggestInfo> list = null;
         if(employee==null||employee.getFunctionId()==null){
             response.sendRedirect("/backstage/jsp/login.jsp");
+        }else{
+            //查询对应的suggestInfo
+            SuggestInfo suggestInfo = new SuggestInfo();
+            suggestInfo.setFunctionId(employee.getFunctionId());
+            suggestInfo.setProcessInstanceId(processInstanceId);
+            list = suggestInfoService.selectSuggest(suggestInfo);
+            if(list==null||list.size()==0){
+                request.getRequestDispatcher("/suggest/noSuggestInfo").forward(request,response);
+                return null;
+            }
         }
-        //查询对应的suggestInfo
-        List<SuggestInfo> list = suggestInfoService.selectSuggest(employee.getFunctionId());
+        return list.get(0);
+    }
+
+    /**
+     * 查询employee的任务
+     * @param request
+     * @return
+     */
+    @RequestMapping("/suggest/queryTask")
+    public @ResponseBody List<SuggestTask> queryTask(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        //获取employee
+        Employee employee =  (Employee)request.getSession().getAttribute("employee");
+        List<SuggestTask> list = null;
+        if(employee==null||employee.getFunctionId()==null){
+            response.sendRedirect("/backstage/jsp/login.jsp");
+        }else{
+            list = suggestActiviti.queryGroupTask(employee.getName());
+        }
         return list;
     }
 
+    /**
+     *
+     * 根据传入的任务Id完成任务
+     * @param taskId
+     * @return
+     */
+    @RequestMapping("/suggest/complete")
+    public @ResponseBody String completeTask(HttpServletRequest request,HttpServletResponse response,String taskId,String result) throws Exception {
+        if(!EmployeeController.isLogin(request)){
+            response.sendRedirect("/backstage/jsp/login.jsp");
+        }
+        suggestActiviti.completeTask(taskId);
+        List<byte[]> list = new ArrayList<byte[]>();
+        List filename = new ArrayList<String>();
+        CustomerExample example = new CustomerExample();
+        example.createCriteria().andNameEqualTo("emailSender");
+        List<Customer> customers = customerService.selectByExample(example);
+        if(customers==null||customers.size()==0){
+            throw new Exception("Can't find emailSender customer");
+        }
+        String user = customers.get(0).getEmail();
+        String password = customers.get(0).getPassword();
+        try {
+            mailService.sendMultipleEmail("反馈处理结果",result,list,"ccc",filename,user,password);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Send result Email failure";
+        }
+        return "success";
+    }
+
+    @RequestMapping("/suggest/noSuggestInfo")
+    @ResponseBody
+    public String noSuggestInfo(){
+        return "NoSuggestInfo";
+    }
 
 }

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+	<mapper namespace="hmdm.mapper.DocumentMapper">
+	<resultMap type="hmdm.dto.Document" id="documents">
+		<id column="document_id" property="documentId"/>
+		<result column="document_name" property="documentName"/>
+		<result column="document_type" property="documentType"/>
+		<result column="document_url" property="documentUrl"/>
+		<result column="document_parent" property="documentParent"/>
+
+		<result column="enable_flag" property="enable_flag"/>
+		<result column="version" property="version"/>
+		<result column="created_by" property="created_by"/>
+		<result column="creation_date" property="creation_date"/>
+		<result column="last_updated_by" property="last_updated_by"/>
+		<result column="last_updated_date" property="last_updated_date"/>
+		
+		<collection property="childList" column="{documentId=document_id,enable_flag=enable}" select="select_file_and_folder"></collection>
+	</resultMap>
+	
+	<resultMap type="hmdm.dto.Document" id="folder">
+		<id column="document_id" property="documentId"/>
+		<result column="document_name" property="documentName"/>
+		<result column="document_type" property="documentType"/>
+		<result column="document_url" property="documentUrl"/>
+		<result column="document_parent" property="documentParent"/>
+
+		<result column="enable_flag" property="enable_flag"/>
+		<result column="version" property="version"/>
+		<result column="created_by" property="created_by"/>
+		<result column="creation_date" property="creation_date"/>
+		<result column="last_updated_by" property="last_updated_by"/>
+		<result column="last_updated_date" property="last_updated_date"/>
+		
+		<collection property="childList" column="{documentId=document_id,enable_flag=enable}" select="select_file"></collection>
+	</resultMap>
+    
+    
+	<resultMap type="hmdm.dto.Document" id="document">
+		<id column="document_id" property="documentId"/>
+		<result column="document_name" property="documentName"/>
+		<result column="document_type" property="documentType"/>
+		<result column="document_url" property="documentUrl"/>
+		<result column="document_parent" property="documentParent"/>
+
+		<result column="enable_flag" property="enable_flag"/>
+		<result column="version" property="version"/>
+		<result column="created_by" property="created_by"/>
+		<result column="creation_date" property="creation_date"/>
+		<result column="last_updated_by" property="last_updated_by"/>
+		<result column="last_updated_date" property="last_updated_date"/>
+	</resultMap>
+	
+	
+	<insert id="insert" parameterType="hmdm.dto.Document">
+		insert into hmdm_pt_document(document_name,document_type,document_url,document_parent,
+			created_by,creation_date,last_updated_by,last_updated_date) 
+			
+			values(#{documentName},#{documentType},#{documentUrl},#{documentParent},
+			#{created_by},#{creation_date},#{last_updated_by},#{last_updated_date})
+	</insert>
+	
+	<select id="selectById" parameterType="hmdm.dto.Document" resultMap="documents">
+	    select *,#{enable_flag} enable from hmdm_pt_document where document_id = #{documentId}
+	</select>
+	
+	<select id="selectDocuments" parameterType="hmdm.dto.Document" resultMap="documents">
+	    select *,#{enable_flag} enable from hmdm_pt_document
+	    	<where>
+	    	    <if test="documentParent != null">
+	    	        document_parent = #{documentParent}
+	    	    </if>
+	    	    <if test="enable_flag != null">
+	    	        and enable_flag = #{enable_flag}
+	    	    </if>
+	    	</where>
+	    	order by document_type,creation_date
+	</select>
+	
+	<select id="select_file_and_folder" parameterType="hmdm.dto.Document" resultMap="folder">
+	    select *,#{enable_flag} enable from hmdm_pt_document
+	    	<where>
+	    	    <if test="documentId != null">
+	    	        document_parent = #{documentId}
+	    	    </if>
+	    	    <if test="enable_flag != null">
+	    	        and enable_flag = #{enable_flag}
+	    	    </if>
+	    	</where>
+	    order by document_type,creation_date
+	</select>
+	
+	<select id="select_file" parameterType="hmdm.dto.Document" resultMap="document">
+	    select * from hmdm_pt_document
+			<where>
+	    	    <if test="documentId != null">
+	    	        document_parent = #{documentId}
+	    	    </if>
+	    	    <if test="enable_flag != null">
+	    	        and enable_flag = #{enable_flag}
+	    	    </if>
+	    	</where>
+	    order by creation_date
+	</select>
+	
+	<update id="updateById" parameterType="hmdm.dto.Document">
+	    update hmdm_pt_document
+	    	<set>
+	    	    <if test="documentName != null and documentName != ''">
+	    	        document_name = #{documentName},
+	    	    </if>
+	    	    <if test="documentType != null">
+	    	        document_type = #{documentType},
+	    	    </if>
+	    	    <if test="documentUrl != null and documentUrl != ''">
+	    	        document_url = #{documentUrl},
+	    	    </if>
+	    	    <if test="documentParent != null">
+	    	        document_parent = #{documentParent},
+	    	    </if>
+	    	    last_updated_by = #{last_updated_by},
+	    	    last_updated_date = #{last_updated_date},
+	    	    enable_flag = #{enable_flag},
+	    	    version = version + 1
+	    	</set>
+	    	where document_id=#{documentId}
+	    	
+	    	<selectKey resultType="java.lang.Integer" keyProperty="version" order="AFTER">
+	    	    select version from hmdm_pt_document  where document_id=#{documentId}
+	    	</selectKey>
+	</update>
+	
+	<delete id="deleteById" parameterType="hmdm.dto.Document">
+	    delete from hmdm_pt_document where
+	    	document_parent in (
+	    		select middle.* from (
+	    			select temp.document_id from hmdm_pt_document temp where temp.document_parent = #{documentId}
+	    		) middle
+	    	) or 
+	    	document_id = #{documentId} or
+	    	document_parent = #{documentId}
+	    	
+	</delete>
+
+</mapper>

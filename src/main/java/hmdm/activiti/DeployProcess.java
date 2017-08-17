@@ -3,6 +3,8 @@ package hmdm.activiti;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.repository.Deployment;
+import org.activiti.spring.ProcessEngineFactoryBean;
+import org.junit.Test;
 
 /**
  * Created by PC on 2017/8/9.
@@ -13,6 +15,7 @@ public class DeployProcess {
      */
     /*static {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+        //ProcessEngineFactoryBean processEngineFactoryBean = new ProcessEngineFactoryBean();
         System.out.println(processEngine);
         Deployment deployment = processEngine.getRepositoryService()//与流程定义和部署对象相关的Service
                     .createDeployment()//创建一个部署对象

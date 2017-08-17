@@ -32,6 +32,6 @@ public interface SuggestInfoMapper {
 	Long lastInsertId();
 
 	//通过functionID查询suggestInfo
-	List<SuggestInfo> selectSuggest(Long functionId);
+	List<SuggestInfo> selectSuggest(SuggestInfo record);
 
 }

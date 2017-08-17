@@ -32,16 +32,24 @@ String path = request.getContextPath();
 	<jsp:include page="/jsp/common/header.jsp"></jsp:include>
 	<div class="downloadContain">
 		<div class="downloadTop">
-			<img src="<%=path%>/static/img/download_bg2.jpg">
-			<div class="downloadTopText">
+			<img src="<%=path%>/static/img/product_bg9.jpg">
+			<!-- <div class="downloadTopText">
 				<span>HMDM</span><br> <span>Enterprise Edition </span><br>
 				<span>Version 5.1</span>
 				<div class="dowLoadBtn">
-					<a href="javascript:void(0);" onclick="loginCheck(5.1)">Download</a>
+					<a href="#">Download</a>
 				</div>
 			</div>
-			<div class="downloadTopBG"></div>
-
+			<div class="downloadTopBG"></div> -->
+			<div class="productDetialsContextShowWall">
+				<div class="productDetialsContextShowWallLeft">
+					<span> HMDM Enterprise Edition  Version  5.0   </span>
+					<a href="#">Download</a>
+				</div>
+				<div class="productDetialsContextShowWallRight">
+					<span><img  src="<%=path%>/static/img/product_bg10.png"></span>
+				</div>	
+			</div>
 		</div>
 		<div class="downloadMiddle">
 			<div class="downloadMiddleTop">
@@ -58,7 +66,7 @@ String path = request.getContextPath();
 								<span> Version 4.0 </span><br> <span> introduction </span>
 
 								<div class="downloadMiddleBtn">
-									<span onclick="loginCheck(4.0)"> Download </span>
+									<span> Download </span>
 								</div>
 							</div>
 							<div class="downloadMiddleProductIntroduction">
@@ -75,7 +83,7 @@ String path = request.getContextPath();
 								<span> HMDM </span><br> <span>Enterprise Edition </span><br>
 								<span> Version 4.1 </span><br> <span> introduction </span>
 								<div class="downloadMiddleBtn">
-									<span onclick="loginCheck(4.1)"> Download </span>
+									<span> Download </span>
 								</div>
 							</div>
 							<div class="downloadMiddleProductIntroduction">
@@ -95,7 +103,7 @@ String path = request.getContextPath();
 								<span> HMDM </span><br> <span>Enterprise Edition </span><br>
 								<span> Version 5.1 </span><br> <span> introduction </span>
 								<div class="downloadMiddleBtn">
-									<span onclick="loginCheck(5.1)"> Download </span>
+									<span> Download </span>
 								</div>
 							</div>
 							<div class="downloadMiddleProductIntroduction">

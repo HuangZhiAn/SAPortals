@@ -2,6 +2,7 @@ package hmdm.controllers;
 
 import hmdm.dto.Employee;
 import hmdm.dto.EmployeeExample;
+import hmdm.dto.SuggestInfo;
 import hmdm.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,4 +63,14 @@ public class EmployeeController {
         }
         return "success";
     }
+
+    public static boolean isLogin(HttpServletRequest request){
+        Employee employee =  (Employee)request.getSession().getAttribute("employee");
+        List<SuggestInfo> list = null;
+        if(employee!=null&&employee.getEmployeeId()!=null){
+            return true;
+        }
+        return false;
+    }
+
 }

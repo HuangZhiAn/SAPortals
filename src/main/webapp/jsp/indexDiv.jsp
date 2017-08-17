@@ -3,18 +3,9 @@
 String path = request.getContextPath();
 %>
 
-<script>
-	var path = "<%=path%>";
-</script>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" type="text/css"
 	href="<%=path%>/static/css/indexDivCss.css">
 <script type="text/javascript" src="<%=path%>/static/js/indexDivJs.js"></script>
@@ -41,7 +32,7 @@ String path = request.getContextPath();
 							technologies, the system using WebService, ESB, MQ and other
 							technologies to achieve data exchange between systems</p>
 					</div>
-					<a href="javascript:void(0);" onclick="loginCheck()">DownLoad</a>
+					<a href="javascript:void(0);">DownLoad</a>
 				</div>
 				<img class="introduce-img"
 					src="<%=path%>/static/img/home_HMDM_introduce.jpg">

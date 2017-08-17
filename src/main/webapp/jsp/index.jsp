@@ -7,11 +7,7 @@ String path = request.getContextPath();
 <html>
   <head>
     <title>首页</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
+
 	
   	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/indexCss.css">
   	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/common/baseCss.css">
@@ -20,10 +16,6 @@ String path = request.getContextPath();
 	<script type="text/javascript" src="<%=path%>/static/js/common/baseJs.js"></script>
 	<script type="text/javascript" src="<%=path%>/static/js/indexJs.js"></script>
   </head>
-
-  <script>
-	  path = "<%=path%>";
-  </script>
   <body>
   	<div class="index-bg-div">
   		<jsp:include page="/jsp/common/header.jsp"></jsp:include>
@@ -33,10 +25,12 @@ String path = request.getContextPath();
   			<a class="prev-btn" href="javascript:void(0);">&lt;</a>
   		</div>
   		
-  		<div class="shuffling-div" attr="1">
+  		<div class="shuffling-div" page="<%=path%>/jsp/indexDiv.jsp">
   			<jsp:include page="/jsp/indexDiv.jsp"></jsp:include>
   		</div>
-  		
+  		<div class="shuffling-div" page="<%=path%>/document/all.action">
+  			
+  		</div>
   		<jsp:include page="/jsp/common/footer.jsp"></jsp:include>
   	</div>
 	

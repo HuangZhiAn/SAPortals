@@ -29,3 +29,4 @@
 
 src/main/webapp/WEB-INF/products/*
 src/main/webapp/images/suggestInfo/*
+src/main/webapp/backstage/html/*

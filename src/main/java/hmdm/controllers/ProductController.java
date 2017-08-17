@@ -73,8 +73,11 @@ public class ProductController{
         request.getServletContext().setAttribute(downloadToken,downloadToken);
         List<byte[]> list = new ArrayList<byte[]>();
         List filename = new ArrayList<String>();
+        String downloadUrl = "http://"+domainName+":"+port+"/download?productName="+productName+"&version="+version+"&customerId="+customer.getCustomerId()+"&downloadToken="+downloadToken;
+        String text = "<span style='font-size: 15px'>点击<a href='"+downloadUrl +
+                "'>这里</a>或复制下面连接到浏览器打开<br/>"+downloadUrl+"</span>";
         try {
-            mailService.sendMultipleEmail("产品下载","http://"+domainName+":"+port+"/download?productName="+productName+"&version="+version+"&customerId="+customer.getCustomerId()+"&downloadToken="+downloadToken,list,"ccc",filename,user,password);
+            mailService.sendMultipleEmail("产品下载",text,list,"ccc",filename,user,password);
         } catch (Exception e) {
             e.printStackTrace();
             return "fail";

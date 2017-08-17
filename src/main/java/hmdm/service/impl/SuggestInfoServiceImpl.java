@@ -83,7 +83,7 @@ public class SuggestInfoServiceImpl implements SuggestInfoService{
     }
 
     @Override
-    public List<SuggestInfo> selectSuggest(Long functionId) {
-        return mapper.selectSuggest(functionId);
+    public List<SuggestInfo> selectSuggest(SuggestInfo record) {
+        return mapper.selectSuggest(record);
     }
 }

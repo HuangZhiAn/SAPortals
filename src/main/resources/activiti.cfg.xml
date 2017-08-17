@@ -23,8 +23,5 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 		<property name="processEngineConfiguration" ref="processEngineConfiguration" />
 	</bean>
 
-	<bean name="suggestActiviti" class="hmdm.activiti.SuggestActiviti">
-		<property name="factoryBean" ref="processEngineFactoryBean"></property>
-	</bean>
 	<import resource="spring/application-context.xml"></import>
 </beans>

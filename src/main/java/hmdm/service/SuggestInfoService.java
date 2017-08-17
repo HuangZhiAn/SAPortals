@@ -46,5 +46,5 @@ public interface SuggestInfoService {
 
     Long lastInsertId();
 
-    List<SuggestInfo> selectSuggest(Long functionId);
+    List<SuggestInfo> selectSuggest(SuggestInfo record);
 }

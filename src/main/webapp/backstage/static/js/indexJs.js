@@ -1,42 +1,30 @@
 $(function (){
+	$(".vertical").kendoSplitter({
+		orientation : "vertical",
+		panes : [ {
+			resizable : false,
+			size : "70px"
+		}, {
+			resizable : false,
+		}]
+	});
+	
 	$("#menu").kendoMenu();
 	
 	
 	var setListView = function (){
-		$(".img-list-div").append("<div id='listView'></div>");
+		$("#content-div").html("<div class='img-list-div'></div>");
+		
+		$("#content-div .img-list-div").append("<div id='listView'></div>");
     	
     	var path = getContextPath();
     	var items = [{
-    		p_name : "avd.jpg",
-    		url : "/backstage/jsp/myWorkFlow.jsp",
+    		p_name : "NOTECE_ICON.png",
+    		url : "/workFlow",
     		path : path
     	},{
-    		p_name : "bg1.jpg",
-    		url : "",
-    		path : path
-    	},{
-    		p_name : "bg2.jpg",
-    		url : "",
-    		path : path
-    	},{
-    		p_name : "bg4.jpg",
-    		url : "",
-    		path : path
-    	},{
-    		p_name : "home_HMDM_introduce.jpg",
-    		url : "",
-    		path : path
-    	},{
-    		p_name : "home-icon.png",
-    		url : "",
-    		path : path
-    	},{
-    		p_name : "icons.jpg",
-    		url : "",
-    		path : path
-    	},{
-    		p_name : "index_top_bg.jpg",
-    		url : "",
+    		p_name : "DOCUMENT_ICON.png",
+    		url : "/manage",
     		path : path
     	}];
         var dataSource = new kendo.data.DataSource({
@@ -58,9 +46,17 @@ $(function (){
 	setListView();
 	
 	
-	loadDiv("/backstage/jsp/myWorkFlow.jsp");
+	$(".tool-div .current-div a").click(function (){
+		if($(this).attr("value") == "index"){
+			setListView();
+		}
+	});
+	
+	
+	/*loadDiv("/backstage/jsp/workFlow.jsp");*/
+	/*loadDiv("/document/manage.action");*/
 });
 function loadDiv(url){
 	$("#content-div").html("");
-	$("#content-div").load(getContextPath() + url);
+	$("#content-div").load(path + url);
 }
