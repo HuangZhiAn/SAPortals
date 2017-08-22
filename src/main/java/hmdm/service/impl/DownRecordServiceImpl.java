@@ -45,7 +45,7 @@ public class DownRecordServiceImpl implements DownRecordService{
 
             System.out.println("产品和版本"+productName+version);
             ProductExample example = new ProductExample();
-            example.createCriteria().andNameEqualTo(productName).andVersionEqualTo(version);
+            example.createCriteria().andNameEqualTo(productName).andVersionLike(version);
             List<Product> products = productMapper.selectByExample(example);
             if(products!=null&&products.size()>0){
                 downRecord.setProductId(products.get(0).getProductId());

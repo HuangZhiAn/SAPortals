@@ -36,7 +36,7 @@ String path = request.getContextPath();
 			<div class="productDetialsContextShowWall">
 				<div class="productDetialsContextShowWallLeft">
 					<span> HMDM Enterprise Edition  Version  5.0   </span>
-					<a onclick="loginCheck(5.0)" href="javascript:void(0);">Download</a>
+					<a onclick="loginCheck('5.0')" href="javascript:void(0);">Download</a>
 				</div>
 				<div class="productDetialsContextShowWallRight">
 					<span><img  src="<%=path%>/static/img/product_bg10.png"></span>
