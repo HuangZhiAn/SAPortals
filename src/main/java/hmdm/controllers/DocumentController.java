@@ -1,6 +1,9 @@
 package hmdm.controllers;
 
+import hmdm.dto.Customer;
+import hmdm.dto.CustomerExample;
 import hmdm.dto.Document;
+import hmdm.service.CustomerService;
 import hmdm.service.IDocumentService;
 import hmdm.util.Word2Html2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +29,21 @@ public class DocumentController {
     @Autowired
     IDocumentService documentService;
 
+    @Autowired
+    private CustomerService customerService;
+
     @RequestMapping("/word2html")
     @ResponseBody
     public String word2html(HttpServletRequest request, HttpServletResponse response){
+        //获取文档转换apiKey
+        CustomerExample example = new CustomerExample();
+        example.createCriteria().andNameEqualTo("documenter");
+        List<Customer> customers = customerService.selectByExample(example);
+        String apiKey = "";
+        if(customers!=null&&customers.size()!=0){
+            apiKey = customers.get(0).getPassword();
+        }
+
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
                 request.getSession().getServletContext());
         //判断form表单是否设置multipart/form-data
@@ -51,7 +66,7 @@ public class DocumentController {
                 InputStream inputStream = null;
                 try {
                     System.out.println("开始转换,文件名："+fileName);
-                    inputStream = Word2Html2.word2htmlWithInputStream(in, fileName, "docx", "html");
+                    inputStream = Word2Html2.word2htmlWithInputStream(in, fileName, "docx", "html",apiKey);
                     System.out.println("转换完成");
                 } catch (URISyntaxException e) {
                     e.printStackTrace();

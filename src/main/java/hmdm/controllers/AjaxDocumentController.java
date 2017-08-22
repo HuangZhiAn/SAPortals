@@ -7,7 +7,10 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import hmdm.dto.Customer;
+import hmdm.dto.CustomerExample;
 import hmdm.dto.Employee;
+import hmdm.service.CustomerService;
 import hmdm.util.Word2Html2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +34,9 @@ import javax.servlet.http.HttpServletResponse;
 public class AjaxDocumentController {
 	@Autowired
 	private IDocumentService documentService;
+
+	@Autowired
+	private CustomerService customerService;
 	
 	@RequestMapping(value="searchAll",method=RequestMethod.GET)
 	public ResponseData<List<Document>> searchAll(){
@@ -108,10 +114,20 @@ public class AjaxDocumentController {
 			@RequestParam(name = "document_parent", required = true) Integer documentParent,
 			@RequestParam(name = "enable", required = true) Character enable
 			) throws IOException {
+		//判断是否登录
 		Employee employee =(Employee) request.getSession().getAttribute("employee");
 		if(employee==null||employee.getEmployeeId()==null){
 			response.sendRedirect("/backstage/jsp/login.jsp");
 		}
+		//获取文档转换apiKey
+		CustomerExample example = new CustomerExample();
+		example.createCriteria().andNameEqualTo("documenter");
+		List<Customer> customers = customerService.selectByExample(example);
+		String apiKey = "";
+		if(customers!=null&&customers.size()!=0){
+			apiKey = customers.get(0).getPassword();
+		}
+
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
 		//判断form表单是否设置multipart/form-data
@@ -135,7 +151,7 @@ public class AjaxDocumentController {
 				InputStream inputStream = null;
 				try {
 					System.out.println("开始转换,文件名：" + fileName);
-					inputStream = Word2Html2.word2htmlWithInputStream(in, fileName, "docx", "html");
+					inputStream = Word2Html2.word2htmlWithInputStream(in, fileName, "docx", "html",apiKey);
 					System.out.println("转换完成");
 				} catch (URISyntaxException e) {
 					e.printStackTrace();
