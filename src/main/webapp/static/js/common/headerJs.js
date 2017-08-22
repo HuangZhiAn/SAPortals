@@ -39,6 +39,7 @@ $(function (){
             success: function (data) {
                 if(data=="success"){
                     $(".login-div").css("display","none");
+                    $("#login-btn").text("Sign Out");
 				}else{
                     alert(data);
                     $("#result-span").append(data);
@@ -92,7 +93,7 @@ $(function (){
     })
 
 
-    $(".index-header-div .page-link .link-menu-div .top-link").click(function (){
+    $("#documentId").click(function (){
         $(".index-bg-div .shuffling-div").css("display","none");
         $(".index-bg-div .shuffling-div").removeClass("selected-shuffling");
 
@@ -145,9 +146,6 @@ function loginCheck(version) {
                 alert("Login state error!");
             }
             return false;
-        },
-        error:function(data){
-            alert("error: "+data);
         }
     });
 }
@@ -163,10 +161,22 @@ function toThousands(num) {
 }
 
 function feedback() {
-    var isLogin = loginCheck();
-    if(isLogin){
-        location.href=path+"/jsp/fdw/bugs.jsp";
-    }
+    $.ajax({
+        url:path+"/loginCheck",
+        type: "get",
+        dataType: "text",
+        data: {},
+        success: function (data) {
+            if(data=="notLogin"){
+                $(".login-div").css("display","block");
+                $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
+            }else if(data=="login"){
+                location.href=path+"/jsp/fdw/bugs.jsp";
+            }else{
+                alert("Login state error!");
+            }
+        }
+    });
 }
 
 

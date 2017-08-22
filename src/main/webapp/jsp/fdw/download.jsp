@@ -33,18 +33,10 @@ String path = request.getContextPath();
 	<div class="downloadContain">
 		<div class="downloadTop">
 			<img src="<%=path%>/static/img/product_bg9.jpg">
-			<!-- <div class="downloadTopText">
-				<span>HMDM</span><br> <span>Enterprise Edition </span><br>
-				<span>Version 5.1</span>
-				<div class="dowLoadBtn">
-					<a href="#">Download</a>
-				</div>
-			</div>
-			<div class="downloadTopBG"></div> -->
 			<div class="productDetialsContextShowWall">
 				<div class="productDetialsContextShowWallLeft">
 					<span> HMDM Enterprise Edition  Version  5.0   </span>
-					<a href="javasript:void(0);">Download</a>
+					<a onclick="loginCheck(5.0)" href="javascript:void(0);">Download</a>
 				</div>
 				<div class="productDetialsContextShowWallRight">
 					<span><img  src="<%=path%>/static/img/product_bg10.png"></span>
@@ -59,7 +51,7 @@ String path = request.getContextPath();
 				<div class="downloadMiddleIntroductionsTop"></div>
 				<div class="downloadMiddleIntroductionsProducts">
 					<div class="downloadMiddleIntroductionsProduct">
-						<a href="javasript:void(0);"> 
+						<a href="javascript:void(0);">
 							<img src="<%=path%>/static/img/download_m_bg1.png">
 							<div class="downloadMiddleIntroductionsProductDiv1">
 								<span> HMDM </span><br> <span>Enterprise Edition </span><br>
@@ -77,7 +69,7 @@ String path = request.getContextPath();
 					</div>
 
 					<div class="downloadMiddleIntroductionsProduct">
-						<a href="javasript:void(0);">
+						<a href="javascript:void(0);">
 							<img src="<%=path%>/static/img/download_m_bg2.png">
 							<div class="downloadMiddleIntroductionsProductDiv1">
 								<span> HMDM </span><br> <span>Enterprise Edition </span><br>

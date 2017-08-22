@@ -85,7 +85,7 @@ String path = request.getContextPath();
 	  				</div>
 	  			</div>
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="javascript:void(0);" title="document">Documentation</a>
+	  				<a id="documentId" class="top-link" href="javascript:void(0);" title="document">Documentation</a>
 	  			</div>
 	  			<div class="link-menu-div">
 	  				<a onclick="feedback()" class="top-link" href="javascript:void(0);">Community</a>
