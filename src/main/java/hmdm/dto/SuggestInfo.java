@@ -93,6 +93,8 @@ public class SuggestInfo {
                 ", suggestFile='" + suggestFile + '\'' +
                 ", processInstanceId='" + processInstanceId + '\'' +
                 ", customerId=" + customerId +
+                ", customer=" + customer +
+                ", images=" + images +
                 '}';
     }
 }

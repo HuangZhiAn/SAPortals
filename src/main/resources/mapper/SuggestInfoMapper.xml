@@ -15,6 +15,12 @@
     <result column="customer_id" jdbcType="BIGINT" property="customerId" />
   </resultMap>
 
+  <resultMap id="SuggestCustomerResultMap" type="hmdm.dto.SuggestInfo">
+    <id column="process_instance_id" jdbcType="VARCHAR" property="processInstanceId"/>
+    <association property="customer" resultMap="hmdm.mapper.CustomerMapper.BaseResultMap">
+    </association>
+  </resultMap>
+
   <resultMap id="SuggestResultMap" type="hmdm.dto.SuggestInfo" extends="BaseResultMap">
     <association property="customer" resultMap="hmdm.mapper.CustomerMapper.BaseResultMap">
     </association>
@@ -337,5 +343,19 @@
     FROM hmdm_pt_suggest_info s1 LEFT JOIN hmdm_pt_suggest_images s2 on s1.suggest_id = s2.suggest_id,hmdm_pt_customer c
     where c.customer_id = s1.customer_id and s1.function_id = #{functionId}
     AND s1.process_instance_id =#{processInstanceId}
+  </select>
+
+  <!--通过流程实例ID获取用户名-->
+  <select id="selectCustomerNameByProcessInstanceId" parameterType="java.util.List" resultMap="SuggestCustomerResultMap">
+    SELECT
+    s1.process_instance_id,
+    c.customer_id,
+    c.name
+    FROM hmdm_pt_suggest_info s1,hmdm_pt_customer c
+    where s1.customer_id=c.customer_id
+    AND s1.process_instance_id IN
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+    </foreach>
   </select>
 </mapper>

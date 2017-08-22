@@ -107,7 +107,7 @@ public class DocumentController {
     }
 
 
-    @RequestMapping(value="all",method= RequestMethod.GET)
+    @RequestMapping(value="/document/all",method= RequestMethod.GET)
     public String readDocuments(HttpServletRequest  request,HttpServletResponse response){
         Document document = new Document();
         document.setDocumentParent(0);

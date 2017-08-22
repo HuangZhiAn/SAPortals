@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 @RestController("ajaxDocumentController")
@@ -101,71 +102,16 @@ public class AjaxDocumentController {
 	@RequestMapping(value="modifyById",method=RequestMethod.POST)
 	public ResponseData<Document> modifyById(
 			HttpServletRequest request,
+			HttpServletResponse response,
 			@RequestParam(name = "document_id", required = true) Integer documentId,
 			@RequestParam(name = "document_name", required = true) String documentName,
 			@RequestParam(name = "document_parent", required = true) Integer documentParent,
 			@RequestParam(name = "enable", required = true) Character enable
-			//@RequestParam(name = "document_file", required = false) MultipartFile uploadVideo
 			) throws IOException {
-		/*System.out.println(uploadVideo.getOriginalFilename());
-		ResponseData<Document> result = new ResponseData<Document>();
-		Document document = new Document();
-		document.setDocumentId(documentId);
-		document.setDocumentName(documentName);
-		document.setDocumentParent(documentParent);
-		document.setEnable_flag(enable);
-		document.setLast_updated_by(0L);
-		document.setLast_updated_date(new Date());
-		String appPath = request.getSession().getServletContext().getRealPath("");
-		String outputFile =appPath+ "/backstage/html/"+documentName+".html";
-		InputStream inputStream = null;
-		if(uploadVideo != null){
-			try{
-				inputStream = Word2Html2.word2htmlWithInputStream(
-						uploadVideo.getInputStream(),
-						documentName + ".html",
-						"docx",
-						"html"
-				);
-				document.setDocumentUrl("backstage/html/"+documentName+".html");
-			}catch (InterruptedException e) {
-				e.printStackTrace();
-				result.setMsg(e.getMessage());
-			} catch (ParseException e) {
-				e.printStackTrace();
-				result.setMsg(e.getMessage());
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
-				result.setMsg(e.getMessage());
-			} catch (IOException e) {
-				e.printStackTrace();
-				result.setMsg(e.getMessage());
-			}
-			return result;
+		Employee employee =(Employee) request.getSession().getAttribute("employee");
+		if(employee==null||employee.getEmployeeId()==null){
+			response.sendRedirect("/backstage/jsp/login.jsp");
 		}
-		OutputStream out = new FileOutputStream(outputFile);
-		byte[] b = new byte[1024];
-		int i = 0;
-		while ((i = inputStream.read(b))!=-1){
-			out.write(b,0,i);
-		}
-		out.flush();
-		out.close();
-		System.out.print(document);
-		try{
-			int re = documentService.modifyById(document);
-			if(re > 0){
-				result.setData(document);
-				result.setMsg(ResponseData.RESULT_SUCCESS);
-			}else{
-				result.setMsg("The document is not exist !");
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-			result.setMsg(e.getMessage());
-		}
-		return result;*/
-
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
 		//判断form表单是否设置multipart/form-data
@@ -203,9 +149,9 @@ public class AjaxDocumentController {
 				String htmlFile = fileName.substring(0, fileName.lastIndexOf("."))
 						+ ".html";
 				String appPath = request.getSession().getServletContext().getRealPath("");
-				String outputFile =appPath+ "/backstage/html/"+htmlFile;
-				document.setDocumentUrl("/backstage/html/"+htmlFile);
-				OutputStream out = new FileOutputStream(htmlFile);
+				String outputFile =appPath+ "/backstage/html/document/"+htmlFile;
+				document.setDocumentUrl("/backstage/html/document/"+htmlFile);
+				OutputStream out = new FileOutputStream(outputFile);
 				byte[] b = new byte[2048];
 				int i = 0;
 				while ((i = inputStream.read(b))!=-1){
@@ -220,7 +166,7 @@ public class AjaxDocumentController {
 		document.setDocumentName(documentName);
 		document.setDocumentParent(documentParent);
 		document.setEnable_flag(enable);
-		Employee employee =(Employee) request.getSession().getAttribute("employee");
+
 		document.setLast_updated_by(employee.getEmployeeId());
 		document.setLast_updated_date(new Date());
 		ResponseData<Document> result = new ResponseData<Document>();

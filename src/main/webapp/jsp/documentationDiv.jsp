@@ -45,7 +45,7 @@ String path = request.getContextPath();
 												<ul>
 													<c:forEach items="${child.childList}" var="file">
 														<li>
-															<a file="<%=path%>/${file.documentUrl}" class="file-doc" href="javascript:void(0);">
+															<a file="<%=path%>${file.documentUrl}" class="file-doc" href="javascript:void(0);">
 																<span class="icon-span"><img src="<%=path%>/static/img/txt_icon.png"></span>
 																<span class="text-span">${file.documentName}</span>
 															</a>
@@ -58,7 +58,7 @@ String path = request.getContextPath();
 										
 										<c:if test="${child.documentType == 2}">
 											<li>
-												<a file="<%=path%>/${child.documentUrl}" class="file-doc" href="javascript:void(0);">
+												<a file="<%=path%>${child.documentUrl}" class="file-doc" href="javascript:void(0);">
 													<span class="icon-span"><img src="<%=path%>/static/img/txt_icon.png"></span>
 													<span class="text-span">${child.documentName}</span>
 												</a>
@@ -81,7 +81,7 @@ String path = request.getContextPath();
 								<ul>
 									<c:forEach items="${child.childList}" var="file">
 										<li>
-											<a file="<%=path%>/${file.documentUrl}" class="file-doc" href="javascript:void(0);">
+											<a file="<%=path%>${file.documentUrl}" class="file-doc" href="javascript:void(0);">
 												<span class="icon-span"><img src="<%=path%>/static/img/txt_icon.png"></span>
 												<span class="text-span">${file.documentName}</span>
 											</a>
@@ -94,7 +94,7 @@ String path = request.getContextPath();
 						
                  		<c:if test="${item.documentType == 2}">
 							<div class="item-div">
-								<a file="<%=path%>/${item.documentUrl}" class="file-doc" href="javascript:void(0);">
+								<a file="<%=path%>${item.documentUrl}" class="file-doc" href="javascript:void(0);">
 									<span class="icon-span"><img src="<%=path%>/static/img/txt_icon.png"></span>
 									<span class="text-span">${item.documentName}</span>
 								</a>

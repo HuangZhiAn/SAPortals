@@ -4,6 +4,7 @@ import hmdm.dto.*;
 import hmdm.service.*;
 import hmdm.activiti.SuggestActiviti;
 import hmdm.util.Word2Html2;
+import org.activiti.engine.impl.persistence.entity.CommentEntity;
 import org.activiti.engine.task.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -149,8 +150,12 @@ public class SuggestInfoController {
     }
 
     @RequestMapping("/suggest/querySuggest")
-    public @ResponseBody
-    SuggestInfo querySuggest(HttpServletRequest request,HttpServletResponse response,@RequestParam(value = "processInstanceId",required = true) String processInstanceId) throws Exception {
+    public String querySuggest(HttpServletRequest request,HttpServletResponse response,
+                               @RequestParam(value = "processInstanceId") String processInstanceId,
+                               @RequestParam(value = "createTime",required = false) String createTime,
+                               @RequestParam(value = "processDefineName") String processDefineName,
+                               @RequestParam(value = "customerId") String customerId,
+                               @RequestParam(value = "id") String id) throws Exception {
 
         //获得functionId
         Employee employee =  (Employee)request.getSession().getAttribute("employee");
@@ -168,13 +173,25 @@ public class SuggestInfoController {
                 return null;
             }
         }
-        return list.get(0);
+        if(createTime!=null&&!createTime.equals("")){
+            request.setAttribute("createTime",createTime);
+        }
+        if(processDefineName!=null&&!processDefineName.equals("")){
+            request.setAttribute("processDefineName",processDefineName);
+        }
+        if(customerId!=null&&!customerId.equals("")){
+            list.get(0).setCustomerId(Long.parseLong(customerId));
+        }
+        if(id!=null&&!id.equals("")){
+            request.setAttribute("taskId",id);
+        }
+        request.setAttribute("suggestInfo",list.get(0));
+        System.out.println(list.get(0));
+        return "/backstage/jsp/flowDetail";
     }
 
     /**
      * 查询employee的任务
-     * @param request
-     * @return
      */
     @RequestMapping("/suggest/queryTask")
     public @ResponseBody List<SuggestTask> queryTask(HttpServletRequest request,HttpServletResponse response) throws IOException {
@@ -186,6 +203,23 @@ public class SuggestInfoController {
         }else{
             list = suggestActiviti.queryGroupTask(employee.getName());
         }
+        if(list!=null&&list.size()!=0){
+            List<String> processInstanceIds = new ArrayList<>();
+            for (SuggestTask task:list) {
+                processInstanceIds.add(task.getProcessInstanceId());
+            }
+            List<SuggestInfo> suggestInfos = suggestInfoService.selectCustomerNameByProcessInstanceId(processInstanceIds);
+            for (SuggestTask task:list) {
+                for (SuggestInfo suggestInfo:suggestInfos) {
+                    if(task.getProcessInstanceId().equals(suggestInfo.getProcessInstanceId())){
+                        task.setOwner(suggestInfo.getCustomer().getName());
+                        task.setCustomerId(suggestInfo.getCustomer().getCustomerId());
+                        break;
+                    }
+                }
+                task.setProcessDefineName(suggestActiviti.getDefinitionName(task.getProcessInstanceId()));
+            }
+        }
         return list;
     }
 
@@ -196,7 +230,7 @@ public class SuggestInfoController {
      * @return
      */
     @RequestMapping("/suggest/complete")
-    public @ResponseBody String completeTask(HttpServletRequest request,HttpServletResponse response,String taskId,String result) throws Exception {
+    public @ResponseBody String completeTask(HttpServletRequest request,HttpServletResponse response,String taskId,String result,String customerId) throws Exception {
         if(!EmployeeController.isLogin(request)){
             response.sendRedirect("/backstage/jsp/login.jsp");
         }
@@ -212,7 +246,16 @@ public class SuggestInfoController {
         }
         String user = customers.get(0).getEmail();
         String password = customers.get(0).getPassword();
+
+        example.clear();
+        example.createCriteria().andCustomerIdEqualTo(Long.parseLong(customerId));
+        List<Customer> customers1 = customerService.selectByExample(example);
+        if(customers1==null||customers1.size()==0){
+            throw new Exception("Can't find customer");
+        }
+        String customerEmail = customers1.get(0).getEmail();
         try {
+            mailService.initProperties("smtp","smtp.163.com","25",user,customerEmail);
             mailService.sendMultipleEmail("反馈处理结果",result,list,"ccc",filename,user,password);
         } catch (Exception e) {
             e.printStackTrace();
@@ -231,22 +274,29 @@ public class SuggestInfoController {
      * 查询employee历史的任务信息
      */
     @RequestMapping("/suggest/getHisTasksList")
-    public @ResponseBody List getHistoryTasksList(HttpServletRequest request){
+    public @ResponseBody List<Comment> getHistoryTasksList(HttpServletRequest request){
         //获得functionId
-        Long functionId = (Long)request.getSession().getAttribute("functionId");
+        Employee employee = (Employee)request.getSession().getAttribute("employee");
         //模拟数据
         //Long functionId=1L;
         //通过functionId拿到所有的ProcessInstanceId集合
         SuggestInfoExample example = new SuggestInfoExample();
         SuggestInfoExample.Criteria c = example.createCriteria();
-        c.andFunctionIdEqualTo(functionId);
+        c.andFunctionIdEqualTo(employee.getFunctionId());
         List<SuggestInfo> suggestInfos = suggestInfoService.selectByExample(example);
         List<String> proInstances = new ArrayList<>();
         for(SuggestInfo s:suggestInfos){
             proInstances.add(s.getProcessInstanceId());
         }
         //调用查询审批记录的方法
-        return suggestActiviti.findCommentsList(proInstances);
+        List<Comment> commentsList = null;
+        try {
+            commentsList = suggestActiviti.findCommentsList(proInstances);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        System.out.println("流程历史"+commentsList);
+        return commentsList;
     }
 
     /**

@@ -44,7 +44,15 @@ String path = request.getContextPath();
 		</table>
 		<div id="grid"></div>
 		
-		<div id="dialogEdit"></div>
+		<div id="dialogEdit">
+			<div class="dialog-body">
+				<div class="dialog-header" style="display: none">
+					<span>Flow Detail</span>
+					<a href="javascript:void(0);">×</a>
+				</div>
+				<div class="dialog-content"></div>
+			</div>
+		</div>
 	</div>
 	
 </body>

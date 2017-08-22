@@ -2,7 +2,9 @@ package hmdm.activiti;
 
 import hmdm.dto.SuggestTask;
 import org.activiti.engine.*;
+import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.impl.identity.Authentication;
+import org.activiti.engine.impl.persistence.entity.CommentEntity;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Comment;
@@ -14,6 +16,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,9 +34,9 @@ public class SuggestActiviti {
      * 启动流程
      * 传入处理人集合
      * 返回流程id
-     * @return
      */
     public String  startProcess(List<String> list){
+        //TUDO 设置用户为owner
         String processKey = "suggestId";//启动的流程id
         String users = "";
         //处理传入的处理人
@@ -101,6 +104,8 @@ public class SuggestActiviti {
             }
             candidateUsers = candidateUsers.substring(0,candidateUsers.length()-1);
             suggestTask.setCandidateUsers(candidateUsers);
+
+
             //添加类到集合
             list.add(suggestTask);
         }
@@ -131,6 +136,8 @@ public class SuggestActiviti {
 
         return taskId;
     }
+
+
 
     /**
      * 通过流程实例id拿到流程定义名称
@@ -176,15 +183,27 @@ public class SuggestActiviti {
      * @param proIntancIds
      * @return
      */
-    public List findCommentsList(List<String> proIntancIds) {
+    public List<Comment> findCommentsList(List<String> proIntancIds) throws UnsupportedEncodingException {
         HistoryService historyService = processEngine.getHistoryService();
         TaskService taskService = processEngine.getTaskService();
-        List list = new ArrayList();
+        List<Comment> list = new ArrayList<>();
+        CommentEntity commentEntity = null;
         for (String processInstanceId : proIntancIds) {
             //若不是正在执行的流程
             if (notRun(processInstanceId)) {
+                //List<HistoricTaskInstance> list1 = historyService.createHistoricTaskInstanceQuery().processInstanceId(processInstanceId).list();
                 List<Comment> coms = taskService.getProcessInstanceComments(processInstanceId);
-                list.add(coms);
+                /*for (Comment comment:coms) {
+                    commentEntity = new CommentEntity();
+                    commentEntity.setId(comment.getId());
+                    commentEntity.setFullMessage(new String(comment.getFullMessage().getBytes(),"utf-8"));
+                    commentEntity.setProcessInstanceId(comment.getProcessInstanceId());
+                    commentEntity.setTime(comment.getTime());
+                    commentEntity.setTaskId(comment.getTaskId());
+                    commentEntity.setUserId(comment.getUserId());
+                    list.add(commentEntity);
+                }*/
+                list.addAll(coms);
             }
         }
         return list;
@@ -198,10 +217,22 @@ public class SuggestActiviti {
     public List<Comment> findComments(String processInstanceId) {
         HistoryService historyService = processEngine.getHistoryService();
         TaskService taskService = processEngine.getTaskService();
-        List list = new ArrayList();
+        List<CommentEntity> list = new ArrayList<>();
+        CommentEntity commentEntity = null;
         //若不是正在执行的流程
         if (notRun(processInstanceId)) {
             List<Comment>  coms = taskService.getProcessInstanceComments(processInstanceId);
+//            for (Comment comment:coms) {
+//                commentEntity = new CommentEntity();
+//                commentEntity.setId(comment.getId());
+//                commentEntity.setFullMessage(comment.getFullMessage());
+//                commentEntity.setProcessInstanceId(comment.getProcessInstanceId());
+//                commentEntity.setTime(comment.getTime());
+//                commentEntity.setTaskId(comment.getTaskId());
+//                commentEntity.setUserId(comment.getUserId());
+//                list.add(commentEntity);
+//            }
+            System.out.println("历史流程："+list);
             return coms;
         }else{
             return null;
@@ -232,4 +263,42 @@ public class SuggestActiviti {
         findComments(pid);
 
     }
+
+    @Test
+    public void deleteDeployment(){
+        //act_re_deployment 表中的数据
+        //获得部署id
+        String deploymentId = "301";
+        //删除未发布过的部署流程，否则报异常
+        processEngine.getRepositoryService().deleteDeployment(deploymentId);
+    }
+
+    @Test
+    public void deleteDeployment2(){
+        //act_re_deployment 表中的数据
+        //获得部署id
+        String deploymentId = "1";
+        //可删除发布过的部署流程
+        processEngine.getRepositoryService().deleteDeployment(deploymentId,true);
+    }
+
+    /**
+     *删除bmp文件id相同的部署记录，保留一个
+     */
+    @Test
+    public void deleteDeployeListByKey(){
+        String deployeKey="suggestId";
+        List<ProcessDefinition> definitions =
+                processEngine.getRepositoryService()
+                        .createProcessDefinitionQuery()
+                        .processDefinitionKey(deployeKey)
+                        .list();
+
+        for(int i=0;i < definitions.size()-1;i++){
+            String deployeId = definitions.get(i).getDeploymentId();
+            processEngine.getRepositoryService().deleteDeployment(deployeId,true);
+            System.out.println("删除的部署流程："+deployeId);
+        }
+    }
+
 }

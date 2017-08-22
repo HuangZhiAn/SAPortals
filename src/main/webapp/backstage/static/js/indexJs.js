@@ -16,15 +16,14 @@ $(function (){
 		$("#content-div").html("<div class='img-list-div'></div>");
 		
 		$("#content-div .img-list-div").append("<div id='listView'></div>");
-    	
-    	var path = getContextPath();
+
     	var items = [{
     		p_name : "NOTECE_ICON.png",
-    		url : "/workFlow",
+    		url : path+"/backstage/jsp/workFlow.jsp",
     		path : path
     	},{
     		p_name : "DOCUMENT_ICON.png",
-    		url : "/manage",
+    		url : path + "/manage",
     		path : path
     	}];
         var dataSource = new kendo.data.DataSource({
@@ -35,7 +34,7 @@ $(function (){
             dataSource: dataSource,
             template: kendo.template("<div class='item'>" + 
             		"<a href='javascript:void(0);' url='#: url #'>" + 
-            			"<img src='#= path #/static/img/#= p_name #' alt='#: p_name # image' />" +
+            			"<img src='"+path+"/backstage/static/img/#= p_name #' alt='#: p_name # image' />" +
             		"</a>" + 
             	"</div>")
         });

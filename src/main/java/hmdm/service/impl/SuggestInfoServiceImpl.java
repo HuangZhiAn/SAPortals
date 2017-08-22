@@ -86,4 +86,9 @@ public class SuggestInfoServiceImpl implements SuggestInfoService{
     public List<SuggestInfo> selectSuggest(SuggestInfo record) {
         return mapper.selectSuggest(record);
     }
+
+    @Override
+    public List<SuggestInfo> selectCustomerNameByProcessInstanceId(List processInstanceIds) {
+        return mapper.selectCustomerNameByProcessInstanceId(processInstanceIds);
+    }
 }

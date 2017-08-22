@@ -46,6 +46,26 @@ public class SuggestTask {
 
     private String candidateUsers;
 
+    private String processDefineName;
+
+    private Long customerId;
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getProcessDefineName() {
+        return processDefineName;
+    }
+
+    public void setProcessDefineName(String processDefineName) {
+        this.processDefineName = processDefineName;
+    }
+
     public String getCandidateUsers() {
         return candidateUsers;
     }
@@ -182,4 +202,28 @@ public class SuggestTask {
         this.executionId = executionId;
     }
 
+    @Override
+    public String toString() {
+        return "SuggestTask{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", priority=" + priority +
+                ", owner='" + owner + '\'' +
+                ", assignee='" + assignee + '\'' +
+                ", delegationState=" + delegationState +
+                ", processInstanceId='" + processInstanceId + '\'' +
+                ", executionId='" + executionId + '\'' +
+                ", createTime=" + createTime +
+                ", taskDefinitionKey='" + taskDefinitionKey + '\'' +
+                ", dueDate=" + dueDate +
+                ", parentTaskId='" + parentTaskId + '\'' +
+                ", isSuspended=" + isSuspended +
+                ", taskLocalVariables=" + taskLocalVariables +
+                ", processVariables=" + processVariables +
+                ", candidateUsers='" + candidateUsers + '\'' +
+                ", processDefineName='" + processDefineName + '\'' +
+                ", customerId='" + customerId + '\'' +
+                '}';
+    }
 }

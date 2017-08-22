@@ -78,10 +78,35 @@ $(function (){
         });
     };
 
-	
-	
-	
-	
+    $.ajax({
+        url: path+"/customer/counts",
+        type: "get",
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            $("#number").html('Number：'+toThousands(data));
+        },
+        error: function (data) {
+            alert(data);
+        }
+    })
+
+
+    $(".index-header-div .page-link .link-menu-div .top-link").click(function (){
+        $(".index-bg-div .shuffling-div").css("display","none");
+        $(".index-bg-div .shuffling-div").removeClass("selected-shuffling");
+
+        var title = $(this).attr("title");
+
+        var $selected = $(".index-bg-div .shuffling-div[title=" + title + "]");
+
+        $selected.css("display","block");
+        $selected.addClass("selected-shuffling");
+
+        if($selected.html().trim() == ""){
+            $selected.load($selected.attr("page"));
+        }
+    });
 });
 
 function sendDownloadEmail(version) {
@@ -112,13 +137,36 @@ function loginCheck(version) {
                 $(".login-div").css("display","block");
                 $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
             }else if(data=="login"){
-                sendDownloadEmail(version);
+                if(version!=null&&version!=""){
+                    sendDownloadEmail(version);
+                }
+                return true;
             }else{
                 alert("Login state error!");
             }
+            return false;
         },
         error:function(data){
             alert("error: "+data);
         }
     });
 }
+
+function toThousands(num) {
+    var num = (num || 0).toString(), result = '';
+    while (num.length > 3) {
+        result = ',' + num.slice(-3) + result;
+        num = num.slice(0, num.length - 3);
+    }
+    if (num) { result = num + result; }
+    return result;
+}
+
+function feedback() {
+    var isLogin = loginCheck();
+    if(isLogin){
+        location.href=path+"/jsp/fdw/bugs.jsp";
+    }
+}
+
+

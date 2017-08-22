@@ -96,8 +96,43 @@
 	height: 0px;
 }
 
-
-
+#dialogEdit{
+	width:100%;
+	position: absolute;
+	top:0px;
+	left:0px;
+	z-index: 9;
+	background: white;
+}
+#dialogEdit > .dialog-body{
+	margin:10px;
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 4px;
+}
+#dialogEdit > .dialog-body > .dialog-header{
+	padding: 0px 10px;
+    font-size: 1.2em;
+    line-height: 30px;
+    height:30px;
+    color: #2e2e2e;
+    background-color: rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+#dialogEdit > .dialog-body > .dialog-header a{
+	display:inline-block;
+	height:20px;
+	line-height:20px;
+	margin:5px;
+	font-size:20px;
+	float: right;
+	color: #2e2e2e;
+}
+#dialogEdit > .dialog-body > .dialog-header a:hover{
+	color: rgba(59, 159, 255,1);
+}
+#dialogEdit > .dialog-body > .dialog-content{
+	padding:0px 10px;
+}
 
 
 

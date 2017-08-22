@@ -85,10 +85,10 @@ String path = request.getContextPath();
 	  				</div>
 	  			</div>
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="javascript:void(0);">Documentation</a>
+	  				<a class="top-link" href="javascript:void(0);" title="document">Documentation</a>
 	  			</div>
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="<%=path%>/jsp/fdw/bugs.jsp">Community</a>
+	  				<a onclick="feedback()" class="top-link" href="javascript:void(0);">Community</a>
 	  			</div>
 	  		</div>
 	  		<div class="operate-link">
@@ -105,10 +105,10 @@ String path = request.getContextPath();
 	  				<div class="top-link">
 	  					<a href="javascript:void(0);">Member</a>
 	  					<a href="javascript:void(0);">Safe</a>
-	  					<a id="feedback" href="javascript:void(0);">Feedback</a>
+	  					<a id="feedback" onclick="feedback()" href="javascript:void(0);">Feedback</a>
 	  				</div>
 	  				<div class="bottom-link">
-	  					<a href="javascript:void(0);">Number：<fmt:formatNumber value="123456789" pattern="###,###,###"/></a>
+	  					<a id="number" href="javascript:void(0);">Number：<fmt:formatNumber value="123456789" pattern="###,###,###"/></a>
 	  				</div>
 	  			</div>
 	  		</div>

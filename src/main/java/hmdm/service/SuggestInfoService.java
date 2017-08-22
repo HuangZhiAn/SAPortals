@@ -47,4 +47,6 @@ public interface SuggestInfoService {
     Long lastInsertId();
 
     List<SuggestInfo> selectSuggest(SuggestInfo record);
+
+    List<SuggestInfo> selectCustomerNameByProcessInstanceId(List processInstanceIds);
 }

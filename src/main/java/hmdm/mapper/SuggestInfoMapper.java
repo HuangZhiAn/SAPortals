@@ -34,4 +34,6 @@ public interface SuggestInfoMapper {
 	//通过functionID查询suggestInfo
 	List<SuggestInfo> selectSuggest(SuggestInfo record);
 
+	List<SuggestInfo> selectCustomerNameByProcessInstanceId(List processInstanceIds);
+
 }

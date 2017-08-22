@@ -77,6 +77,6 @@ String path = request.getContextPath();
 			</div>
          </div>
     </div>
-	
+	<input id="_csrf" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </body>
 </html>
