@@ -22,7 +22,7 @@ public class BackstageFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         StringBuffer pathInfo = req.getRequestURL();
-        if(pathInfo.toString().contains("/backstage")&&!pathInfo.toString().contains("login")){
+        if(pathInfo.toString().contains("/backstage")&&!pathInfo.toString().contains("login")&&!pathInfo.toString().contains("document")){
             Employee employee = (Employee) req.getSession().getAttribute("employee");
             if(employee==null||employee.getEmployeeId()==null){
                 httpServletResponse.sendRedirect("/backstage/jsp/login.jsp");
