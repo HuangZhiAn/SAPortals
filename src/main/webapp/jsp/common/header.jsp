@@ -33,23 +33,20 @@ String path = request.getContextPath();
   			<div>
 				<div class="input-div">
 					<input id="username" name="username" data-bind="value:username"
-						type="text" placeholder="Please input username"
-						required pattern="[a-zA-Z]{1}([a-zA-Z0-9]|[_]){5,11}" validationMessage="Invalid username">
+						type="text" placeholder="Please input username" pattern="[a-zA-Z]{1}([a-zA-Z0-9]|[_]){5,11}" validationMessage="Invalid username">
 				</div>
 				<div><span class="k-invalid-msg" data-for="username"></span></div>
 				
 				<div class="input-div">
 					<input id="password" name="password" data-bind="value:password"
-						type="password" placeholder="Please input password"
-						required pattern="[a-zA-Z]{1}[a-zA-Z0-9]{5,11}" validationMessage="Invalid password">
+						type="password" placeholder="Please input password" pattern="[a-zA-Z]{1}[a-zA-Z0-9]{5,11}" validationMessage="Invalid password">
 				</div>
 				<div><span class="k-invalid-msg" data-for="password"></span></div>
 				
 				<div class="checkword-div">
 					<a href="javascript:void(0);"><img id="checkword-img" class="checkword-img" src=""></a>
 					<input id="checkword" name="validateCode" class="checkword" data-bind="value:validateCode"
-						type="text" placeholder="Please input security code"
-						required pattern="[a-zA-Z0-9]{4}" validationMessage="Invalid security code">
+						type="text" placeholder="Please input security code" pattern="[a-zA-Z0-9]{4}" validationMessage="Invalid security code">
 				</div>
 				<div><span class="k-invalid-msg" data-for="checkword"></span></div>
 				<input id="_csrf" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -68,27 +65,16 @@ String path = request.getContextPath();
 	  		<a class="icon-link" href="javascript:void(0);"><img src="<%=path%>/static/img/logo.png"></a>
 	  		<div class="page-link">
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="<%=path%>/">Home</a>
-	  				<div class="child-menu">
-	  					<a href="javascript:void(0);">Home1</a>
-	  					<a href="javascript:void(0);">Home2</a>
-	  					<a href="javascript:void(0);">Home3</a>
-	  					<a href="javascript:void(0);">Home423</a>
-	  				</div>
+	  				<a class="top-link" href="javascript:void(0);" title="home">Home</a>
 	  			</div>
 	  			<div class="link-menu-div">
-	  				<a class="top-link" href="<%=path%>/jsp/fdw/download.jsp">Download</a>
-	  				<div class="child-menu">
-	  					<a href="javascript:void(0);">Download1</a>
-	  					<a href="javascript:void(0);">Download2</a>
-	  					<a href="javascript:void(0);">Download3</a>
-	  				</div>
+	  				<a class="top-link" href="javascript:void(0);" title="download">Download</a>
 	  			</div>
 	  			<div class="link-menu-div">
-	  				<a id="documentId" class="top-link" href="javascript:void(0);" title="document">Documentation</a>
+	  				<a class="top-link" href="javascript:void(0);" title="document">Documentation</a>
 	  			</div>
 	  			<div class="link-menu-div">
-	  				<a onclick="feedback()" class="top-link" href="javascript:void(0);">Community</a>
+	  				<a class="top-link" href="javascript:void(0);" title="community">Community</a>
 	  			</div>
 	  		</div>
 	  		<div class="operate-link">

@@ -16,20 +16,12 @@ String path = request.getContextPath();
 <meta http-equiv="description" content="This is my page">
 
 <link rel="stylesheet" type="text/css"
-	href="<%=path%>/static/css/common/baseCss.css">
-<link rel="stylesheet" type="text/css"
 	href="<%=path%>/static/css/download/download.css">
-<script type="text/javascript"
-	src="<%=path%>/static/js/common/jquery.min.js"></script>
-<script type="text/javascript"
-	src="<%=path%>/static/js/common/jquery.cookie.js"></script>
-<script type="text/javascript"
-	src="<%=path%>/static/js/common/baseJs.js"></script>
-<script type="text/javascript" src="<%=path%>/static/js/indexJs.js"></script>
+
 <script type="text/javascript" src="<%=path%>/static/js/download.js"></script>
 </head>
 <body>
-	<jsp:include page="/jsp/common/header.jsp"></jsp:include>
+
 	<div class="downloadContain">
 		<div class="downloadTop">
 			<img src="<%=path%>/static/img/product_bg9.jpg">
@@ -198,7 +190,6 @@ String path = request.getContextPath();
 		<!-- 	 -->
 	</div>
 
-	<jsp:include page="/jsp/common/footer.jsp"></jsp:include>
 </body>
 </html>
 

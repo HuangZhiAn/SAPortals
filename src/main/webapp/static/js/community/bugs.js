@@ -18,6 +18,24 @@ $(function(){
                 //optionLabel: "--Select  Type--"
                  // 当前默认选中项，索引从0开始。
             });
+            $.ajax({
+                url:path+"/function/query",
+                type: "GET",
+                dataType: "json",
+                data: {"productId":$("#BugsType").val()},
+                success: function (data) {
+                    $("#BugsTypeChild").kendoDropDownList({
+                        optionLabel: "--Select  Type--",
+                        dataTextField: "functionName",
+                        dataValueField: "functionId",
+                        dataSource: data
+                        // 当前默认选中项，索引从0开始。
+                    });
+                },
+                error:function(){
+                    alert("error!");
+                }
+            });
         },
         error:function(){
             alert("error!");

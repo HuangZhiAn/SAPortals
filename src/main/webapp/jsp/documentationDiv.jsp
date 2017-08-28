@@ -79,7 +79,7 @@ String path = request.getContextPath();
 									<span class="text-span">${item.documentName}</span>
 								</a>
 								<ul>
-									<c:forEach items="${child.childList}" var="file">
+									<c:forEach items="${item.childList}" var="file">
 										<li>
 											<a file="<%=path%>${file.documentUrl}" class="file-doc" href="javascript:void(0);">
 												<span class="icon-span"><img src="<%=path%>/static/img/txt_icon.png"></span>

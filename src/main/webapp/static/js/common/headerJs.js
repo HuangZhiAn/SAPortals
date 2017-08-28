@@ -1,4 +1,5 @@
 $(function (){
+
 	var viewModel = kendo.observable({
         username: "",
         password: "",
@@ -30,7 +31,17 @@ $(function (){
 			return;
 		}
     	var data = viewModel.toJSON();
-    	/*data.password = hex_md5(data.password);*/
+        if(data.username == ""){
+            alert("Please input username");
+            return;
+        }else if(data.password == ""){
+            alert("Please input password");
+            return;
+        }else if(data.checkword == ""){
+            alert("Please input checkword");
+            return;
+        }
+        /*data.password = hex_md5(data.password);*/
 		$.ajax({
             url:path+"/login",
             type: "post",
@@ -93,7 +104,8 @@ $(function (){
     })
 
 
-    $("#documentId").click(function (){
+    $(".index-header-div .page-link .link-menu-div .top-link").click(function (){
+
         $(".index-bg-div .shuffling-div").css("display","none");
         $(".index-bg-div .shuffling-div").removeClass("selected-shuffling");
 

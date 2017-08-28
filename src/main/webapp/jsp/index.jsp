@@ -25,12 +25,18 @@ String path = request.getContextPath();
   			<a class="prev-btn" href="javascript:void(0);">&lt;</a>
   		</div>
   		
-  		<div class="shuffling-div" page="<%=path%>/jsp/indexDiv.jsp">
+  		<div class="shuffling-div" title="home" page="<%=path%>/jsp/indexDiv.jsp">
   			<jsp:include page="/jsp/indexDiv.jsp"></jsp:include>
   		</div>
   		<div class="shuffling-div" title="document" page="<%=path%>/document/all.action">
   			
   		</div>
+		<div class="shuffling-div" title="download" page="<%=path%>/jsp/fdw/download.jsp">
+
+		</div>
+		<div class="shuffling-div" title="community" page="<%=path%>/jsp/fdw/community.jsp">
+
+		</div>
   		<jsp:include page="/jsp/common/footer.jsp"></jsp:include>
   	</div>
 	

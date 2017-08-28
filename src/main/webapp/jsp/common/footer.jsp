@@ -53,9 +53,7 @@ String path = request.getContextPath();
   				</div>
   			</div>
   			<div class="footer-bottom">
-  				Copyright &copy; xxxx-xxxx Tencent. All Rights Reserved.
-  				<br>
-  				Copyright Hand China Co.,Ltd.
+				Copyright Hand China Co.,Ltd. All Rights Reserved.
   			</div>
   		</div>
   	</div>

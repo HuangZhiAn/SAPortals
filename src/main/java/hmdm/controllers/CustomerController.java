@@ -102,4 +102,23 @@ public class CustomerController {
         return totals;
     }
 
+	/**
+	 * 用户注册方法
+	 */
+	@RequestMapping(value = "/customer/register",method = RequestMethod.POST)
+	public @ResponseBody String register(Customer customer){
+		if(customer.getName()==null||customer.getName().equals("^[a-zA-Z]\\w{5,17}$")){
+			return "username is null";
+		}
+		if(customer.getEmail()==null||customer.getEmail().matches("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")){
+			return "email is null or illegal";
+		}
+		if(customer.getPassword()==null||customer.getPassword().matches("^[a-zA-Z]\\w{5,17}$")){
+
+		}
+		int i= customerService.insertSelective(customer);
+		System.out.println("注册"+i);
+		return "success";
+	}
+
 }

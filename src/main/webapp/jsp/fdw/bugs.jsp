@@ -122,7 +122,7 @@ String path = request.getContextPath();
 											<div class="upload_choose">
 												<input id="fileImage" type="file" size="30" name="files" multiple>
 												 <span>Upload file：</span>
-												<a id="clickFiles" href="javasript:;void(0)" onclick="">Choice</a>
+												<a id="clickFiles" href="javascript:;void(0)" onclick="">Choice</a>
 													<span   id="fileDragArea" class="upload_drag_area">Drag and drop images </span>
 												
 												<div id="preview" class="upload_preview"> 

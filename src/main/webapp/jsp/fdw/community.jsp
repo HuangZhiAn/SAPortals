@@ -19,19 +19,10 @@ String path = request.getContextPath();
 <link rel="stylesheet" type="text/css"
 	href="<%=path%>/static/css/community/community.css">
 
-<link rel="stylesheet" type="text/css"
-	href="<%=path%>/static/css/common/baseCss.css">
-
-<script type="text/javascript"
-	src="<%=path%>/static/js/common/jquery.min.js"></script>
-<script type="text/javascript"
-	src="<%=path%>/static/js/common/jquery.cookie.js"></script>
 <script type="text/javascript"
 	src="<%=path%>/static/js/common/baseJs.js"></script>
-<script type="text/javascript" src="<%=path%>/static/js/indexJs.js"></script>
 </head>
 <body>
-	<jsp:include page="/jsp/common/header.jsp"></jsp:include>
 	<div class="communityContian">
 		<div class="communityTop">
 			<div class="communityTopText">
@@ -41,7 +32,7 @@ String path = request.getContextPath();
 					</div>
 					<div class="communityTopTestListRight">
 						<ul>
-							<li><a href="#">bugs</a></li>
+							<li><a href="javascript:void(0);" onclick="feedback()">bugs</a></li>
 							<li><a href="#">posts</a></li>
 							<li><a href="#">topics</a></li>
 							<li><a href="#">discussion</a></li>
@@ -290,6 +281,5 @@ String path = request.getContextPath();
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/jsp/common/footer.jsp"></jsp:include>
 </body>
 </html>
