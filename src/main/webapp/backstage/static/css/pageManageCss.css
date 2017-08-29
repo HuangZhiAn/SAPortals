@@ -1,0 +1,12 @@
+.page-manage-div{
+	
+}
+#grid .k-pager-wrap.k-grid-pager.k-widget .k-link{
+	border-radius : 3px;
+}
+#grid .k-pager-wrap.k-grid-pager.k-widget .k-state-selected{
+	border-radius : 3px;
+}
+#grid .k-icon, .k-state-disabled .k-icon{
+	margin-top: 8px;
+}
