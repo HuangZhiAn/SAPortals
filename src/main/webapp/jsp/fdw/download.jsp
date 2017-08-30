@@ -187,7 +187,6 @@ String path = request.getContextPath();
 				</div>
 			</div>
 		</div>
-		<!-- 	 -->
 	</div>
 
 </body>

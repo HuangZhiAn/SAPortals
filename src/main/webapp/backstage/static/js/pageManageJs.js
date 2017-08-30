@@ -8,7 +8,7 @@ $(function (){
 		},{
 			name : "download",
 			description : "This is download page content.",
-			url : "",
+			url : "/jsp/fdw/download.jsp",
 			editable : true
 		},{
 			name : "document",
@@ -18,12 +18,12 @@ $(function (){
 		},{
 			name : "community",
 			description : "This is community page content.",
-			url : "",
+			url : "/jsp/fdw/community.jsp",
 			editable : true
 		},{
 			name : "feedback",
 			description : "This is feedback page content.",
-			url : "",
+			url : "/jsp/fdw/bugs.jsp",
 			editable : true
 		}],
 		page: 1,

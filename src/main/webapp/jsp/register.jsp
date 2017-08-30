@@ -6,6 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<script>
+		var path = "<%=path%>";
+	</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
@@ -35,7 +38,7 @@
 				<tbody>
 					<tr>
 						<td>Name</td>
-						<td><input data-bind="value:name" type="text" pattern="[a-zA-Z]{2,12}" validationMessage="Invalid name" placeholder="Please input name" class="text-input" id="name" name="name"></td>
+						<td><input data-bind="value:name" type="text" pattern="[a-zA-Z]\w{4,17}" validationMessage="Invalid name" placeholder="Please input name" class="text-input" id="name" name="name"></td>
 						<td class="validation-message"><span class="k-invalid-msg" data-for="name"></span></td>
 					</tr>
 					<tr>
@@ -61,6 +64,9 @@
 						</div></td>
 						<td class="validation-message"><span></span></td>
 					</tr>
+					<input id="_csrf" type="hidden"
+						   name="${_csrf.parameterName}"
+						   value="${_csrf.token}"/>
 					<tr>
 						<td colspan="3">
 							<input id="check" name="check"  type="checkbox">

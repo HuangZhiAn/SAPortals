@@ -145,4 +145,61 @@ public class DocumentController {
         return "/backstage/jsp/documentManage";
     }
 
+    @RequestMapping(value="/ImageUpload",method=RequestMethod.POST)
+    @ResponseBody
+    public String imageUpload(HttpServletRequest  request){
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+                request.getSession().getServletContext());
+        String url = null;
+        //判断form表单是否设置multipart/form-data
+        if (multipartResolver.isMultipart(request)) {
+            System.out.println("获取图片");
+            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+            //获取文件名列表
+            Iterator<String> iter = multiRequest.getFileNames();
+
+            while (iter.hasNext()) {
+                MultipartFile file = multiRequest.getFile(iter.next().toString());
+                System.out.println("获取图片成功");
+                String fileName = file.getOriginalFilename();
+                String appPath = request.getSession().getServletContext().getRealPath("");
+                File newImage = new File(appPath+"/static/img/"+fileName);
+                try {
+                    file.transferTo(newImage);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                url = request.getContextPath()+"/static/img/"+fileName;
+            }
+
+        }
+        return url;
+    }
+
+    @RequestMapping(value="/pageEdit",method=RequestMethod.POST)
+    @ResponseBody
+    public String pageEdit(HttpServletRequest request,HttpServletResponse  response,String pagePath,String html){
+        System.out.println("pagePath:"+pagePath);
+        System.out.println("html:"+html);
+
+        String appPath = request.getSession().getServletContext().getRealPath("");
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(appPath+"/"+pagePath);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            fos.write(html.getBytes());
+            fos.close();
+            //重定向到已修改的页面
+            response.sendRedirect(request.getContextPath()+"/"+pagePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "success";
+    }
+
+
 }

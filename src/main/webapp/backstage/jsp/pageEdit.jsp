@@ -8,16 +8,15 @@ String pg = request.getParameter("page");
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
-<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
-<META HTTP-EQUIV="Expires" CONTENT="0"> 
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="<%=path%>/static/css/common/baseCss.css">
 <link rel="stylesheet" type="text/css" href="<%=path%>/backstage/static/css/pageEditCss.css">
 <script src="<%=path%>/static/js/common/jquery.min.js"></script>
-<script src="<%=path%>/backstage/static/js/pageEditJs.js"></script>
+<script src="<%=path%>/static/js/common/jquery.form.min.js"></script>
+	<script src="<%=path%>/backstage/static/js/pageEditJs.js"></script>
 <script type="text/javascript">
 var pg = "<%=pg%>";
+var path = "<%=path%>";
 </script>
 </head>
 <body>
@@ -25,12 +24,13 @@ var pg = "<%=pg%>";
 	<div class="page-div">
 		
 	</div>
-	
-	
-	<form action="" method="post">
+
+	<form id="imgForm1" action="${pageContext.request.contextPath}/ImageUpload?${_csrf.parameterName}=${_csrf.token}" method="post">
 		<input id="reset_img" name="reset_img" type="file">
 	</form>
-	
+	<input id="_csrf" type="hidden"
+		   name="${_csrf.parameterName}"
+		   value="${_csrf.token}"/>
 	
 	<div class="text-edit">
 		<div class="form-div">
@@ -69,4 +69,5 @@ var pg = "<%=pg%>";
 		</div>
 	</div>
 </body>
+
 </html>

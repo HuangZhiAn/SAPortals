@@ -24,6 +24,7 @@ String path = request.getContextPath();
 	<script type="text/javascript" src="<%=path%>/static/js/kendo/kendo.web.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/static/js/common/md5.js"></script>
 	<script type="text/javascript" src="<%=path%>/static/js/common/headerJs.js"></script>
+	<script type="text/javascript" src="<%=path%>/static/js/security.js"></script>
   </head>
   <body>
   	<div class="login-div">
@@ -89,8 +90,7 @@ String path = request.getContextPath();
 	  			</div>
 	  			<div class="operate-link-right">
 	  				<div class="top-link">
-	  					<a href="javascript:void(0);">Member</a>
-	  					<a href="javascript:void(0);">Safe</a>
+	  					<a href="<%=path%>/jsp/register.jsp">Sign Up</a>
 	  					<a id="feedback" onclick="feedback()" href="javascript:void(0);">Feedback</a>
 	  				</div>
 	  				<div class="bottom-link">

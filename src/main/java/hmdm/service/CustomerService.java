@@ -28,4 +28,6 @@ public interface CustomerService {
     int updateByPrimaryKeySelective(Customer record);
 
     int updateByPrimaryKey(Customer record);
+
+    int register(Customer record);
 }

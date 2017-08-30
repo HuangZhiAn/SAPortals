@@ -69,6 +69,11 @@
     <input type="file" name="files"  multiple="multiple"/><br/>
     <input type="submit" name="submit" value="提交">
 </form>
+<h2>图片上传</h2>
+<form action="${pageContext.request.contextPath}/ImageUpload?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
+    <input type="file" name="image"><br/>
+    <input type="submit" name="submit" value="提交">
+</form>
 <script>
     function loginClick() {
         $("#loginForm").ajaxSubmit({

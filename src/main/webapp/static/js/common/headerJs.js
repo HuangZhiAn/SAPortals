@@ -10,13 +10,23 @@ $(function (){
 
     var validator = $("#form-div").kendoValidator({}).data("kendoValidator");
 	
-	
+	var key;
 	$("#login-btn").click(function (){
 		if($("#login-btn").text()=="Sign Out"){
             $("#logoutForm").submit();
 		}else{
             $(".login-div").css("display","block");
             $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
+            $.ajax({
+                url: path+"/customer/getPublicKey",
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    RSAUtils.setMaxDigits(200);
+                    //setMaxDigits(256);
+                    key = new RSAUtils.getKeyPair(data.publicKeyExponent, "", data.publicKeyModulus);
+                }
+            });
 		}
 	});
 	$(".login-div .form-div .conroller .close-btn").click(function (){
@@ -41,7 +51,9 @@ $(function (){
             alert("Please input checkword");
             return;
         }
-        /*data.password = hex_md5(data.password);*/
+        var reversedPwd = data.password.split("").reverse().join("");
+        var encrypedPwd = RSAUtils.encryptedString(key,reversedPwd);
+        data.password = encrypedPwd;
 		$.ajax({
             url:path+"/login",
             type: "post",

@@ -35,6 +35,8 @@
             </user-service>
         </authentication-provider>
         <authentication-provider>
+            <!--密码加密 md5需要32位加密-->
+            <password-encoder hash="md5" />
             <!--数据库中取用户数据，自定义sql-->
             <jdbc-user-service data-source-ref="dataSource" users-by-username-query="select name,password,1 as enabled from hmdm_pt_customer WHERE name=?"
                                authorities-by-username-query="select u.name, r.role_name as role from hmdm_pt_customer u,hmdm_pt_user_role ur, hmdm_pt_role r where u.customer_id=ur.user_id and r.role_id = ur.role_id and u.name=?"/>

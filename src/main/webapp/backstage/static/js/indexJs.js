@@ -25,7 +25,11 @@ $(function (){
     		p_name : "DOCUMENT_ICON.png",
     		url : path + "/manage",
     		path : path
-    	}];
+    	},{
+            p_name : "NOTECE_ICON.png",
+            url : path+"/backstage/jsp/pageManage.jsp",
+            path : path
+        }];
         var dataSource = new kendo.data.DataSource({
             data: items
         });

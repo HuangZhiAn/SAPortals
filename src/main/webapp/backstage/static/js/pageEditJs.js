@@ -1,19 +1,29 @@
 $(function (){
-	$("#reset_img").change(function(e) {
-		if($(this).val() == ""){
-			return;
-		}
-		var type = ["jpg","png"];
-		if (!RegExp("\.(" + type.join("|") + ")$", "i").test($(this).val().toLowerCase())) {
+	var img;
+
+    $("#reset_img").change(function(e) {
+        if($(this).val() == ""){
+            return;
+        }
+        var type = ["jpg","png"];
+        if (!RegExp("\.(" + type.join("|") + ")$", "i").test($(this).val().toLowerCase())) {
             alert("error,file type must be " + type.join(","));
             $(this).val("");
             return;
         }
-		//提交事件
-		
-	});
+        //提交事件
+		console.log($("#imgForm1"));
+        $("#imgForm1").ajaxSubmit({
+            dataType: "json",
+            success: function(data){
+                $(img).attr("src",data);
+            }
+        });
+    });
+
 	$(".page-div").load(pg,function(){
 		$(".page-div img").click(function (){
+            img = this;
 			$("#reset_img").click();
 		});
 		$(".page-div p").click(function (){
@@ -60,7 +70,24 @@ $(function (){
 		var html = $(".page-div").html();
 		$(".page-div").html("");
 		alert("ok");
-		$(".page-div").html(html);
+		$.ajax({
+			url: path+"/pageEdit",
+			dataType: "json",
+			type: "post",
+			data: {
+                "_csrf": $("#_csrf").val(),
+				"html": html,
+				"pagePath": pg
+			},
+			success: function (data) {
+				if(data=="success"){
+					location.href = path+"/";
+				}
+            },
+			error: function (data) {
+				alert(data);
+            }
+		});
 	});
 	$(".text-edit .form-div .header .close-btn").click(function (){
 		$(".text-edit .form-div .textarea-edit").val("");
