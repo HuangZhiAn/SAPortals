@@ -74,6 +74,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping("/customer/query")
+	@ResponseBody
 	public List<Customer> queryCustomer(){
 		System.out.println("查询customer测试");
 		List<Customer> list  = customerService.selectByExample(null);

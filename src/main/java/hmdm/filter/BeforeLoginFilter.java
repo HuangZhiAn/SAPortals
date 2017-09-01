@@ -33,7 +33,6 @@ public class BeforeLoginFilter  extends GenericFilterBean {
             if(password!=null&&!password.trim().equals("")){
                 RSAPrivateKey privateKey = (RSAPrivateKey)req.getSession().getAttribute("privateKey");
                 try {
-                    //解密后的密码,password是提交过来的密码
                     String descrypedPwd = RSAUtils.decryptByPrivateKey(password, privateKey);
                     System.out.println("解密后的密码"+descrypedPwd);
                     ParameterRequestWrapper requestWrapper = new ParameterRequestWrapper(req);

@@ -235,7 +235,11 @@ html{
 	text-align: center;
 }
 
-
+.login-icons{
+	position: relative;
+	top: 7px;
+	color: grey;
+}
 
 
 

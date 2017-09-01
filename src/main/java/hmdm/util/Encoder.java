@@ -55,11 +55,9 @@ public class Encoder{
      */
     @Test
     public void testMD5() throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        String str   = "l872007871";
+        String str   = "jie";
         String newstr = Encoder.EncoderByMD5(str);
         System.out.println(newstr);
-        //2bca782368da36650beadfbacf967e09
-        //e10adc3949ba59abbe56e057f20f883e
     }
 
 

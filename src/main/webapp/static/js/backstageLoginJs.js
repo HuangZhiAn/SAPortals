@@ -1,3 +1,4 @@
+
 $(function(){
     /*var viewModel = kendo.observable({
         username: "",
@@ -33,6 +34,7 @@ $(function(){
     $("#checkword-img").click(function (){
         $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
     });
+
 });
 
 function loginClick() {
@@ -40,17 +42,32 @@ function loginClick() {
     if(!validator.validate()){
         return;
     }*/
-    $("#loginForm").ajaxSubmit({
+    var key;
+    $.ajax({
+        url: path+"/customer/getPublicKey",
+        type: "get",
         dataType: "json",
-        success: function(data){
-            if(data=="success"){
-                location.href="index.jsp";
-            }else{
-                alert(data);
-                $("#result-span").append(data);
-                $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
-            }
+        success: function (data) {
+            RSAUtils.setMaxDigits(200);
+            //setMaxDigits(256);
+            key = new RSAUtils.getKeyPair(data.publicKeyExponent, "", data.publicKeyModulus);
+            var reversedPwd = $("#password").val().split("").reverse().join("");
+            var encrypedPwd = RSAUtils.encryptedString(key,reversedPwd);
+            $("#password").val(encrypedPwd);
+            $("#loginForm").ajaxSubmit({
+                dataType: "json",
+                success: function(data){
+                    if(data=="success"){
+                        location.href="index.jsp";
+                    }else{
+                        alert(data);
+                        $("#result-span").append(data);
+                        $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
+                    }
+                }
+            });
         }
     });
+
 }
 

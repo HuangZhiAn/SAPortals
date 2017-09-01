@@ -9,24 +9,13 @@ $(function (){
     kendo.bind($("#form-div"), viewModel);
 
     var validator = $("#form-div").kendoValidator({}).data("kendoValidator");
-	
-	var key;
+
 	$("#login-btn").click(function (){
 		if($("#login-btn").text()=="Sign Out"){
             $("#logoutForm").submit();
 		}else{
             $(".login-div").css("display","block");
             $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
-            $.ajax({
-                url: path+"/customer/getPublicKey",
-                type: "get",
-                dataType: "json",
-                success: function (data) {
-                    RSAUtils.setMaxDigits(200);
-                    //setMaxDigits(256);
-                    key = new RSAUtils.getKeyPair(data.publicKeyExponent, "", data.publicKeyModulus);
-                }
-            });
 		}
 	});
 	$(".login-div .form-div .conroller .close-btn").click(function (){
@@ -51,27 +40,37 @@ $(function (){
             alert("Please input checkword");
             return;
         }
-        var reversedPwd = data.password.split("").reverse().join("");
-        var encrypedPwd = RSAUtils.encryptedString(key,reversedPwd);
-        data.password = encrypedPwd;
-		$.ajax({
-            url:path+"/login",
-            type: "post",
-            dataType: "text",
-            data: data,
-            success: function (data) {
-                if(data=="success"){
-                    $(".login-div").css("display","none");
-                    $("#login-btn").text("Sign Out");
-				}else{
-                    alert(data);
-                    $("#result-span").append(data);
-                    $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
-				}
+        var key;
+        $.ajax({
+            url: path+"/customer/getPublicKey",
+            type: "get",
+            dataType: "json",
+            success: function (xhr) {
+                RSAUtils.setMaxDigits(200);
+                //setMaxDigits(256);
+                key = new RSAUtils.getKeyPair(xhr.publicKeyExponent, "", xhr.publicKeyModulus);
+                var reversedPwd = data.password.split("").reverse().join("");
+                var encrypedPwd = RSAUtils.encryptedString(key,reversedPwd);
+                data.password = encrypedPwd;
+                $.ajax({
+                    url:path+"/login",
+                    type: "post",
+                    dataType: "text",
+                    data: data,
+                    success: function (data) {
+                        if(data=="success"){
+                            location.href=path+"/";
+                        }else{
+                            alert(data);
+                            $("#result-span").append(data);
+                            $("#checkword-img").attr("src",path + "/verifyCode?date=" + new Date());
+                        }
 
-            },
-            error:function(){
-            	alert("error!");
+                    },
+                    error:function(){
+                        alert("error!");
+                    }
+                });
             }
         });
 	});

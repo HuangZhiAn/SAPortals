@@ -27,7 +27,7 @@ String path = request.getContextPath();
 <script src="<%=path%>/static/js/kendo/kendo.web.min.js"></script>
 <script src="<%=path%>/static/js/common/md5.js"></script>
 <script src="<%=path%>/static/js/backstageLoginJs.js"></script>
-
+<script type="text/javascript" src="<%=path%>/static/js/security.js"></script>
 <script>
 	var path = "<%=path%>";
 </script>

@@ -13,7 +13,7 @@ String path = request.getContextPath();
 <body>
 	<div class="img-div">
 		<img class="index-top-bg" alt=""
-			src="<%=path%>/static/img/index_top_bg.jpg">
+			src="<%=path%>/static/img/webp/index_top_bg.webp">
 		<div class="text-div">
 			<div class="text-content">
 				<div class="product-div">

@@ -5,7 +5,6 @@
 	min-width: 1024px;
 }
 
-
 .index-bg-div .choice-div{
 	position: absolute;
 	top:50%;
@@ -40,7 +39,4 @@
 .index-bg-div .choice-div .next-btn{
 	float: right;
 	border-radius: 3px 0px 0px 3px;
-}
-
-.index-bg-div .shuffling-div{
 }

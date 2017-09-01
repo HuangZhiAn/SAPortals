@@ -17,14 +17,14 @@ String path = request.getContextPath();
   	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
   	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/common/headerCss.css">
-  	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.common.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.rtl.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.default.min.css" rel="stylesheet">
+  	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.common.min.css" rel="stylesheet" media="print">
+	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.rtl.min.css" rel="stylesheet" media="print">
+	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.default.min.css" rel="stylesheet" media="print">
 
 	<script type="text/javascript" src="<%=path%>/static/js/kendo/kendo.web.min.js"></script>
-	<script type="text/javascript" src="<%=path%>/static/js/common/md5.js"></script>
 	<script type="text/javascript" src="<%=path%>/static/js/common/headerJs.js"></script>
 	<script type="text/javascript" src="<%=path%>/static/js/security.js"></script>
+	<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
   </head>
   <body>
   	<div class="login-div">
@@ -33,12 +33,17 @@ String path = request.getContextPath();
 			<div class="title" id="signStatus">SIGN IN</div>
   			<div>
 				<div class="input-div">
+					<i data-feather="user"></i>
 					<input id="username" name="username" data-bind="value:username"
 						type="text" placeholder="Please input username" pattern="[a-zA-Z]{1}([a-zA-Z0-9]|[_]){5,11}" validationMessage="Invalid username">
 				</div>
 				<div><span class="k-invalid-msg" data-for="username"></span></div>
 				
 				<div class="input-div">
+					<i data-feather="lock"></i>
+					<script>
+                        feather.replace({class: 'login-icons'});
+					</script>
 					<input id="password" name="password" data-bind="value:password"
 						type="password" placeholder="Please input password" pattern="[a-zA-Z]{1}[a-zA-Z0-9]{5,11}" validationMessage="Invalid password">
 				</div>

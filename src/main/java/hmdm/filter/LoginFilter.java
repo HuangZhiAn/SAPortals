@@ -28,6 +28,7 @@ public class LoginFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest=  (HttpServletRequest) request;
+        //将customer添加到session
         Object customer = httpServletRequest.getSession().getAttribute("customer");
         if(customer==null){
             SecurityContext context = SecurityContextHolder.getContext();
