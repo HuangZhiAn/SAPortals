@@ -6,9 +6,114 @@ String path = request.getContextPath();
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<link rel="stylesheet" type="text/css"
-	href="<%=path%>/static/css/indexDivCss.css">
-<script type="text/javascript" src="<%=path%>/static/js/indexDivJs.js"></script>
+<style type="text/css">
+	.img-div{
+		min-height: 701px;
+		width: 100%;
+		height: 100%;
+	}
+	.img-div .index-top-bg{
+		width: 100%;
+		height: 100%;
+	}
+	.img-div .text-div{
+		width:100%;
+		position:absolute;
+		top:60px;
+		z-index:99;
+	}
+	.img-div .text-div .text-content{
+		position:relative;
+		width:1024px;
+		margin: auto;
+	}
+	.img-div .text-div .text-content .product-div{
+		vertical-align:middle;
+		font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+		color:white;
+		margin-top:100px;
+		width:400px;
+	}
+	.img-div .text-div .text-content .introduce-img{
+		position: absolute;
+		top:50%;
+		left: 100%;
+		width: 600px;
+		height: 400px;
+		margin-left: -600px;
+		margin-top: -200px;
+		border-radius:2px;
+	}
+	.img-div .text-div .text-content .product-div a{
+		display:inline-block;
+		width:200px;
+		margin:0px 50px;
+		height:30px;
+		line-height:30px;
+		text-align:center;
+		color:rgba(42, 196, 254,1);
+		font-weight:bold;
+		background:rgba(255,255, 255,0.9);
+		border-radius:15px;
+	}
+	.content-div{
+		width: 100%;
+		min-height:600px;
+	}
+
+	.content-div .bg-div{
+		min-height:600px;
+		width: 100%;
+		height: 100%;
+	}
+	.content-div .bg-div img{
+		width: 100%;
+		height: 100%;
+
+	}
+	.content-div .message-div{
+		background-color:white;
+		height:100%;
+		min-height:600px;
+		width:100%;
+	}
+	.content-div .message-div .message-center{
+		width: 1024px;
+		margin: auto;
+		font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+	}
+	.content-div .message-div .message-text{
+		width: 50%;
+		float: left;
+	}
+	.content-div .message-div .message-text .message-title{
+		font-size: 50px;
+		line-height:80px;
+	}
+	.content-div .message-div .message-text .message-content{
+		color: rgba(127, 150, 182,1);
+	}
+	.content-div .message-div .message-text .message-content a{
+		color: rgba(97, 197, 253,1);
+		line-height: 30px;
+	}
+	.content-div .message-div .message-text .message-others{
+
+	}
+	.content-div .message-div .message-img{
+		width: 50%;
+		height:340px;
+		float: right;
+		text-align: center;
+	}
+	.content-div .message-div .message-img img{
+		margin:10%;
+		width: 80%;
+		height: 80%;
+		border-radius: 10px;
+	}
+</style>
+<script type="text/javascript" src="<%=path%>/static/js/indexDivJs.js" async></script>
 </head>
 <body>
 	<div class="img-div">
@@ -34,15 +139,14 @@ String path = request.getContextPath();
 					</div>
 					<a href="javascript:void(0);">DownLoad</a>
 				</div>
-				<img class="introduce-img"
-					src="<%=path%>/static/img/home_HMDM_introduce.jpg">
+				<img class="introduce-img" src="<%=path%>/static/img/home_HMDM_introduce.jpg">
 			</div>
 		</div>
 	</div>
 
 	<div class="content-div">
 		<div class="bg-div">
-			<img src="<%=path%>/static/img/index_test_bg.png">
+			<img class="lazy-loaded" url="<%=path%>/static/img/webp/index_test_bg.webp">
 		</div>
 		<div class="message-div">
 			<div class="message-center">
@@ -60,14 +164,14 @@ String path = request.getContextPath();
 					<div class="message-others"></div>
 				</div>
 				<div class="message-img">
-					<img src="<%=path%>/static/img/index_test_bg2.jpg">
+					<img class="lazy-loaded" url="<%=path%>/static/img/index_test_bg2.jpg">
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="content-div">
 		<div class="bg-div">
-			<img src="<%=path%>/static/img/index_test_bg.png">
+			<img class="lazy-loaded" url="<%=path%>/static/img/webp/index_test_bg.webp">
 		</div>
 		<div class="message-div">
 			<div class="message-center">
@@ -85,7 +189,7 @@ String path = request.getContextPath();
 					<div class="message-others"></div>
 				</div>
 				<div class="message-img">
-					<img src="<%=path%>/static/img/index_test_bg2.jpg">
+					<img class="lazy-loaded" url="<%=path%>/static/img/index_test_bg2.jpg">
 				</div>
 			</div>
 		</div>

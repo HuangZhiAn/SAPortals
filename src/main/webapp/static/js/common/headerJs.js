@@ -131,6 +131,25 @@ $(function (){
             $selected.load($selected.attr("page"));
         }
     });
+
+    var observer = new IntersectionObserver(observerCall);
+    query('.lazy-loaded').forEach(function (item) {
+        observer.observe(item);
+    });
+    var first = true;
+    function observerCall(changes) {
+        if(first){
+            first=false;
+            return;
+        }
+        changes.forEach(function(change) {
+            var container = change.target;
+            $(container).attr("src",$(container).attr("url"));
+            $(container).attr("url","");
+            observer.unobserve(container);
+        });
+    }
+    feather.replace({class: 'login-icons'});
 });
 
 function sendDownloadEmail(version) {
@@ -202,4 +221,6 @@ function feedback() {
     });
 }
 
-
+function query(selector) {
+    return Array.from(document.querySelectorAll(selector));
+}

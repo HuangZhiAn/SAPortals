@@ -6,8 +6,46 @@ String path = request.getContextPath();
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-  	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/common/footerCss.css">
-
+	  <style type="text/css">
+		  .index-footer-div{
+			  background: rgba(0,0,0,0.4);
+			  font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+		  }
+		  .index-footer-div .footer-content{
+			  width: 1024px;
+			  margin: auto;
+		  }
+		  .index-footer-div .footer-content .footer-top{
+			  padding-top: 30px;
+			  height: 160px;
+		  }
+		  .index-footer-div .footer-content .footer-top > div{
+			  float: left;
+			  margin-left: 50px;
+			  min-width: 100px;
+		  }
+		  .index-footer-div .footer-content .footer-top > div .title{
+			  color: rgba(255,255,255,1);
+			  font-size: 18px;
+		  }
+		  .index-footer-div .footer-content .footer-top a{
+			  color: rgba(255,255,255,1);
+			  line-height: 20px;
+		  }
+		  .index-footer-div .footer-content .footer-top a:hover{
+			  color: rgba(42, 196, 254,1);
+		  }
+		  .index-footer-div .footer-content .footer-top .big-div{
+			  margin-left:0px;
+			  width: 500px;
+		  }
+		  .index-footer-div .footer-content .footer-bottom{
+			  color:rgba(255,255,255,1);
+			  border-top:1px solid rgba(255,255,255,1);
+			  padding:30px 0px 40px 0px;
+			  text-align: center;
+		  }
+	  </style>
 	<script type="text/javascript" src="<%=path%>/static/js/common/footerJs.js"></script>
   </head>
   <body>

@@ -13,7 +13,9 @@ String path = request.getContextPath();
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" type="text/css" href="<%=path%>/static/css/documentationDivCss.css">
-
+	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.common.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.rtl.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.default.min.css" rel="stylesheet">
 <script type="text/javascript" src="<%=path%>/static/js/documentationDivJs.js"></script>
 </head>
 <body>

@@ -19,10 +19,10 @@
 <link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.common.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.rtl.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="<%=path%>/static/css/kendo/kendo.default.min.css" rel="stylesheet">
-<script type="text/javascript" src="<%=path%>/static/js/kendo/jquery.min.js"></script>
-<script type="text/javascript" src="<%=path%>/static/js/kendo/kendo.web.min.js"></script>
-<script type="text/javascript" src="<%=path%>/static/js/common/baseJs.js"></script>
-<script type="text/javascript" src="<%=path%>/static/js/registerJs.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/kendo/jquery.min.js" async></script>
+<script type="text/javascript" src="<%=path%>/static/js/kendo/kendo.web.min.js" async></script>
+<script type="text/javascript" src="<%=path%>/static/js/common/baseJs.js" async></script>
+<script type="text/javascript" src="<%=path%>/static/js/registerJs.js" async></script>
 </head>
 <body>
 	<div class="content-div">

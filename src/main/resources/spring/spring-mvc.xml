@@ -46,6 +46,24 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <mvc:interceptors>
+        <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+        <!--<bean class=""/>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/static/img/webp/**"/>
+            <mvc:mapping path="/backstage/static/img/webp/**"/>
+            <mvc:mapping path="/images/webp/**"/>
+            <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <bean class="hmdm.filter.WebpSupportedInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/static/**"/>
+            <mvc:mapping path="/backstage/static/**"/>
+            <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <bean class="hmdm.filter.StaticResourceInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- 扫描controller包路径 -->
     <context:component-scan base-package="hmdm.controllers"
                             use-default-filters="false">
