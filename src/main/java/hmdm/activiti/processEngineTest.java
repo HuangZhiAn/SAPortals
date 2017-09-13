@@ -15,14 +15,14 @@ import java.util.Enumeration;
  */
 public class processEngineTest {
 
-    @Test
+    //@Test
     public void getProcessEngine(){
 
         //获得流程引擎
 //        ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 //        System.out.println(processEngine);
 //        try {
-//            Enumeration<URL> resources = this.getClass().getClassLoader().getResources("activiti.cfg.xml");
+//            Enumeration<URL> resources = this.getClass().getClassLoader().getResources("application-activiti.cfg.xml");
 //            System.out.println(resources);
 //        } catch (IOException e) {
 //            e.printStackTrace();

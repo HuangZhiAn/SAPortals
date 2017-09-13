@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class AopTest {
 
-    @org.junit.Test
+//    @org.junit.Test
     public void test(){
         ApplicationContext context =new ClassPathXmlApplicationContext("/spring/application-context.xml");
         ProductController bean = (ProductController)context.getBean("productController");

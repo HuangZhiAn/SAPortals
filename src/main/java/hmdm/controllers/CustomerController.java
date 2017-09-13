@@ -6,18 +6,24 @@ import hmdm.service.CustomerService;
 import hmdm.service.IMailService;
 import hmdm.service.UserRoleService;
 import hmdm.util.RSAUtils;
+import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 public class CustomerController {
@@ -228,5 +234,31 @@ public class CustomerController {
 		publicKey1.setPublicKeyExponent(publicKeyExponent);
 		publicKey1.setPublicKeyModulus(publicKeyModulus);
 		return publicKey1;
+	}
+
+	@ResponseBody
+	@RequestMapping("getUrlMapping")
+	public Object getUrlMapping(HttpServletRequest request) {
+
+		List<String> uList = new ArrayList<String>();//存储所有url集合
+
+		WebApplicationContext wac = (WebApplicationContext) request.getAttribute(DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE);//获取上下文对象
+
+		Map<String, HandlerMapping> requestMappings = BeanFactoryUtils.beansOfTypeIncludingAncestors(wac, HandlerMapping.class, true, false);
+		for(HandlerMapping handlerMapping : requestMappings.values()) {
+
+			if(handlerMapping instanceof RequestMappingHandlerMapping) {
+				RequestMappingHandlerMapping rmhm = (RequestMappingHandlerMapping) handlerMapping;
+				Map<RequestMappingInfo, HandlerMethod> handlerMethods = rmhm.getHandlerMethods();
+
+				for(RequestMappingInfo rmi : handlerMethods.keySet()) {
+					PatternsRequestCondition prc = rmi.getPatternsCondition();
+					Set<String> patterns = prc.getPatterns();
+					for (String uStr : patterns)
+						uList.add(handlerMethods.get(rmi).getBeanType().getName()+": "+uStr);
+				}
+			}
+		}
+		return uList;
 	}
 }

@@ -28,7 +28,8 @@ import java.util.Map;
 public class SuggestActiviti {
 
     //获得流程引擎
-    ProcessEngine processEngine = ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
+    @Autowired
+    ProcessEngine processEngine; //= ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("activiti.cfg.xml").buildProcessEngine();
     public ProcessEngineFactoryBean factoryBean;
     /**
      * 启动流程

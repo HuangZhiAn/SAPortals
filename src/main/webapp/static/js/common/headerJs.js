@@ -132,7 +132,7 @@ $(function (){
         }
     });
 
-    var observer = new IntersectionObserver(observerCall);
+    /*var observer = new IntersectionObserver(observerCall);
     query('.lazy-loaded').forEach(function (item) {
         observer.observe(item);
     });
@@ -149,7 +149,7 @@ $(function (){
             observer.unobserve(container);
         });
     }
-    feather.replace({class: 'login-icons'});
+    feather.replace({class: 'login-icons'});*/
 });
 
 function sendDownloadEmail(version) {

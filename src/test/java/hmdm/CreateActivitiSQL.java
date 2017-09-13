@@ -12,7 +12,7 @@ public class CreateActivitiSQL {
 	 * 23张表
 	 *
 	 * */
-    @Test
+//    @Test
     public void createTable(){
         //创建单例流程引擎工厂
         ProcessEngineConfiguration processEngineConfiguration = ProcessEngineConfiguration.createStandaloneProcessEngineConfiguration();

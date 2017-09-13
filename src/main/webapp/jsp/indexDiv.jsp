@@ -146,7 +146,7 @@ String path = request.getContextPath();
 
 	<div class="content-div">
 		<div class="bg-div">
-			<img class="lazy-loaded" url="<%=path%>/static/img/webp/index_test_bg.webp">
+			<img class="lazy-loaded" src="<%=path%>/static/img/webp/index_test_bg.webp">
 		</div>
 		<div class="message-div">
 			<div class="message-center">
@@ -164,14 +164,14 @@ String path = request.getContextPath();
 					<div class="message-others"></div>
 				</div>
 				<div class="message-img">
-					<img class="lazy-loaded" url="<%=path%>/static/img/index_test_bg2.jpg">
+					<img class="lazy-loaded" src="<%=path%>/static/img/index_test_bg2.jpg">
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="content-div">
 		<div class="bg-div">
-			<img class="lazy-loaded" url="<%=path%>/static/img/webp/index_test_bg.webp">
+			<img class="lazy-loaded" src="<%=path%>/static/img/webp/index_test_bg.webp">
 		</div>
 		<div class="message-div">
 			<div class="message-center">
@@ -189,7 +189,7 @@ String path = request.getContextPath();
 					<div class="message-others"></div>
 				</div>
 				<div class="message-img">
-					<img class="lazy-loaded" url="<%=path%>/static/img/index_test_bg2.jpg">
+					<img class="lazy-loaded" src="<%=path%>/static/img/index_test_bg2.jpg">
 				</div>
 			</div>
 		</div>
